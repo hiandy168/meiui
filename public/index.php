@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
-
+$_GET['_url'] = $_SERVER['REQUEST_URI'];
 use Phalcon\Mvc\Application;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 

@@ -13,7 +13,7 @@ class ContactForm extends Form
     {
         // Name
         $name = new Text('name');
-        $name->setLabel('Your Full Name');
+        $name->setLabel('电话');
         $name->setFilters(array('striptags', 'string'));
         $name->addValidators(array(
             new PresenceOf(array(
@@ -24,7 +24,7 @@ class ContactForm extends Form
 
         // Email
         $email = new Text('email');
-        $email->setLabel('E-Mail');
+        $email->setLabel('邮件');
         $email->setFilters('email');
         $email->addValidators(array(
             new PresenceOf(array(
@@ -37,7 +37,7 @@ class ContactForm extends Form
         $this->add($email);
 
         $comments = new TextArea('comments');
-        $comments->setLabel('Comments');
+        $comments->setLabel('建议');
         $comments->setFilters(array('striptags', 'string'));
         $comments->addValidators(array(
             new PresenceOf(array(

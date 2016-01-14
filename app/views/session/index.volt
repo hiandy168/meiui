@@ -5,18 +5,18 @@
 
     <div class="col-md-6">
         <div class="page-header">
-            <h2>Log In</h2>
+            <h2>登陆</h2>
         </div>
         {{ form('session/start', 'role': 'form') }}
             <fieldset>
                 <div class="form-group">
-                    <label for="email">Username/Email</label>
+                    <label for="email">用户名/邮箱</label>
                     <div class="controls">
                         {{ text_field('email', 'class': "form-control") }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">密码</label>
                     <div class="controls">
                         {{ password_field('password', 'class': "form-control") }}
                     </div>

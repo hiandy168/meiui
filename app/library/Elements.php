@@ -13,25 +13,25 @@ class Elements extends Component
     private $_headerMenu = array(
         'navbar-left' => array(
             'index' => array(
-                'caption' => 'Home',
+                'caption' => '首页',
+                'action' => 'index'
+            ),
+            'about' => array(
+                'caption' => '关于MEIUI',
+                'action' => 'index'
+            ),
+            'contact' => array(
+                'caption' => '联系我们',
                 'action' => 'index'
             ),
             'invoices' => array(
                 'caption' => 'Invoices',
                 'action' => 'index'
             ),
-            'about' => array(
-                'caption' => 'About',
-                'action' => 'index'
-            ),
-            'contact' => array(
-                'caption' => 'Contact',
-                'action' => 'index'
-            ),
         ),
         'navbar-right' => array(
             'session' => array(
-                'caption' => 'Log In/Sign Up',
+                'caption' => '登陆/注册',
                 'action' => 'index'
             ),
         )
