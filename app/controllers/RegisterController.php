@@ -9,7 +9,7 @@ class RegisterController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle('Sign Up/Sign In');
+        $this->tag->setTitle('注册/登陆');
         parent::initialize();
     }
 

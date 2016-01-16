@@ -31,14 +31,14 @@
     <div class="col-md-6">
 
         <div class="page-header">
-            <h2>Don't have an account yet?</h2>
+            <h2>还没有账户？</h2>
         </div>
 
-        <p>Create an account offers the following advantages:</p>
+        <p>创建一个帐户提供以下服务:</p>
         <ul>
-            <li>Create, track and export your invoices online</li>
-            <li>Gain critical insights into how your business is doing</li>
-            <li>Stay informed about promotions and special packages</li>
+            <li>分享你的APP</li>
+            <li>分享你的APP</li>
+            <li>分享你的APP</li>
         </ul>
 
         <div class="clearfix center">
