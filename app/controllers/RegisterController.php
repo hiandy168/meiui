@@ -18,12 +18,11 @@ class RegisterController extends ControllerBase
      */
     public function indexAction()
     {
-        $form = new RegisterForm;
+        $form = new MeiuiUserForm;
 
         if ($this->request->isPost()) {
 
-            $name = $this->request->getPost('name', array('string', 'striptags'));
-            $username = $this->request->getPost('username', 'alphanum');
+            $username = $this->request->getPost('username');
             $email = $this->request->getPost('email', 'email');
             $password = $this->request->getPost('password');
             $repeatPassword = $this->request->getPost('repeatPassword');
@@ -33,13 +32,14 @@ class RegisterController extends ControllerBase
                 return false;
             }
 
-            $user = new Users();
+            $user = new MeiuiUsers();
             $user->username = $username;
             $user->password = sha1($password);
-            $user->name = $name;
             $user->email = $email;
             $user->created_at = new Phalcon\Db\RawValue('now()');
+            $user->phone = '1';
             $user->active = 'Y';
+            $user->group = '1';
             if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                     $this->flash->error((string) $message);

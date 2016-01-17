@@ -24,9 +24,9 @@ class SessionController extends ControllerBase
     /**
      * Register an authenticated user into session data
      *
-     * @param Users $user
+     * @param MeiuiUsers $user
      */
-    private function _registerSession(Users $user)
+    private function _registerSession(MeiuiUsers $user)
     {
         $this->session->set('auth', array(
             'id' => $user->id,
@@ -45,7 +45,7 @@ class SessionController extends ControllerBase
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $user = Users::findFirst(array(
+            $user = MeiuiUsers::findFirst(array(
                 "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
                 'bind' => array('email' => $email, 'password' => sha1($password))
             ));

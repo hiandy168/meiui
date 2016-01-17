@@ -4,8 +4,17 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
 use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
 
-class Users extends Model
+class MeiuiUsers extends Model
 {
+    public $id;
+    public $username;
+    public $password;
+    public $phone;
+    public $email;
+    public $created_at;
+    public $active;
+    public $group;
+
     public function validation()
     {
         $this->validate(new EmailValidator(array(
