@@ -25,7 +25,7 @@ class Elements extends Component
                 'action' => 'index'
             ),
             'invoices' => array(
-                'caption' => 'Invoices',
+                'caption' => '后台管理',
                 'action' => 'index'
             ),
         ),
@@ -38,27 +38,32 @@ class Elements extends Component
     );
 
     private $_tabs = array(
-        'Invoices' => array(
-            'controller' => 'invoices',
+        '用户管理' => array(
+                'controller' => 'invoices',
             'action' => 'index',
             'any' => false
         ),
-        'Companies' => array(
+        '分类管理' => array(
             'controller' => 'companies',
             'action' => 'index',
             'any' => true
         ),
-        'Products' => array(
+        '内容管理' => array(
             'controller' => 'products',
             'action' => 'index',
             'any' => true
         ),
-        'Product Types' => array(
+        '待审核列表' => array(
             'controller' => 'producttypes',
             'action' => 'index',
             'any' => true
         ),
-        'Your Profile' => array(
+        '意见反馈' => array(
+            'controller' => 'producttypes',
+            'action' => 'index',
+            'any' => true
+        ),
+        '搜索管理' => array(
             'controller' => 'invoices',
             'action' => 'profile',
             'any' => false
@@ -76,7 +81,7 @@ class Elements extends Component
         $auth = $this->session->get('auth');
         if ($auth) {
             $this->_headerMenu['navbar-right']['session'] = array(
-                'caption' => 'Log Out',
+                'caption' => '注销',
                 'action' => 'end'
             );
         } else {

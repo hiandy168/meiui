@@ -46,7 +46,7 @@ class SessionController extends ControllerBase
             $password = $this->request->getPost('password');
 
             $user = MeiuiUsers::findFirst(array(
-                "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+                "(email = :email: OR username = :email:) AND password = :password: AND del_flag = '1'",
                 'bind' => array('email' => $email, 'password' => sha1($password))
             ));
             if ($user != false) {

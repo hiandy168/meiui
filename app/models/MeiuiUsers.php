@@ -12,7 +12,7 @@ class MeiuiUsers extends Model
     public $phone;
     public $email;
     public $created_at;
-    public $active;
+    public $del_flag;
     public $group;
 
     public function validation()

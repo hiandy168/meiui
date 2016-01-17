@@ -36,9 +36,9 @@ class RegisterController extends ControllerBase
             $user->username = $username;
             $user->password = sha1($password);
             $user->email = $email;
-            $user->created_at = new Phalcon\Db\RawValue('now()');
+            $user->created_at = time();
             $user->phone = '1';
-            $user->active = 'Y';
+            $user->del_flag = '1';
             $user->group = '1';
             if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
