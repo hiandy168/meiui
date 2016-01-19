@@ -14,6 +14,7 @@ class MeiuiUsers extends Model
     public $created_at;
     public $del_flag;
     public $group;
+    public $source;
 
     public function validation()
     {
