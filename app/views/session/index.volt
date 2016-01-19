@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ submit_button('Login', 'class': 'btn btn-primary btn-large') }}
+                    {{ submit_button('登陆', 'class': 'btn btn-primary btn-large') }}
                 </div>
             </fieldset>
         </form>
@@ -42,7 +42,7 @@
         </ul>
 
         <div class="clearfix center">
-            {{ link_to('register', 'Sign Up', 'class': 'btn btn-primary btn-large btn-success') }}
+            {{ link_to('user/register', '立即注册', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
     </div>
 

@@ -9,15 +9,15 @@ class SessionController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle('Sign Up/Sign In');
+        $this->tag->setTitle('登陆/注册');
         parent::initialize();
     }
 
     public function indexAction()
     {
         if (!$this->request->isPost()) {
-            $this->tag->setDefault('email', 'demo@phalconphp.com');
-            $this->tag->setDefault('password', 'phalcon');
+            $this->tag->setDefault('email', 'meiui@163.com');
+            $this->tag->setDefault('password', '1aaaaaaa');
         }
     }
 
