@@ -1,4 +1,6 @@
 <?php
+use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Paginator\Adapter\Model as Paginator;
 
 /**
  * SessionController
@@ -51,5 +53,34 @@ class UserController extends ControllerBase
             $form = new MeiuiUserForm;
             $this->view->form = $form;
         }
+    }
+
+    public function listAction(){
+        $numberPage = 1;
+        if ($this->request->isPost()) {
+            $query = Criteria::fromInput($this->di, "MeiuiUsers", $this->request->getPost());
+            $this->persistent->searchParams = $query->getParams();
+        } else {
+            $numberPage = $this->request->getQuery("page", "int");
+        }
+
+        $parameters = array();
+        if ($this->persistent->searchParams) {
+            $parameters = $this->persistent->searchParams;
+        }
+
+        $Users = MeiuiUsers::find($parameters);
+        if (count($Users) == 0) {
+            $this->flash->notice("The search did not find any user");
+            return $this->forward("user/index");
+        }
+
+        $paginator = new Paginator(array(
+            "data"  => $Users,
+            "limit" => 10,
+            "page"  => $numberPage
+        ));
+
+        $this->view->page = $paginator->getPaginate();
     }
 }

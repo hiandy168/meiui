@@ -33,4 +33,18 @@ class MeiuiUsers extends Model
             return false;
         }
     }
+
+    public function initialize()
+    {
+        $this->belongsTo('id', 'MeiuiUserData', 'user_id');
+    }
+
+    public function getSourceDetail()
+    {
+        if ($this->source == '1') {
+            return '微信';
+        } else {
+            return '网站注册';
+        }
+    }
 }

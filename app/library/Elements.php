@@ -39,8 +39,8 @@ class Elements extends Component
 
     private $_tabs = array(
         '用户管理' => array(
-                'controller' => 'invoices',
-            'action' => 'index',
+            'controller' => 'user',
+            'action' => 'list',
             'any' => false
         ),
         '分类管理' => array(
@@ -59,7 +59,7 @@ class Elements extends Component
             'any' => true
         ),
         '意见反馈' => array(
-            'controller' => 'producttypes',
+            'controller' => 'invoices',
             'action' => 'index',
             'any' => true
         ),
