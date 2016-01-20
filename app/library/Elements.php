@@ -64,8 +64,8 @@ class Elements extends Component
             'any' => true
         ),
         '搜索管理' => array(
-            'controller' => 'invoices',
-            'action' => 'profile',
+            'controller' => 'search',
+            'action' => 'list',
             'any' => false
         )
     );
