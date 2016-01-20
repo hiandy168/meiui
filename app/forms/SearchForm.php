@@ -5,7 +5,7 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Validation\Validator\PresenceOf;
 
-class ClassificationForm extends Form
+class SearchForm extends Form
 {
 
     /**
@@ -21,15 +21,15 @@ class ClassificationForm extends Form
             $this->add(new Hidden("id"));
         }
 
-        $catname = new Text("catname");
-        $catname->setLabel("分类名称");
-        $catname->setFilters(array('striptags', 'string'));
-        $catname->addValidators(array(
+        $keyword = new Text("keyword");
+        $keyword->setLabel("搜索关键字");
+        $keyword->setFilters(array('striptags', 'string'));
+        $keyword->addValidators(array(
             new PresenceOf(array(
-                'message' => 'catname is required'
+                'message' => 'keyword is required'
             ))
         ));
-        $this->add($catname);
+        $this->add($keyword);
     }
 
 }

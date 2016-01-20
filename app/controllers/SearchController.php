@@ -31,20 +31,20 @@ class SearchController extends ControllerBase
 
         $parameters = array();
 
-        $classification = MeiuiSearch::find($parameters);
-        if (count($classification) == 0) {
+        $search = MeiuiSearch::find($parameters);
+        if (count($search) == 0) {
             $this->flash->notice("The search did not find any classification");
-            return $this->forward("classification/index");
+            return $this->forward("search/list");
         }
 
         $paginator = new Paginator(array(
-            "data"  => $classification,
+            "data"  => $search,
             "limit" => 10,
             "page"  => $numberPage
         ));
 
         $this->view->page = $paginator->getPaginate();
-        $this->view->companies = $classification;
+        $this->view->companies = $search;
     }
 
     public function editAction($id)
@@ -68,30 +68,30 @@ class SearchController extends ControllerBase
     public function createAction()
     {
         if ($this->request->isPost()) {
-            $form = new ClassificationForm;
-            $company = new MeiuiClassification();
+            $form = new SearchForm;
+            $company = new MeiuiSearch();
 
             $data = $this->request->getPost();
             if (!$form->isValid($data, $company)) {
                 foreach ($form->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-                return $this->forward('classification/create');
+                return $this->forward('search/create');
             }
 
             if ($company->save() == false) {
                 foreach ($company->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-                return $this->forward('classification/create');
+                return $this->forward('search/create');
             }
 
             $form->clear();
 
-            $this->flash->success("classification was created successfully");
-            return $this->forward("classification/list");
+            $this->flash->success("search was created successfully");
+            return $this->forward("search/list");
         } else {
-            $this->view->form = new ClassificationForm(null, array('edit' => true));
+            $this->view->form = new SearchForm(null, array('edit' => true));
         }
     }
 

@@ -3,7 +3,7 @@
 <div align="center">
 {{ content() }}
 
-{{ form("classification/create") }}
+{{ form("search/create") }}
 
     <ul class="pager">
         <li class="previous pull-left">
