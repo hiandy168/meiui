@@ -1,5 +1,13 @@
 {{ elements.getTabs() }}
 <div align="center">
+<ul class="pager">
+    <li class="previous pull-left">
+        {{ link_to("companies/index", "&larr; Go Back") }}
+    </li>
+    <li class="pull-right">
+        {{ link_to("companies/new", "Create companies") }}
+    </li>
+</ul>
 {% for product in page.items %}
     {% if loop.first %}
 <table class="table table-bordered table-striped" align="center">

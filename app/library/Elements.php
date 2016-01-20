@@ -44,8 +44,8 @@ class Elements extends Component
             'any' => false
         ),
         '分类管理' => array(
-            'controller' => 'companies',
-            'action' => 'index',
+            'controller' => 'classification',
+            'action' => 'list',
             'any' => true
         ),
         '内容管理' => array(
