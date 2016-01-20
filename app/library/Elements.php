@@ -24,9 +24,9 @@ class Elements extends Component
                 'caption' => '联系我们',
                 'action' => 'index'
             ),
-            'invoices' => array(
+            'user' => array(
                 'caption' => '后台管理',
-                'action' => 'index'
+                'action' => 'list'
             ),
         ),
         'navbar-right' => array(
@@ -59,8 +59,8 @@ class Elements extends Component
             'any' => true
         ),
         '意见反馈' => array(
-            'controller' => 'invoices',
-            'action' => 'index',
+            'controller' => 'feedback',
+            'action' => 'list',
             'any' => true
         ),
         '搜索管理' => array(
