@@ -14,6 +14,12 @@ class MeiuiFeedback extends Model
     public $msg_flag;
     public $msg;
 
+    public function beforeCreate()
+    {
+        $this->created_at = time();
+    }
+
+
     public function validation()
     {
 //        $this->validate(new UniquenessValidator(array(

@@ -31,6 +31,17 @@
         </div>
 
         <div class="control-group">
+            {{ form.label('phone', ['class': 'control-label']) }}
+            <div class="controls">
+                {{ form.render('phone', ['class': 'form-control']) }}
+                <p class="help-block">(required)</p>
+                <div class="alert alert-warning" id="phone_alert">
+                    <strong>Warning!</strong> Please enter your phone
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
             {{ form.label('password', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('password', ['class': 'form-control']) }}

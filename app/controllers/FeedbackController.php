@@ -35,4 +35,41 @@ class FeedbackController extends ControllerBase
         $this->view->page = $paginator->getPaginate();
         $this->view->companies = $search;
     }
+
+    public function indexAction()
+    {
+        $this->view->form = new MeiuiFeedbackForm;
+    }
+
+    /**
+     * Saves the contact information in the database
+     */
+    public function sendAction()
+    {
+        if ($this->request->isPost() != true) {
+            return $this->forward('feedback/index');
+        }
+
+        $form = new MeiuiFeedbackForm;
+        $contact = new MeiuiFeedback();
+        $contact->created_at = time();
+        // Validate the form
+        $data = $this->request->getPost();
+        if (!$form->isValid($data, $contact)) {
+            foreach ($form->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('feedback/index');
+        }
+
+        if ($contact->save() == false) {
+            foreach ($contact->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('feedback/index');
+        }
+
+        $this->flash->success('感谢你的反馈，我们会在一两个工作日内联系你');
+        return $this->forward('feedback/index');
+    }
 }

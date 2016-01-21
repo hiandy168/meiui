@@ -20,7 +20,7 @@ class Elements extends Component
                 'caption' => '关于MEIUI',
                 'action' => 'index'
             ),
-            'contact' => array(
+            'feedback' => array(
                 'caption' => '意见反馈',
                 'action' => 'index'
             ),

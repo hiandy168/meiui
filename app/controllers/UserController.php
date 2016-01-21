@@ -22,6 +22,7 @@ class UserController extends ControllerBase
     {
         if ($this->request->isPost()) {
             $username = $this->request->getPost('username');
+            $phone = $this->request->getPost('phone');
             $email = $this->request->getPost('email', 'email');
             $password = $this->request->getPost('password');
             $repeatPassword = $this->request->getPost('repeatPassword');
@@ -33,26 +34,30 @@ class UserController extends ControllerBase
             $user = new MeiuiUsers();
             $user->username = $username;
             $user->password = sha1($password);
+            $user->phone = $phone;
             $user->email = $email;
             $user->created_at = time();
-            $user->phone = '1';
-            $user->del_flag = '1';
-            $user->group = '1';
-            $user->source = '2';
             if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                     $this->flash->error((string) $message);
                 }
             } else {
-                $this->tag->setDefault('email', '');
-                $this->tag->setDefault('password', '');
-                $this->flash->success('Thanks for sign-up, please log-in to start generating invoices');
-                return $this->forward('session/index');
+                $user_data = new MeiuiUserData();
+                $user_data->user_id = $user->id;
+                if ($user_data->save() == false) {
+                    foreach ($user_data->getMessages() as $message) {
+                        $this->flash->error((string) $message);
+                    }
+                } else {
+                    $this->tag->setDefault('email', '');
+                    $this->tag->setDefault('password', '');
+                    $this->flash->success('欢迎加入Meiui');
+                    return $this->forward('session/index');
+                }
             }
-        } else {
-            $form = new MeiuiUserForm;
-            $this->view->form = $form;
         }
+        $form = new MeiuiUserForm;
+        $this->view->form = $form;
     }
 
     public function listAction(){
