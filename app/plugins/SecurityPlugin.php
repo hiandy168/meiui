@@ -39,10 +39,11 @@ class SecurityPlugin extends Plugin
 
 			//Private area resources
 			$privateResources = array(
-				'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-				'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-				'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-				'invoices'     => array('index', 'profile')
+                'user'              => array('register', 'list'),
+                'classification'    => array('list', 'create'),
+                'search'            => array('list', 'create'),
+                'feedback'          => array('list'),
+                'app'               => array('list'),
 			);
 			foreach ($privateResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
@@ -53,11 +54,6 @@ class SecurityPlugin extends Plugin
 				'index'      => array('index'),
 				'about'      => array('index'),
 				'register'   => array('index'),
-				'user'       => array('register', 'list'),
-				'classification'  => array('list', 'create'),
-				'search'  => array('list', 'create'),
-				'feedback'  => array('list'),
-				'app'        => array('list'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
 				'contact'    => array('index', 'send')

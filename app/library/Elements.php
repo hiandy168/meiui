@@ -21,12 +21,8 @@ class Elements extends Component
                 'action' => 'index'
             ),
             'contact' => array(
-                'caption' => '联系我们',
+                'caption' => '意见反馈',
                 'action' => 'index'
-            ),
-            'user' => array(
-                'caption' => '后台管理',
-                'action' => 'list'
             ),
         ),
         'navbar-right' => array(
@@ -53,11 +49,6 @@ class Elements extends Component
             'action' => 'list',
             'any' => true
         ),
-//        '待审核列表' => array(
-//            'controller' => 'producttypes',
-//            'action' => 'index',
-//            'any' => true
-//        ),
         '意见反馈' => array(
             'controller' => 'feedback',
             'action' => 'list',
@@ -83,6 +74,10 @@ class Elements extends Component
             $this->_headerMenu['navbar-right']['session'] = array(
                 'caption' => '注销',
                 'action' => 'end'
+            );
+            $this->_headerMenu['navbar-left']['user'] = array(
+                'caption' => '后台管理',
+                'action' => 'list'
             );
         } else {
             unset($this->_headerMenu['navbar-left']['invoices']);
