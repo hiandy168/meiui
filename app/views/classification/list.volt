@@ -5,7 +5,7 @@
 
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("companies/index", "&larr; 返回") }}
+            {{ link_to("classification/list", "&larr; 返回") }}
         </li>
         <li class="pull-right">
             {{ link_to("classification/create", "新增分类") }}

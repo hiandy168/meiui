@@ -51,19 +51,23 @@ class FeedbackController extends ControllerBase
         }
 
         $form = new MeiuiFeedbackForm;
-        $contact = new MeiuiFeedback();
-        $contact->created_at = time();
+        $feedback = new MeiuiFeedback();
+        $auth = $this->session->get('auth');
+        if ($auth){
+            $feedback-> username = $auth['username'];
+        }
+        $feedback->created_at = time();
         // Validate the form
         $data = $this->request->getPost();
-        if (!$form->isValid($data, $contact)) {
+        if (!$form->isValid($data, $feedback)) {
             foreach ($form->getMessages() as $message) {
                 $this->flash->error($message);
             }
             return $this->forward('feedback/index');
         }
 
-        if ($contact->save() == false) {
-            foreach ($contact->getMessages() as $message) {
+        if ($feedback->save() == false) {
+            foreach ($feedback->getMessages() as $message) {
                 $this->flash->error($message);
             }
             return $this->forward('feedback/index');

@@ -7,6 +7,7 @@ use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
 class MeiuiFeedback extends Model
 {
     public $id;
+    public $username;
     public $phone;
     public $email;
     public $pic_arr;
@@ -17,6 +18,14 @@ class MeiuiFeedback extends Model
     public function beforeCreate()
     {
         $this->created_at = time();
+    }
+
+    public function getUsernameDetail(){
+        if($this->username){
+            return $this->username;
+        } else {
+            return '非注册用户';
+        }
     }
 
 

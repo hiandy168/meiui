@@ -2,10 +2,7 @@
 <div align="center">
 <ul class="pager">
     <li class="previous pull-left">
-        {{ link_to("companies/index", "&larr; Go Back") }}
-    </li>
-    <li class="pull-right">
-        {{ link_to("companies/new", "Create companies") }}
+        {{ link_to("user/list", "&larr; Go Back") }}
     </li>
 </ul>
 {% for product in page.items %}

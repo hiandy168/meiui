@@ -23,7 +23,7 @@
     {% endif %}
         <tbody>
             <tr>
-                <td>{{ classification.id }}</td>
+                <td>{{ classification.getUsernameDetail() }}</td>
                 <td>{{ classification.msg }}</td>
                 <td>{{ classification.msg_flag }}</td>
                 <td width="7%">{{ link_to("companies/delete/" ~ classification.id, '查看', "class": "btn btn-default") }}</td>
