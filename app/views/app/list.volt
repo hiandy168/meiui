@@ -5,7 +5,10 @@
 
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("feed/list", "&larr; 返回") }}
+            {{ link_to("app/list", "&larr; 返回") }}
+        </li>
+        <li class="pull-right">
+            {{ link_to("app/list/status/3", "待审核列表") }}
         </li>
     </ul>
 
