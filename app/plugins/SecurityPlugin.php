@@ -57,6 +57,7 @@ class SecurityPlugin extends Plugin
 				'classification'  => array('list', 'create'),
 				'search'  => array('list', 'create'),
 				'feedback'  => array('list'),
+				'app'        => array('list'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
 				'contact'    => array('index', 'send')

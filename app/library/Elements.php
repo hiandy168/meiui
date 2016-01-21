@@ -49,15 +49,15 @@ class Elements extends Component
             'any' => true
         ),
         '内容管理' => array(
-            'controller' => 'products',
-            'action' => 'index',
+            'controller' => 'app',
+            'action' => 'list',
             'any' => true
         ),
-        '待审核列表' => array(
-            'controller' => 'producttypes',
-            'action' => 'index',
-            'any' => true
-        ),
+//        '待审核列表' => array(
+//            'controller' => 'producttypes',
+//            'action' => 'index',
+//            'any' => true
+//        ),
         '意见反馈' => array(
             'controller' => 'feedback',
             'action' => 'list',

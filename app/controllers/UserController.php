@@ -56,12 +56,10 @@ class UserController extends ControllerBase
     }
 
     public function listAction(){
-        $numberPage = 1;
-        if ($this->request->isPost()) {
-            $query = Criteria::fromInput($this->di, "MeiuiUsers", $this->request->getPost());
-            $this->persistent->searchParams = $query->getParams();
-        } else {
+        if ($this->request->getQuery("page", "int")){
             $numberPage = $this->request->getQuery("page", "int");
+        } else {
+            $numberPage = 1;
         }
 
         $parameters = array();
