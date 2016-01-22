@@ -15,9 +15,7 @@ class UserController extends ControllerBase
         parent::initialize();
     }
 
-    /**
-     * Action to register a new user
-     */
+
     public function registerAction()
     {
         if ($this->request->isPost()) {
@@ -67,12 +65,7 @@ class UserController extends ControllerBase
             $numberPage = 1;
         }
 
-        $parameters = array();
-        if ($this->persistent->searchParams) {
-            $parameters = $this->persistent->searchParams;
-        }
-
-        $Users = MeiuiUsers::find($parameters);
+        $Users = MeiuiUsers::find("del_flag = 1");
         if (count($Users) == 0) {
             $this->flash->notice("The search did not find any user");
             return $this->forward("user/index");
@@ -85,5 +78,44 @@ class UserController extends ControllerBase
         ));
 
         $this->view->page = $paginator->getPaginate();
+    }
+
+
+    public function deleteAction(){
+        $id = $this->request->getQuery("id", "int");
+        if($id){
+            $user = $this->getUser($id);
+            if($user){
+                $user->del_flag = 2;
+                if (!$user->save()) {
+                    $this->flash->error('禁用失败');
+                    return $this->forward("user/list");
+                }else{
+                    $this->flash->success('禁用成功');
+                    return $this->forward("user/list");
+                }
+            } else {
+                $this->flash->error('禁用失败');
+                return $this->forward("user/list");
+            }
+        } else {
+            $this->flash->error('禁用失败');
+            return $this->forward("user/list");
+        }
+
+    }
+
+    private  function getUser($id){
+        // 用 phalcon 的方式查找该用户
+        $conditions = " id = :id: AND del_flag != :del_flag:";
+        $parameters = array(
+            "id" => "$id",
+            "del_flag" => '2'
+        );
+        $changeUser = MeiuiUsers::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $changeUser;
     }
 }

@@ -2,10 +2,10 @@
 <div align="center">
 <ul class="pager">
     <li class="previous pull-left">
-        {{ link_to("user/list", "&larr; Go Back") }}
+        {{ link_to("user/list", "&larr; 返回") }}
     </li>
 </ul>
-{% for product in page.items %}
+{% for user in page.items %}
     {% if loop.first %}
 <table class="table table-bordered table-striped" align="center">
     <thead>
@@ -21,12 +21,12 @@
     <tbody>
     {% endif %}
         <tr>
-            <td>{{ product.getSourceDetail() }}</td>
-            <td>{{ product.username }}</td>
-            <td>{{ product.getMeiuiUserData().user_classification_count }}</td>
-            <td>{{ product.getMeiuiUserData().user_collection_count }}</td>
-            <td>{{ product.getMeiuiUserData().user_upload_count }}</td>
-            <td width="7%">{{ link_to("products/delete/" ~ product.username, '<i class="glyphicon glyphicon-remove"></i> Delete', "class": "btn btn-default") }}</td>
+            <td>{{ user.getSourceDetail() }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.getMeiuiUserData().user_classification_count }}</td>
+            <td>{{ user.getMeiuiUserData().user_collection_count }}</td>
+            <td>{{ user.getMeiuiUserData().user_upload_count }}</td>
+            <td width="7%">{{ link_to("user/delete/?id=" ~ user.id, '<i class="glyphicon glyphicon-remove"></i> 禁用', "class": "btn btn-default") }}</td>
         </tr>
     {% if loop.last %}
     </tbody>
@@ -34,10 +34,10 @@
         <tr>
             <td colspan="7" align="right">
                 <div class="btn-group">
-                    {{ link_to("products/search", '<i class="icon-fast-backward"></i> First', "class": "btn") }}
-                    {{ link_to("products/search?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn") }}
-                    {{ link_to("products/search?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn") }}
-                    {{ link_to("products/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn") }}
+                    {{ link_to("user/list", '<i class="icon-fast-backward"></i> First', "class": "btn btn-default") }}
+                    {{ link_to("user/list?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-default") }}
+                    {{ link_to("user/list?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-default") }}
+                    {{ link_to("user/list?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-default") }}
                     <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
                 </div>
             </td>
@@ -46,6 +46,6 @@
 </table>
     {% endif %}
 {% else %}
-    No products are recorded
+    No list are recorded
 {% endfor %}
 </div>

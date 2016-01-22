@@ -39,7 +39,7 @@ class SecurityPlugin extends Plugin
 
 			//Private area resources
 			$privateResources = array(
-                'user'              => array('register', 'list'),
+                'user'              => array('register', 'list','delete'),
                 'classification'    => array('list', 'create'),
                 'search'            => array('list', 'create'),
                 'feedback'          => array('list'),
