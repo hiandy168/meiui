@@ -41,7 +41,7 @@ class SecurityPlugin extends Plugin
 			$privateResources = array(
                 'user'              => array('register', 'list','delete'),
                 'classification'    => array('list', 'create','delete'),
-                'search'            => array('list', 'create'),
+                'search'            => array('list', 'create','delete'),
                 'feedback'          => array('list'),
                 'app'               => array('list'),
 			);

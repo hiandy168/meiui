@@ -19,9 +19,7 @@ class SearchController extends ControllerBase
             $numberPage = 1;
         }
 
-        $parameters = array();
-
-        $search = MeiuiSearch::find($parameters);
+        $search = MeiuiSearch::find("del_flag = 1");
         if (count($search) == 0) {
             $this->flash->notice("The search did not find any classification");
             return $this->forward("search/list");
@@ -70,6 +68,44 @@ class SearchController extends ControllerBase
         } else {
             $this->view->form = new SearchForm(null, array('edit' => true));
         }
+    }
+
+    public function deleteAction(){
+        $id = $this->request->getQuery("id", "int");
+        if($id){
+            $user = $this->getSearch($id);
+            if($user){
+                $user->del_flag = 2;
+                if (!$user->save()) {
+                    $this->flash->error('删除失败');
+                    return $this->forward("search/list");
+                }else{
+                    $this->flash->success('删除成功');
+                    return $this->forward("search/list");
+                }
+            } else {
+                $this->flash->error('删除失败');
+                return $this->forward("search/list");
+            }
+        } else {
+            $this->flash->error('删除失败');
+            return $this->forward("search/list");
+        }
+
+    }
+
+    private  function getSearch($id){
+        // 用 phalcon 的方式查找该用户
+        $conditions = " id = :id: AND del_flag != :del_flag:";
+        $parameters = array(
+            "id" => "$id",
+            "del_flag" => '2'
+        );
+        $changeUser = MeiuiSearch::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $changeUser;
     }
 
 

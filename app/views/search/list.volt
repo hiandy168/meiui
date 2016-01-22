@@ -12,7 +12,7 @@
         </li>
     </ul>
 
-    {% for classification in page.items %}
+    {% for search in page.items %}
     {% if loop.first %}
     <table class="table table-bordered table-striped" align="center">
         <thead>
@@ -26,10 +26,10 @@
     {% endif %}
         <tbody>
             <tr>
-                <td>{{ classification.id }}</td>
-                <td>{{ classification.keyword }}</td>
-                <td>{{ classification.image_count }}</td>
-                <td width="7%">{{ link_to("companies/delete/" ~ classification.id, '<i class="glyphicon glyphicon-remove"></i> 删除', "class": "btn btn-default") }}</td>
+                <td>{{ search.id }}</td>
+                <td>{{ search.keyword }}</td>
+                <td>{{ search.image_count }}</td>
+                <td width="7%">{{ link_to("search/delete/?id=" ~ search.id, '<i class="glyphicon glyphicon-remove"></i> 删除', "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}
@@ -49,7 +49,7 @@
     </table>
     {% endif %}
     {% else %}
-        No companies are recorded
+        No search are recorded
     {% endfor %}
 
 </div>
