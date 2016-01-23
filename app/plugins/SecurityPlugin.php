@@ -42,7 +42,7 @@ class SecurityPlugin extends Plugin
                 'user'              => array('register', 'list','delete'),
                 'classification'    => array('list', 'create','delete'),
                 'search'            => array('list', 'create','delete'),
-                'feedback'          => array('list'),
+                'feedback'          => array('list', 'view'),
                 'app'               => array('list'),
 			);
 			foreach ($privateResources as $resource => $actions) {

@@ -76,4 +76,27 @@ class FeedbackController extends ControllerBase
         $this->flash->success('感谢你的反馈，我们会在一两个工作日内联系你');
         return $this->forward('feedback/index');
     }
+
+    public function viewAction(){
+        $id = $this->request->getQuery("id", "int");
+        $feedback = $this->getFeedback($id);
+        $feedback->pic_arr = explode(',', $feedback->pic_arr);
+
+        $this->view->feedback = $feedback;
+
+    }
+
+    private  function getFeedback($id){
+        // 用 phalcon 的方式查找该用户
+        $conditions = " id = :id: AND msg_flag != :msg_flag:";
+        $parameters = array(
+            "id" => "$id",
+            "msg_flag" => '2'
+        );
+        $feedback = MeiuiFeedback::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $feedback;
+    }
 }

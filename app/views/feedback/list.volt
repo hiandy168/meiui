@@ -9,7 +9,7 @@
         </li>
     </ul>
 
-    {% for classification in page.items %}
+    {% for feedback in page.items %}
     {% if loop.first %}
     <table class="table table-bordered table-striped" align="center">
         <thead>
@@ -23,10 +23,10 @@
     {% endif %}
         <tbody>
             <tr>
-                <td>{{ classification.getUsernameDetail() }}</td>
-                <td>{{ classification.msg }}</td>
-                <td>{{ classification.msg_flag }}</td>
-                <td width="7%">{{ link_to("companies/delete/" ~ classification.id, '查看', "class": "btn btn-default") }}</td>
+                <td>{{ feedback.getUsernameDetail() }}</td>
+                <td>{{ feedback.msg }}</td>
+                <td>{{ feedback.getFlagDetail() }}</td>
+                <td width="7%">{{ link_to("feedback/view/?id=" ~ feedback.id, '查看', "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}

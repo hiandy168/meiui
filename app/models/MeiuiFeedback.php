@@ -28,6 +28,14 @@ class MeiuiFeedback extends Model
         }
     }
 
+    public function getFlagDetail(){
+        switch($this->msg_flag){
+            case 1:
+                return '未处理';
+            case 2:
+                return '已处理';
+        }
+    }
 
     public function validation()
     {
