@@ -7,9 +7,6 @@
         <li class="previous pull-left">
             {{ link_to("app/list", "&larr; 返回") }}
         </li>
-        <li class="pull-right">
-            {{ link_to("app/unpass", "待审核列表") }}
-        </li>
     </ul>
 
     {% for classification in page.items %}

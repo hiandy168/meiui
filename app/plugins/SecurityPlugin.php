@@ -43,7 +43,7 @@ class SecurityPlugin extends Plugin
                 'classification'    => array('list', 'create','delete'),
                 'search'            => array('list', 'create','delete'),
                 'feedback'          => array('list', 'view'),
-                'app'               => array('list'),
+                'app'               => array('list','unpass'),
 			);
 			foreach ($privateResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
