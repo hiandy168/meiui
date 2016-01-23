@@ -26,7 +26,7 @@
             <td>{{ user.getMeiuiUserData().user_classification_count }}</td>
             <td>{{ user.getMeiuiUserData().user_collection_count }}</td>
             <td>{{ user.getMeiuiUserData().user_upload_count }}</td>
-            <td width="7%">{{ link_to("user/delete/?id=" ~ user.id, '<i class="glyphicon glyphicon-remove"></i> 禁用', "class": "btn btn-default") }}</td>
+            <td width="7%">{{ link_to("user/delete/?id=" ~ user.id, '<i class="glyphicon glyphicon-remove"></i> 删除', "class": "btn btn-default") }}</td>
         </tr>
     {% if loop.last %}
     </tbody>

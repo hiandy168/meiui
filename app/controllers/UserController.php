@@ -88,18 +88,18 @@ class UserController extends ControllerBase
             if($user){
                 $user->del_flag = 2;
                 if (!$user->save()) {
-                    $this->flash->error('禁用失败');
+                    $this->flash->error('删除失败');
                     return $this->forward("user/list");
                 }else{
-                    $this->flash->success('禁用成功');
+                    $this->flash->success('删除成功');
                     return $this->forward("user/list");
                 }
             } else {
-                $this->flash->error('禁用失败');
+                $this->flash->error('删除失败');
                 return $this->forward("user/list");
             }
         } else {
-            $this->flash->error('禁用失败');
+            $this->flash->error('删除失败');
             return $this->forward("user/list");
         }
 
