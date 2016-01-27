@@ -12,18 +12,18 @@ class Elements extends Component
 
     private $_headerMenu = array(
         'navbar-left' => array(
-            'index' => array(
-                'caption' => '首页',
-                'action' => 'index'
-            ),
-            'about' => array(
-                'caption' => '关于MEIUI',
-                'action' => 'index'
-            ),
-            'feedback' => array(
-                'caption' => '意见反馈',
-                'action' => 'index'
-            ),
+//            'index' => array(
+//                'caption' => '首页',
+//                'action' => 'index'
+//            ),
+//            'about' => array(
+//                'caption' => '关于MEIUI',
+//                'action' => 'index'
+//            ),
+//            'feedback' => array(
+//                'caption' => '意见反馈',
+//                'action' => 'index'
+//            ),
         ),
         'navbar-right' => array(
             'session' => array(

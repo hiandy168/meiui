@@ -22,7 +22,7 @@ class SecurityPlugin extends Plugin
 	 */
 	public function getAcl()
 	{
-		if (!isset($this->persistent->acl)) {
+		if (true) {
 
 			$acl = new AclList();
 
@@ -52,13 +52,13 @@ class SecurityPlugin extends Plugin
 			//Public area resources
 			$publicResources = array(
 				'index'      => array('index'),
-				'about'      => array('index'),
-				'user'       => array('register'),
+//				'about'      => array('index'),
+//				'user'       => array('register'),
 				'api'       => array('index'),
-                'feedback'   => array('index', 'send'),
+//                'feedback'   => array('index', 'send'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
-				'contact'    => array('index', 'send')
+//				'contact'    => array('index', 'send')
 			);
 			foreach ($publicResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
