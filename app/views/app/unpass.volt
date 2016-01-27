@@ -9,7 +9,7 @@
         </li>
     </ul>
 
-    {% for classification in page.items %}
+    {% for app in page.items %}
     {% if loop.first %}
     <table class="table table-bordered table-striped" align="center">
         <thead>
@@ -26,13 +26,13 @@
     {% endif %}
         <tbody>
             <tr>
-                <td>{{ classification.id }}</td>
-                <td>{{ classification.using_pic }}</td>
-                <td>{{ classification.app_name }}</td>
-                <td>{{ classification.app_classification }}</td>
-                <td>{{ classification.using_flag }}</td>
-                <td>{{ classification.app_sys }}</td>
-                <td width="7%">{{ link_to("companies/delete/" ~ classification.using_flag, '查看', "class": "btn btn-default") }}</td>
+                <td>{{ app.id }}</td>
+                <td>{{ app.using_pic }}</td>
+                <td>{{ app.app_name }}</td>
+                <td>{{ app.app_classification }}</td>
+                <td>{{ app.using_flag }}</td>
+                <td>{{ app.app_sys }}</td>
+                <td width="7%">{{ link_to("companies/flag/?flag=" ~ app.using_flag, ''~app.getFlagDetail(), "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}
