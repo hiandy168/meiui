@@ -24,7 +24,7 @@ class ClassificationController extends ControllerBase
         $classification = MeiuiClassification::find($parameters);
         if (count($classification) == 0) {
             $this->flash->notice("The search did not find any classification");
-            return $this->forward("classification/list");
+            return $this->forward("classification/create");
         }
 
         $paginator = new Paginator(array(
