@@ -15,6 +15,7 @@ class MeiuiUsers extends Model
     public $del_flag;
     public $group;
     public $source;
+    public $user_pic;
 
     public function validation()
     {
