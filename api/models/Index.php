@@ -7,7 +7,7 @@ class Index extends Base
     }
 
     // TODO 修改成POST
-    public function index(){
+    public function index_d(){
         $page = 1;
         if(isset($_GET['page'])){
             $page = intval($_GET['page']);
@@ -45,22 +45,26 @@ class Index extends Base
         }
         die(json_encode($data));
     }
-    public function index_data(){
+    public function index(){
         $data = $this->main;
         $data['status'] = '100200';
         $data['data']['page'] = '1/15';
-        $data['data']['items'][] = array(
-                    'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                    'pic_h' => '12',
-                    'pic_w' => '24',
-                    'app_id' => '520',
-                    'user_id' => '007',
-                    'user_name' => 'aaa',
-                    'user_pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                    'app_name' => 'aaa',
-                    'brief' => '这是一个短很长很长的简介',
-                    'classification' => 'biaoqian'
-                );
+        for ($i=0;$i<10;$i++){
+            $data['data']['items'][] = array(
+                'pic' => 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%9E%81%E7%AE%80%EF%BC%8C%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg',
+                'pic_h' => '1334',
+                'pic_w' => '750',
+                'app_id' => '520',
+                'user_id' => '007',
+                'user_name' => '小李',
+                'user_pic' => 'http://7nar8n.com1.z0.glb.clouddn.com/11.png%3Ab7tnvih4dzs7gq5uq9gi',
+                'app_name' => 'aaa',
+                'brief' => '这是一个短很长很长的简介',
+                'classification' => '标签,个人资料'
+            );
+
+        }
+        $a = 'ae7b155ebd33acb4e69b70446c800d91';
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
     }
