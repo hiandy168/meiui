@@ -34,7 +34,6 @@ class Search extends Base
             $conditions,
             "bind" => $parameters
         ));
-        var_dump($all_pic);die();
         $paginator = new Paginator(array(
             "data"  => $all_pic,
             "limit" => 10,
