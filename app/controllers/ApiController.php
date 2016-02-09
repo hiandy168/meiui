@@ -9,7 +9,7 @@ class ApiController extends ControllerBase
 
     public function indexAction()
     {
-        if (!$this->request->isPost()) {
+        if ($this->request->isPost()) {
             $function = $_GET['function'];
             $function_mean = explode('/', $function);
             $reflectionMethod = new ReflectionMethod($function_mean[0], $function_mean[1]);
