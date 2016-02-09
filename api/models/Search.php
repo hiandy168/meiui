@@ -20,6 +20,7 @@ class Search extends Base
     }
 
     public function search(){
+        echo 1;exit;
         $data = $this->main;
         $page = 1;
         if(isset($_GET['page'])){
