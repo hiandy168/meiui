@@ -20,7 +20,6 @@ class Search extends Base
     }
 
     public function search(){
-        echo 1;exit;
         $data = $this->main;
         $page = 1;
         if(isset($_GET['page'])){
@@ -43,7 +42,7 @@ class Search extends Base
         $all_pic = $paginator->getPaginate();
         $data['status'] = '200200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
-
+var_dump($data);exit;
         foreach($all_pic-> items as $pic_value){
             $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
             $user = MeiuiUsers::findFirst('id='.$pic->create_user);
