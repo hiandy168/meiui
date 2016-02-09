@@ -34,6 +34,7 @@ class Search extends Base
             $conditions,
             "bind" => $parameters
         ));
+        var_dump($all_pic);die();
         $paginator = new Paginator(array(
             "data"  => $all_pic,
             "limit" => 10,
@@ -42,7 +43,7 @@ class Search extends Base
         $all_pic = $paginator->getPaginate();
         $data['status'] = '200200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
-var_dump($data);exit;
+
         foreach($all_pic-> items as $pic_value){
             $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
             $user = MeiuiUsers::findFirst('id='.$pic->create_user);
