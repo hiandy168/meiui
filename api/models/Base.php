@@ -27,6 +27,7 @@ class Base
             $mac = $_GET['mac'];
             $client_token = $_GET['token'];
             $server_token = md5($this -> sys['token_key'] . $mac . date('Ymd'));
+//            echo $server_token ;die();
             if($client_token !== $server_token){
                 $this ->main['status'] = $this -> status['token_error'];
                 $this ->main['alert']['msg'] = $this -> lang['token_error'];

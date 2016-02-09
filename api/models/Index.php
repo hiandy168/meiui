@@ -7,7 +7,7 @@ class Index extends Base
     }
 
     // TODO 修改成POST
-    public function index_d(){
+    public function index(){
         $page = 1;
         if(isset($_GET['page'])){
             $page = intval($_GET['page']);
@@ -22,7 +22,7 @@ class Index extends Base
         $data['status'] = '100200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
         foreach($all_pic-> items as $value){
-            $user = MeiuiUsers::findFirst('id='.$value->create_by);
+            $user = MeiuiUsers::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
             $tag = '';
             if (count($tags) > 0) {
@@ -35,7 +35,7 @@ class Index extends Base
                 'pic_h' => $value->pic_h,
                 'pic_w' => $value->pic_w,
                 'app_id' => $value->app_id,
-                'user_id' => $value->create_by,
+                'user_id' => $value->create_user,
                 'user_name' => $user->username,
                 'user_pic' => $user->user_pic,
                 'app_name' => $value->app_name,
@@ -45,7 +45,7 @@ class Index extends Base
         }
         die(json_encode($data));
     }
-    public function index(){
+    public function index_data(){
         $data = $this->main;
         $data['status'] = '100200';
         $data['data']['page'] = '1/15';

@@ -13,7 +13,8 @@ class MeiuiPic extends Model
     public $pic_url;
     public $pic_w;
     public $pic_h;
-    public $create_by;
+    public $brief;
+    public $create_user;
     public $create_time;
     public $using_flag;
 }
