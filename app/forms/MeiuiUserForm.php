@@ -37,6 +37,20 @@ class MeiuiUserForm extends Form
         ));
         $this->add($email);
 
+        // phone
+        $email = new Text('phone');
+        $email->setLabel('电话');
+        $email->setFilters('phone');
+        $email->addValidators(array(
+            new PresenceOf(array(
+                'message' => 'phone is required'
+            )),
+            new Email(array(
+                'message' => 'phone is not valid'
+            ))
+        ));
+        $this->add($email);
+
         // Password
         $password = new Password('password');
         $password->setLabel('密码');

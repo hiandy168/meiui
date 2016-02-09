@@ -5,7 +5,7 @@
 
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("companies/index", "&larr; 返回") }}
+            {{ link_to("classification/list", "&larr; 返回") }}
         </li>
         <li class="pull-right">
             {{ link_to("classification/create", "新增分类") }}
@@ -33,7 +33,7 @@
                 <td>{{ classification.image_count }}</td>
                 <td>{{ classification.user_count }}</td>
                 <td>{{ classification.getFlagDetail()['0'] }}</td>
-                <td width="7%">{{ link_to("companies/delete/" ~ classification.getFlagDetail()['1'], '<i class="glyphicon glyphicon-remove"></i> '~ classification.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
+                <td width="7%">{{ link_to("classification/delete/?id=" ~ classification.id, '<i class="glyphicon glyphicon-remove"></i> '~ classification.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}
@@ -53,7 +53,7 @@
     </table>
     {% endif %}
     {% else %}
-        No companies are recorded
+        No classification are recorded
     {% endfor %}
 
 </div>

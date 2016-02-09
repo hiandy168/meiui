@@ -29,12 +29,32 @@ class User extends Base
         $data['data']['page'] = '1/15';
         $data['data']['user_name'] = '阿拉丁';
         $data['data']['user_id'] = '007';
-        for($i=0; $i<10; $i++){
-            $data['data']['items'][] = array(
+        for($i=0; $i<6; $i++){
+            $data['data']['items']['扁平化'][] = array(
                 'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                'tag_title' => '标题',
-                'brief' => '我是比较长的一段简介',
-                'tag_id' => '520',
+                'pic_h' => '12',
+                'pic_w' => '24',
+                'brief' => '这是一个短很长很长的简介',
+                'app_id' => '520',
+                'user_id' => '007',
+                'user_name' => 'aaa',
+                'user_pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
+                'app_name' => 'aaa',
+                'classification' => 'biaoqian'
+            );
+        }
+        for($i=0; $i<10; $i++){
+            $data['data']['items']['登陆'][] = array(
+                'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
+                'pic_h' => '12',
+                'pic_w' => '24',
+                'brief' => '这是一个短很长很长的简介',
+                'app_id' => '520',
+                'user_id' => '007',
+                'user_name' => 'aaa',
+                'user_pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
+                'app_name' => 'aaa',
+                'classification' => 'biaoqian'
             );
         }
         $data['alert']['msg'] = $this->lang['request_success'];
@@ -50,9 +70,18 @@ class User extends Base
         for($i=0; $i<10; $i++){
             $data['data']['items'][] = array(
                 'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                'tag_title' => '标题',
-                'brief' => '我是比较长的一段简介',
-                'tag_id' => '520',
+                'pic_detail' => 'www.baidu.com/img/baidu_jgylogo3.gif',
+                'pic_h' => '12',
+                'pic_w' => '24',
+                'pic_detail_h' => '12',
+                'pic_detail_w' => '24',
+                'brief' => '这是一个短很长很长的简介',
+                'app_id' => '520',
+                'user_id' => '007',
+                'user_name' => 'aaa',
+                'user_pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
+                'app_name' => 'aaa',
+                'classification' => 'biaoqian'
             );
         }
         $data['alert']['msg'] = $this->lang['request_success'];

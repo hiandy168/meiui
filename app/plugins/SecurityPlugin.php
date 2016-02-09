@@ -22,7 +22,7 @@ class SecurityPlugin extends Plugin
 	 */
 	public function getAcl()
 	{
-		if (!isset($this->persistent->acl)) {
+		if (true) {
 
 			$acl = new AclList();
 
@@ -39,11 +39,11 @@ class SecurityPlugin extends Plugin
 
 			//Private area resources
 			$privateResources = array(
-                'user'              => array('register', 'list'),
-                'classification'    => array('list', 'create'),
-                'search'            => array('list', 'create'),
-                'feedback'          => array('list'),
-                'app'               => array('list'),
+                'user'              => array('register', 'list','delete'),
+                'classification'    => array('list', 'create','delete'),
+                'search'            => array('list', 'create','delete'),
+                'feedback'          => array('list', 'view'),
+                'app'               => array('list','unpass'),
 			);
 			foreach ($privateResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
@@ -52,11 +52,13 @@ class SecurityPlugin extends Plugin
 			//Public area resources
 			$publicResources = array(
 				'index'      => array('index'),
-				'about'      => array('index'),
-				'register'   => array('index'),
+//				'about'      => array('index'),
+//				'user'       => array('register'),
+				'api'       => array('index'),
+//                'feedback'   => array('index', 'send'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
-				'contact'    => array('index', 'send')
+//				'contact'    => array('index', 'send')
 			);
 			foreach ($publicResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);

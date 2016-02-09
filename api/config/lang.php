@@ -5,5 +5,7 @@ return array(
     'delete_success' => '成功删除',
     'upload_success' => '成功上传',
     'feedback_success' => '感谢你的意见反馈，我们将尽快处理您反映的问题',
-    'login_success' => '成功登陆'
+    'login_success' => '成功登陆',
+    'no_mac' => '缺少唯一标识',
+    'token_error' => 'token 错误',
 );

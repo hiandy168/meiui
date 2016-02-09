@@ -1,41 +1,70 @@
 <?php
-
+use Phalcon\Paginator\Adapter\Model as Paginator;
 class Index extends Base
 {
     public function __construct(){
         parent::__construct();
     }
-    public function welcome(){
-        $data = $this->main;
+
+    // TODO 修改成POST
+    public function index(){
+        $page = 1;
+        if(isset($_GET['page'])){
+            $page = intval($_GET['page']);
+        }
+        $app = MeiuiPic::find();
+        $paginator = new Paginator(array(
+            "data"  => $app,
+            "limit" => 10,
+            "page"  => $page
+        ));
+        $all_pic = $paginator->getPaginate();
         $data['status'] = '100200';
-        $data['data'] = array('content' => '帮助互联网从业者更好的微（chao）创（xi）新');
-        $data['alert']['msg'] = $this->lang['request_success'];
+        $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
+        foreach($all_pic-> items as $value){
+            $user = MeiuiUsers::findFirst('id='.$value->create_user);
+            $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
+            $tag = '';
+            if (count($tags) > 0) {
+                foreach($tags as $v){
+                    $tag .= $v-> tag_name . ',';
+                }
+            }
+            $data['data']['items'][] = array(
+                'pic' => $value->pic_url,
+                'pic_h' => $value->pic_h,
+                'pic_w' => $value->pic_w,
+                'app_id' => $value->app_id,
+                'user_id' => $value->create_user,
+                'user_name' => $user->username,
+                'user_pic' => $user->user_pic,
+                'app_name' => $value->app_name,
+                'brief' => $value->brief,
+                'tag' => $tag,
+            );
+        }
         die(json_encode($data));
     }
-    public function index(){
+    public function index_data(){
         $data = $this->main;
         $data['status'] = '100200';
         $data['data']['page'] = '1/15';
-        for($i=0; $i<10; $i++){
+        for ($i=0;$i<10;$i++){
             $data['data']['items'][] = array(
-                    'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                    'brief' => '这是一个短很长很长的简介',
-                    'pic_id' => '520',
-                    'user_id' => '007',
-                );
+                'pic' => 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%9E%81%E7%AE%80%EF%BC%8C%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg',
+                'pic_h' => '1334',
+                'pic_w' => '750',
+                'app_id' => '520',
+                'user_id' => '007',
+                'user_name' => '小李',
+                'user_pic' => 'http://7nar8n.com1.z0.glb.clouddn.com/11.png%3Ab7tnvih4dzs7gq5uq9gi',
+                'app_name' => 'aaa',
+                'brief' => '这是一个短很长很长的简介',
+                'classification' => '标签,个人资料'
+            );
+
         }
-        $data['alert']['msg'] = $this->lang['request_success'];
-        die(json_encode($data));
-    }
-    public function detail(){
-        $data = $this->main;
-        $data['status'] = '100200';
-        $data['data'] = array(
-            'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-            'content' => '这是一个短很长很长的内容',
-            'pic_id' => '520',
-            'user_id' => '007',
-        );
+        $a = 'ae7b155ebd33acb4e69b70446c800d91';
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
     }

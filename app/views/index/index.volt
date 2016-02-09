@@ -4,7 +4,7 @@
 <div class="jumbotron">
     <h1>最好的ui都在这里</h1>
     <p>MEIUI 是最好免费内容分享平台你可以MEIUI 是最好免费内容分享平台你可以MEIUI 是最好免费内容分享平台你可以-------一大段</p>
-    <p>{{ link_to('register', '马上加入我们', 'class': 'btn btn-primary btn-large btn-success') }}</p>
+    <p>{{ link_to('user/register', '马上加入我们', 'class': 'btn btn-primary btn-large btn-success') }}</p>
 </div>
 
 <div class="row">

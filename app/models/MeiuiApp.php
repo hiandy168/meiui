@@ -27,4 +27,15 @@ class MeiuiApp extends Model
 //        }
     }
 
+    public function getFlagDetail(){
+        switch($this-> using_flag){
+            case 1:
+                return '屏蔽';
+            case 2:
+                return '显示';
+            case 3:
+                return '通过审核';
+        }
+    }
+
 }

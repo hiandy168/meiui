@@ -11,16 +11,6 @@ class ClassificationController extends ControllerBase
         parent::initialize();
     }
 
-    /**
-     * Shows the index action
-     */
-    public function indexAction()
-    {
-        $this->session->conditions = null;
-        $this->view->form = new CompaniesForm;
-    }
-
-
     public function listAction()
     {
         if ($this->request->getQuery("page", "int")){
@@ -34,7 +24,7 @@ class ClassificationController extends ControllerBase
         $classification = MeiuiClassification::find($parameters);
         if (count($classification) == 0) {
             $this->flash->notice("The search did not find any classification");
-            return $this->forward("classification/index");
+            return $this->forward("classification/create");
         }
 
         $paginator = new Paginator(array(
@@ -45,21 +35,6 @@ class ClassificationController extends ControllerBase
 
         $this->view->page = $paginator->getPaginate();
         $this->view->companies = $classification;
-    }
-
-    public function editAction($id)
-    {
-
-        if (!$this->request->isPost()) {
-
-            $company = Companies::findFirstById($id);
-            if (!$company) {
-                $this->flash->error("Company was not found");
-                return $this->forward("companies/index");
-            }
-
-            $this->view->form = new CompaniesForm($company, array('edit' => true));
-        }
     }
 
     /**
@@ -95,69 +70,40 @@ class ClassificationController extends ControllerBase
         }
     }
 
-    /**
-     * Saves current company in screen
-     *
-     * @param string $id
-     */
-    public function saveAction()
-    {
-        if (!$this->request->isPost()) {
-            return $this->forward("companies/index");
-        }
-
-        $id = $this->request->getPost("id", "int");
-        $company = Companies::findFirstById($id);
-        if (!$company) {
-            $this->flash->error("Company does not exist");
-            return $this->forward("companies/index");
-        }
-
-        $form = new CompaniesForm;
-
-        $data = $this->request->getPost();
-        if (!$form->isValid($data, $company)) {
-            foreach ($form->getMessages() as $message) {
-                $this->flash->error($message);
+    public function deleteAction(){
+        $id = $this->request->getQuery("id", "int");
+        if($id){
+            $user = $this->getClassification($id);
+            if($user){
+                $chang = array('1'=>2,'2'=>1);
+                $user->using_flag = $chang[$user->using_flag];
+                if (!$user->save()) {
+                    $this->flash->error('屏蔽失败');
+                    return $this->forward("classification/list");
+                }else{
+                    $this->flash->success('屏蔽成功');
+                    return $this->forward("classification/list");
+                }
+            } else {
+                $this->flash->error('屏蔽失败');
+                return $this->forward("classification/list");
             }
-            return $this->forward('companies/new');
+        } else {
+            $this->flash->error('屏蔽失败');
+            return $this->forward("classification/list");
         }
 
-        if ($company->save() == false) {
-            foreach ($company->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-            return $this->forward('companies/new');
-        }
-
-        $form->clear();
-
-        $this->flash->success("Company was updated successfully");
-        return $this->forward("companies/index");
     }
 
-    /**
-     * Deletes a company
-     *
-     * @param string $id
-     */
-    public function deleteAction($id)
-    {
-
-        $companies = Companies::findFirstById($id);
-        if (!$companies) {
-            $this->flash->error("Company was not found");
-            return $this->forward("companies/index");
-        }
-
-        if (!$companies->delete()) {
-            foreach ($companies->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-            return $this->forward("companies/search");
-        }
-
-        $this->flash->success("Company was deleted");
-        return $this->forward("companies/index");
+    private  function getClassification($id){
+        $conditions = " id = :id: ";
+        $parameters = array(
+            "id" => "$id"
+        );
+        $changeClassification = MeiuiClassification::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $changeClassification;
     }
 }

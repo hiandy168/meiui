@@ -15,13 +15,12 @@ class UserController extends ControllerBase
         parent::initialize();
     }
 
-    /**
-     * Action to register a new user
-     */
+
     public function registerAction()
     {
         if ($this->request->isPost()) {
             $username = $this->request->getPost('username');
+            $phone = $this->request->getPost('phone');
             $email = $this->request->getPost('email', 'email');
             $password = $this->request->getPost('password');
             $repeatPassword = $this->request->getPost('repeatPassword');
@@ -33,26 +32,30 @@ class UserController extends ControllerBase
             $user = new MeiuiUsers();
             $user->username = $username;
             $user->password = sha1($password);
+            $user->phone = $phone;
             $user->email = $email;
             $user->created_at = time();
-            $user->phone = '1';
-            $user->del_flag = '1';
-            $user->group = '1';
-            $user->source = '2';
             if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                     $this->flash->error((string) $message);
                 }
             } else {
-                $this->tag->setDefault('email', '');
-                $this->tag->setDefault('password', '');
-                $this->flash->success('Thanks for sign-up, please log-in to start generating invoices');
-                return $this->forward('session/index');
+                $user_data = new MeiuiUserData();
+                $user_data->user_id = $user->id;
+                if ($user_data->save() == false) {
+                    foreach ($user_data->getMessages() as $message) {
+                        $this->flash->error((string) $message);
+                    }
+                } else {
+                    $this->tag->setDefault('email', '');
+                    $this->tag->setDefault('password', '');
+                    $this->flash->success('欢迎加入Meiui');
+                    return $this->forward('session/index');
+                }
             }
-        } else {
-            $form = new MeiuiUserForm;
-            $this->view->form = $form;
         }
+        $form = new MeiuiUserForm;
+        $this->view->form = $form;
     }
 
     public function listAction(){
@@ -62,12 +65,7 @@ class UserController extends ControllerBase
             $numberPage = 1;
         }
 
-        $parameters = array();
-        if ($this->persistent->searchParams) {
-            $parameters = $this->persistent->searchParams;
-        }
-
-        $Users = MeiuiUsers::find($parameters);
+        $Users = MeiuiUsers::find("del_flag = 1");
         if (count($Users) == 0) {
             $this->flash->notice("The search did not find any user");
             return $this->forward("user/index");
@@ -80,5 +78,44 @@ class UserController extends ControllerBase
         ));
 
         $this->view->page = $paginator->getPaginate();
+    }
+
+
+    public function deleteAction(){
+        $id = $this->request->getQuery("id", "int");
+        if($id){
+            $user = $this->getUser($id);
+            if($user){
+                $user->del_flag = 2;
+                if (!$user->save()) {
+                    $this->flash->error('删除失败');
+                    return $this->forward("user/list");
+                }else{
+                    $this->flash->success('删除成功');
+                    return $this->forward("user/list");
+                }
+            } else {
+                $this->flash->error('删除失败');
+                return $this->forward("user/list");
+            }
+        } else {
+            $this->flash->error('删除失败');
+            return $this->forward("user/list");
+        }
+
+    }
+
+    private  function getUser($id){
+        // 用 phalcon 的方式查找该用户
+        $conditions = " id = :id: AND del_flag != :del_flag:";
+        $parameters = array(
+            "id" => "$id",
+            "del_flag" => '2'
+        );
+        $changeUser = MeiuiUsers::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $changeUser;
     }
 }

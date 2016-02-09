@@ -18,21 +18,44 @@ class AppController extends ControllerBase
             $numberPage = 1;
         }
 
-        $parameters = array();
-
-        $search = MeiuiApp::find($parameters);
-        if (count($search) == 0) {
+        $where = "using_flag != 3";
+        $app = MeiuiApp::find($where);
+        if (count($app) == 0) {
             $this->flash->notice("The search did not find any feedback");
             return $this->forward("search/list");
         }
 
         $paginator = new Paginator(array(
-            "data"  => $search,
+            "data"  => $app,
             "limit" => 10,
             "page"  => $numberPage
         ));
 
         $this->view->page = $paginator->getPaginate();
-        $this->view->companies = $search;
+        $this->view->companies = $app;
+    }
+
+    public function unpassAction()
+    {
+        if ($this->request->getQuery("page", "int")){
+            $numberPage = $this->request->getQuery("page", "int");
+        } else {
+            $numberPage = 1;
+        }
+        $where = "using_flag = 3";
+        $app = MeiuiApp::find($where);
+        if (count($app) == 0) {
+            $this->flash->notice("The search did not find any feedback");
+            return $this->forward("search/list");
+        }
+
+        $paginator = new Paginator(array(
+            "data"  => $app,
+            "limit" => 10,
+            "page"  => $numberPage
+        ));
+
+        $this->view->page = $paginator->getPaginate();
+        $this->view->companies = $app;
     }
 }
