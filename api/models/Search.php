@@ -29,7 +29,7 @@ class Search extends Base
         $conditions = " tag_name LIKE :tag_name: group by pic_id";
         $parameters = array(
             "tag_name" => '%' .$keyword. '%',
-        );var_dump($parameters);die();
+        );
         $all_pic = MeiuiPicLinkTag::find(array(
             $conditions,
             "bind" => $parameters
