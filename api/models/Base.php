@@ -39,4 +39,29 @@ class Base
             die(json_encode($this ->main));
         };
     }
+
+    public function pic_item($pic_id){
+        $pic = MeiuiPic::findFirst('id='.$pic_id);
+        $user = MeiuiUsers::findFirst('id='.$pic->create_user);
+        $tags = MeiuiPicLinkTag::find('pic_id='.$pic_id);
+        $tag = '';
+        if (count($tags) > 0) {
+            foreach($tags as $v){
+                $tag .= $v-> tag_name . ',';
+            }
+        }
+        $pic_item = array(
+            'user_id' => $pic->create_user,
+            'user_name' => $user->username,
+            'user_pic' => $user->user_pic,
+            'pic' => $pic->pic_url,
+            'pic_h' => $pic->pic_h,
+            'pic_w' => $pic->pic_w,
+            'app_id' => $pic->app_id,
+            'app_name' => $pic->app_name,
+            'brief' => $pic->brief,
+            'tag' => $tag,
+        );
+        return $pic_item;
+    }
 }

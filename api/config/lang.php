@@ -8,4 +8,6 @@ return array(
     'login_success' => '成功登陆',
     'no_mac' => '缺少唯一标识',
     'token_error' => 'token 错误',
+    'lack_user_info' => '用户信息缺少',
+    'save_user_error' => '用户保存出错',
 );
