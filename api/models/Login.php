@@ -31,6 +31,14 @@ class Login extends Base
                         $data['alert']['msg'] = $this-> lang['save_user_error'];
                         die(json_encode($data));
                     } else {
+                        $user_data = new MeiuiUserData();
+                        $user_data->user_id = $user->id;
+                        if ($user_data->save() == false) {
+                            $data['status'] = $this-> status['save_user_error'];
+                            $data['data'] = array();
+                            $data['alert']['msg'] = $this-> lang['save_user_error'];
+                            die(json_encode($data));
+                        }
                         $_SESSION['app_auth'] = array(
                             'app_user_id'=> $user->id,
                             'app_user_name'=> $user->username,
