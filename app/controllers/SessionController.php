@@ -16,17 +16,17 @@ class SessionController extends ControllerBase
     public function indexAction()
     {
         if (!$this->request->isPost()) {
-            $this->tag->setDefault('email', 'meiui@163.com');
-            $this->tag->setDefault('password', '1aaaaaaa');
+            $this->tag->setDefault('email', 'meiui@meiui.com');
+            $this->tag->setDefault('password', 'meiui');
         }
     }
 
     /**
      * Register an authenticated user into session data
      *
-     * @param MeiuiUsers $user
+     * @param MeiuiUser $user
      */
-    private function _registerSession(MeiuiUsers $user)
+    private function _registerSession(MeiuiUser $user)
     {
         $this->session->set('auth', array(
             'id' => $user->id,
@@ -45,7 +45,7 @@ class SessionController extends ControllerBase
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $user = MeiuiUsers::findFirst(array(
+            $user = MeiuiUser::findFirst(array(
                 "(email = :email: OR username = :email:) AND password = :password: AND del_flag = '1'",
                 'bind' => array('email' => $email, 'password' => sha1($password))
             ));

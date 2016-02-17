@@ -64,19 +64,16 @@ class UserController extends ControllerBase
         } else {
             $numberPage = 1;
         }
-
-        $Users = MeiuiUsers::find("del_flag = 1");
+        $Users = MeiuiUser::find("del_flag = 1");
         if (count($Users) == 0) {
             $this->flash->notice("The search did not find any user");
             return $this->forward("user/index");
         }
-
         $paginator = new Paginator(array(
             "data"  => $Users,
             "limit" => 10,
             "page"  => $numberPage
         ));
-
         $this->view->page = $paginator->getPaginate();
     }
 
@@ -88,6 +85,9 @@ class UserController extends ControllerBase
             if($user){
                 $user->del_flag = 2;
                 if (!$user->save()) {
+                    foreach ($user->getMessages() as $message) {
+                        $this->flash->error($message);
+                    }
                     $this->flash->error('删除失败');
                     return $this->forward("user/list");
                 }else{
@@ -112,7 +112,7 @@ class UserController extends ControllerBase
             "id" => "$id",
             "del_flag" => '2'
         );
-        $changeUser = MeiuiUsers::findFirst(array(
+        $changeUser = MeiuiUser::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));

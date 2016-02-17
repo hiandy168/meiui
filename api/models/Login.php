@@ -7,18 +7,19 @@ class Login extends Base
     }
     public function weixin(){
         $data = $this->main;
+        $_SESSION['app_auth'] = '';
         if (empty($_SESSION['app_auth'])){
             if(!empty($_GET['username']) and !empty($_GET['user_pic'])){
                 $conditions = " username = :username: ";
                 $parameters = array(
                     "username" => $_GET['username'],
                 );
-                $user = MeiuiUsers::findFirst(array(
+                $user = MeiuiUser::findFirst(array(
                     $conditions,
                     "bind" => $parameters
                 ));
                 if(!$user){
-                    $user = new MeiuiUsers();
+                    $user = new MeiuiUser();
                     $user->username = $_GET['username'];
                     $user->user_pic = $_GET['user_pic'];
                     $user->created_at = time();

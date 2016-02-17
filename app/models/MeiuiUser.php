@@ -4,16 +4,16 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
 use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
 
-class MeiuiUsers extends Model
+class MeiuiUser extends Model
 {
     public $id;
     public $username;
+    public $nickname;
     public $password;
     public $phone;
     public $email;
     public $created_at;
     public $del_flag;
-    public $group;
     public $source;
     public $user_pic;
 
