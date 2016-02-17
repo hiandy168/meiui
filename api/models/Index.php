@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL || ~E_NOTICE);
 use Phalcon\Paginator\Adapter\Model as Paginator;
 class Index extends Base
 {
@@ -21,14 +22,26 @@ class Index extends Base
         $all_pic = $paginator->getPaginate();
         $data['status'] = '100200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
+        $app_auth = $_SESSION['app_auth'];
         foreach($all_pic-> items as $value){
             $user = MeiuiUsers::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
-            $tag = '';
+            $sys_tag = '';
+            $user_tag = '';
             if (count($tags) > 0) {
                 foreach($tags as $v){
-                    $tag .= $v-> tag_name . ',';
+                    if($v->user_id == $app_auth['app_user_id']){
+                        $user_tag = $v-> tag_name . ',';
+                    } else {
+                        $sys_tag = $v-> tag_name . ',';
+                    }
                 }
+            }
+            if($sys_tag){
+                $sys_tag = rtrim($sys_tag, ",");
+            }
+            if($user_tag){
+                $user_tag = rtrim($sys_tag, ",");
             }
             $data['data']['items'][] = array(
                 'pic' => $value->pic_url,
@@ -40,7 +53,8 @@ class Index extends Base
                 'user_pic' => $user->user_pic,
                 'app_name' => $value->app_name,
                 'brief' => $value->brief,
-                'tag' => $tag,
+                'sys_tag' => $sys_tag,
+                'user_tag' => $user_tag,
             );
         }
         die(json_encode($data));
