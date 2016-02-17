@@ -26,22 +26,16 @@ class Index extends Base
         foreach($all_pic-> items as $value){
             $user = MeiuiUsers::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
-            $sys_tag = '';
-            $user_tag = '';
+            $sys_tag = [];
+            $user_tag = [];
             if (count($tags) > 0) {
                 foreach($tags as $v){
                     if($v->user_id == $app_auth['app_user_id']){
-                        $user_tag = $user_tag . $v-> tag_name . ',';
+                        $user_tag[] = $v-> tag_name ;
                     } else {
-                        $sys_tag = $sys_tag . $v-> tag_name . ',';
+                        $sys_tag[] = $v-> tag_name ;
                     }
                 }
-            }
-            if($sys_tag){
-                $sys_tag = rtrim($sys_tag, ",");
-            }
-            if($user_tag){
-                $user_tag = rtrim($sys_tag, ",");
             }
             $data['data']['items'][] = array(
                 'pic_id' => $value->id,
