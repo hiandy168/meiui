@@ -31,9 +31,9 @@ class Index extends Base
             if (count($tags) > 0) {
                 foreach($tags as $v){
                     if($v->user_id == $app_auth['app_user_id']){
-                        $user_tag = $v-> tag_name . ',';
+                        $user_tag = $user_tag . $v-> tag_name . ',';
                     } else {
-                        $sys_tag = $v-> tag_name . ',';
+                        $sys_tag = $sys_tag . $v-> tag_name . ',';
                     }
                 }
             }
@@ -44,6 +44,7 @@ class Index extends Base
                 $user_tag = rtrim($sys_tag, ",");
             }
             $data['data']['items'][] = array(
+                'pic_id' => $value->id,
                 'pic' => $value->pic_url,
                 'pic_h' => $value->pic_h,
                 'pic_w' => $value->pic_w,
