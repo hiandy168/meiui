@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-17 14:39:51
+Date: 2016-02-17 15:22:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -137,7 +137,7 @@ CREATE TABLE `meiui_pic_link_tag` (
   `tag_type` tinyint(1) NOT NULL DEFAULT '2' COMMENT '标签类型 1 系统  2 用户',
   `tag_name` varchar(100) NOT NULL COMMENT '标签名字',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_pic_link_tag
@@ -154,8 +154,9 @@ INSERT INTO `meiui_pic_link_tag` VALUES ('9', '6', '7', '4', '2', 'twitter');
 INSERT INTO `meiui_pic_link_tag` VALUES ('10', '6', '6', '4', '2', 'twitter');
 INSERT INTO `meiui_pic_link_tag` VALUES ('11', '6', '5', '4', '2', 'twitter');
 INSERT INTO `meiui_pic_link_tag` VALUES ('12', '6', '4', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('13', '6', '6', '4', '2', 'search');
-INSERT INTO `meiui_pic_link_tag` VALUES ('14', '6', '7', '4', '2', 'blue_search');
+INSERT INTO `meiui_pic_link_tag` VALUES ('13', '6', '6', '6', '2', 'search');
+INSERT INTO `meiui_pic_link_tag` VALUES ('14', '6', '7', '7', '2', 'blue_search');
+INSERT INTO `meiui_pic_link_tag` VALUES ('15', '6', '3', '8', '2', 'user_pic');
 
 -- ----------------------------
 -- Table structure for meiui_search
@@ -192,7 +193,7 @@ CREATE TABLE `meiui_tag` (
   `tag_type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态1 个人  2 系统',
   `using_flag` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态1 显示  2 屏蔽',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_tag
@@ -204,6 +205,7 @@ INSERT INTO `meiui_tag` VALUES ('4', 'twitter', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('5', 'path', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('6', 'search', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('7', 'blue_search', '6', '1453362801', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('8', 'user_pic', '6', '1453362801', '1', '1');
 
 -- ----------------------------
 -- Table structure for meiui_users
