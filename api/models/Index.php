@@ -15,7 +15,7 @@ class Index extends Base
         $app = MeiuiPic::find();
         $paginator = new Paginator(array(
             "data"  => $app,
-            "limit" => 10,
+            "limit" => 8,
             "page"  => $page
         ));
         $all_pic = $paginator->getPaginate();
