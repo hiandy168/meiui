@@ -45,6 +45,12 @@ class Login extends Base
                             'app_user_pic'=>$user->user_pic
                         );
                     }
+                } else {
+                    $_SESSION['app_auth'] = array(
+                        'app_user_id'=> $user->id,
+                        'app_user_name'=> $user->username,
+                        'app_user_pic'=>$user->user_pic
+                    );
                 }
                 $data['status'] = '500200';
                 $data['data'] = array();
