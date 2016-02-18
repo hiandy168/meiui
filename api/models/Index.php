@@ -25,7 +25,7 @@ class Index extends Base
         $app_auth = $_SESSION['app_auth'];
 //        var_dump($app_auth);
         foreach($all_pic-> items as $value){
-            $user = MeiuiUsers::findFirst('id='.$value->create_user);
+            $user = MeiuiUser::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
             $sys_tag = [];
             $user_tag = [];
