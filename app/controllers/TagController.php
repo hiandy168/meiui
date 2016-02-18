@@ -3,7 +3,7 @@
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
-class ClassificationController extends ControllerBase
+class TagController extends ControllerBase
 {
     public function initialize()
     {
@@ -21,7 +21,7 @@ class ClassificationController extends ControllerBase
 
         $parameters = array();
 
-        $classification = MeiuiClassification::find($parameters);
+        $classification = MeiuiTag::find($parameters);
         if (count($classification) == 0) {
             $this->flash->notice("The search did not find any classification");
             return $this->forward("classification/create");
@@ -44,27 +44,28 @@ class ClassificationController extends ControllerBase
     {
         if ($this->request->isPost()) {
             $form = new ClassificationForm;
-            $company = new MeiuiClassification();
-
+            $company = new MeiuiTag();
+            $company->create_time = time();
+            $company->create_user = $_SESSION['auth']['id'];
             $data = $this->request->getPost();
             if (!$form->isValid($data, $company)) {
                 foreach ($form->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-                return $this->forward('classification/create');
+                return $this->forward('tag/create');
             }
 
             if ($company->save() == false) {
                 foreach ($company->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-                return $this->forward('classification/create');
+                return $this->forward('tag/create');
             }
 
             $form->clear();
 
-            $this->flash->success("classification was created successfully");
-            return $this->forward("classification/list");
+            $this->flash->success("tag was created successfully");
+            return $this->forward("tag/list");
         } else {
             $this->view->form = new ClassificationForm(null, array('edit' => true));
         }
@@ -100,7 +101,7 @@ class ClassificationController extends ControllerBase
         $parameters = array(
             "id" => "$id"
         );
-        $changeClassification = MeiuiClassification::findFirst(array(
+        $changeClassification = MeiuiTag::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));

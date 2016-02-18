@@ -4,16 +4,13 @@ use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
 use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
 
-class MeiuiClassification extends Model
+class MeiuiTag extends Model
 {
     public $id;
-    public $parentid;
-    public $arrparentid;
-    public $child;
-    public $arrchildid;
-    public $catname;
-    public $image_count;
-    public $user_count;
+    public $tag_name;
+    public $create_user;
+    public $create_time;
+    public $tag_type;
     public $using_flag;
 
     public function validation()

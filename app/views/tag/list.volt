@@ -5,10 +5,10 @@
 
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("classification/list", "&larr; 返回") }}
+            {{ link_to("tag/list", "&larr; 返回") }}
         </li>
         <li class="pull-right">
-            {{ link_to("classification/create", "新增分类") }}
+            {{ link_to("tag/create", "新增分类") }}
         </li>
     </ul>
 
@@ -29,9 +29,9 @@
         <tbody>
             <tr>
                 <td>{{ classification.id }}</td>
-                <td>{{ classification.catname }}</td>
-                <td>{{ classification.image_count }}</td>
-                <td>{{ classification.user_count }}</td>
+                <td>{{ classification.tag_name }}</td>
+                <td>{{ classification.create_user }}</td>
+                <td>{{ classification.tag_type }}</td>
                 <td>{{ classification.getFlagDetail()['0'] }}</td>
                 <td width="7%">{{ link_to("classification/delete/?id=" ~ classification.id, '<i class="glyphicon glyphicon-remove"></i> '~ classification.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
             </tr>

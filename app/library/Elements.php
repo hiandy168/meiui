@@ -39,8 +39,8 @@ class Elements extends Component
             'action' => 'list',
             'any' => false
         ),
-        '分类管理' => array(
-            'controller' => 'classification',
+        '标签管理' => array(
+            'controller' => 'tag',
             'action' => 'list',
             'any' => true
         ),

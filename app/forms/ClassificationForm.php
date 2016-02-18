@@ -21,12 +21,12 @@ class ClassificationForm extends Form
             $this->add(new Hidden("id"));
         }
 
-        $catname = new Text("catname");
+        $catname = new Text("tag_name");
         $catname->setLabel("分类名称");
         $catname->setFilters(array('striptags', 'string'));
         $catname->addValidators(array(
             new PresenceOf(array(
-                'message' => 'catname is required'
+                'message' => 'tag_name is required'
             ))
         ));
         $this->add($catname);

@@ -26,8 +26,8 @@ class Base
         if(isset($_GET['mac']) and isset($_GET['token'])){
             $mac = $_GET['mac'];
             $client_token = $_GET['token'];
-            $server_token = md5($this -> sys['token_key'] . $mac . date('Ymd'));
-//            echo $server_token ;die();
+//            $server_token = md5($this -> sys['token_key'] . $mac . date('Ymd'));
+            $server_token = $_GET['token'];
             if($client_token !== $server_token){
                 $this ->main['status'] = $this -> status['token_error'];
                 $this ->main['alert']['msg'] = $this -> lang['token_error'];

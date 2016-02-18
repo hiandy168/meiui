@@ -71,7 +71,7 @@ class UserController extends ControllerBase
         }
         $paginator = new Paginator(array(
             "data"  => $Users,
-            "limit" => 10,
+            "limit" => 8,
             "page"  => $numberPage
         ));
         $this->view->page = $paginator->getPaginate();
