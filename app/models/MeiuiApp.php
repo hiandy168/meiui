@@ -9,11 +9,9 @@ class MeiuiApp extends Model
     public $id;
     public $app_name;
     public $app_sys;
-    public $using_pic;
-    public $array_pic;
     public $description;
-    public $app_classification;
-    public $create_by;
+    public $create_user;
+    public $create_time;
     public $using_flag;
 
     public function validation()
