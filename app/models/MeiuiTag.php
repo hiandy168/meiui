@@ -13,15 +13,12 @@ class MeiuiTag extends Model
     public $tag_type;
     public $using_flag;
 
-    public function validation()
-    {
-//        $this->validate(new UniquenessValidator(array(
-//            'field' => 'username',
-//            'message' => 'Sorry, That username is already taken'
-//        )));
-//        if ($this->validationHasFailed() == true) {
-//            return false;
-//        }
+    public function getTypeDetail(){
+        if ($this->tag_type == '1') {
+            return '个人';
+        } else {
+            return '系统';
+        }
     }
 
     public function getFlagDetail()

@@ -15,22 +15,24 @@
         <thead>
             <tr>
                 <th>序号</th>
-                <th>APP名称</th>
+                <th>图片内容</th>
+                <th>所属APP</th>
+                <th>关联标签</th>
+                <th>关联用户</th>
                 <th>所属系统</th>
-                <th>描述</th>
-                <th>创建用户</th>
-                <th>创建时间</th>
+                <th>操作</th>
             </tr>
         </thead>
     {% endif %}
         <tbody>
             <tr>
                 <td>{{ app.id }}</td>
+                <td>{{ app.using_pic }}</td>
                 <td>{{ app.app_name }}</td>
+                <td>{{ app.app_classification }}</td>
+                <td>{{ app.using_flag }}</td>
                 <td>{{ app.app_sys }}</td>
-                <td>{{ app.description }}</td>
-                <td>{{ app.create_user }}</td>
-                <td>{{ date("Y-m-d H:i:s",app.create_time) }}</td>
+                <td width="7%">{{ link_to("companies/flag/?flag=" ~ app.using_flag, ''~app.getFlagDetail(), "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}
@@ -38,10 +40,10 @@
             <tr>
                 <td colspan="7" align="right">
                     <div class="btn-group">
-                        {{ link_to("app/list/", '<i class="icon-fast-backward"></i> First', "class": "btn btn-default") }}
-                        {{ link_to("app/list/?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-default") }}
-                        {{ link_to("app/list/?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-default") }}
-                        {{ link_to("app/list/?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-default") }}
+                        {{ link_to("companies/search", '<i class="icon-fast-backward"></i> First', "class": "btn btn-default") }}
+                        {{ link_to("companies/search?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-default") }}
+                        {{ link_to("companies/search?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-default") }}
+                        {{ link_to("companies/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-default") }}
                         <span class="help-inline">{{ page.current }}/{{ page.total_pages }}</span>
                     </div>
                 </td>

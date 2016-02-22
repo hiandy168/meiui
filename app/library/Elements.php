@@ -44,13 +44,13 @@ class Elements extends Component
             'action' => 'list',
             'any' => true
         ),
-        '内容管理' => array(
+        'APP管理' => array(
             'controller' => 'app',
             'action' => 'list',
             'any' => true
         ),
-        '意见反馈' => array(
-            'controller' => 'feedback',
+        '图片管理' => array(
+            'controller' => 'pic',
             'action' => 'list',
             'any' => true
         ),
@@ -58,7 +58,13 @@ class Elements extends Component
             'controller' => 'search',
             'action' => 'list',
             'any' => false
-        )
+        ),
+        '意见反馈' => array(
+            'controller' => 'feedback',
+            'action' => 'list',
+            'any' => true
+        ),
+
     );
 
     /**

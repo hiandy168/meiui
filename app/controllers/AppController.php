@@ -19,10 +19,9 @@ class AppController extends ControllerBase
         }
 
         $where = "using_flag != 3";
-        $app = MeiuiApp::find($where);
+        $app = MeiuiApp::find();
         if (count($app) == 0) {
             $this->flash->notice("The search did not find any feedback");
-            return $this->forward("search/list");
         }
 
         $paginator = new Paginator(array(

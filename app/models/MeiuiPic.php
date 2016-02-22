@@ -17,4 +17,14 @@ class MeiuiPic extends Model
     public $create_user;
     public $create_time;
     public $using_flag;
+    public function getFlagDetail()
+    {
+        if ($this->using_flag == '1') {
+            return array('未审核通过','通过');
+        } else if($this->using_flag == '2'){
+            return array('删除','显示');
+        } else {
+            return array('显示','删除');
+        }
+    }
 }

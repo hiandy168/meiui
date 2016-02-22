@@ -80,18 +80,18 @@ class TagController extends ControllerBase
                 $user->using_flag = $chang[$user->using_flag];
                 if (!$user->save()) {
                     $this->flash->error('屏蔽失败');
-                    return $this->forward("classification/list");
+                    return $this->forward("tag/list");
                 }else{
                     $this->flash->success('屏蔽成功');
-                    return $this->forward("classification/list");
+                    return $this->forward("tag/list");
                 }
             } else {
                 $this->flash->error('屏蔽失败');
-                return $this->forward("classification/list");
+                return $this->forward("tag/list");
             }
         } else {
             $this->flash->error('屏蔽失败');
-            return $this->forward("classification/list");
+            return $this->forward("tag/list");
         }
 
     }

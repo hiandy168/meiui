@@ -12,28 +12,30 @@
         </li>
     </ul>
 
-    {% for classification in page.items %}
+    {% for one_tag in page.items %}
     {% if loop.first %}
     <table class="table table-bordered table-striped" align="center">
         <thead>
             <tr>
                 <th>序号</th>
-                <th>分类名</th>
-                <th>分类下图片数</th>
-                <th>分类关联用户数</th>
-                <th>状态</th>
+                <th>标签名</th>
+                <th>创建用户名</th>
+                <th>创建时间</th>
+                <th>标签类型</th>
+                <th>显示状态</th>
                 <th>操作</th>
             </tr>
         </thead>
     {% endif %}
         <tbody>
             <tr>
-                <td>{{ classification.id }}</td>
-                <td>{{ classification.tag_name }}</td>
-                <td>{{ classification.create_user }}</td>
-                <td>{{ classification.tag_type }}</td>
-                <td>{{ classification.getFlagDetail()['0'] }}</td>
-                <td width="7%">{{ link_to("classification/delete/?id=" ~ classification.id, '<i class="glyphicon glyphicon-remove"></i> '~ classification.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
+                <td>{{ one_tag.id }}</td>
+                <td>{{ one_tag.tag_name }}</td>
+                <td>{{ one_tag.create_user }}</td>
+                <td>{{ date("Y-m-d H:i:s",one_tag.create_time) }}</td>
+                <td>{{ one_tag.getTypeDetail() }}</td>
+                <td>{{ one_tag.getFlagDetail()['0'] }}</td>
+                <td width="7%">{{ link_to("tag/delete/?id=" ~ one_tag.id, '<i class="glyphicon glyphicon-remove"></i> '~ one_tag.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
     {% if loop.last %}
@@ -53,7 +55,7 @@
     </table>
     {% endif %}
     {% else %}
-        No classification are recorded
+        No tag are recorded
     {% endfor %}
 
 </div>
