@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127
+Source Server         : local
 Source Server Version : 50617
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : ui
 
 Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-22 11:10:30
+Date: 2016-02-22 11:21:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,8 +39,8 @@ INSERT INTO `meiui_app` VALUES ('10', 'wechat', '2', '', '3', '1453362801', '3')
 INSERT INTO `meiui_app` VALUES ('11', 'facebook', '2', '', '6', '1453362801', '3');
 INSERT INTO `meiui_app` VALUES ('84', 'Enjoy', '2', '', '4', '1455892696', '3');
 INSERT INTO `meiui_app` VALUES ('85', 'Like', '2', '', '4', '1455892696', '3');
-INSERT INTO `meiui_app` VALUES ('86', '生辰', '2', '', '4', '1455892696', '3');
-INSERT INTO `meiui_app` VALUES ('87', '留白', '2', '', '4', '1455892696', '3');
+INSERT INTO `meiui_app` VALUES ('86', 'ç”Ÿè¾°', '2', '', '4', '1455892696', '3');
+INSERT INTO `meiui_app` VALUES ('87', 'ç•™ç™½', '2', '', '4', '1455892696', '3');
 
 -- ----------------------------
 -- Table structure for meiui_classification
@@ -62,9 +62,9 @@ CREATE TABLE `meiui_classification` (
 -- ----------------------------
 -- Records of meiui_classification
 -- ----------------------------
-INSERT INTO `meiui_classification` VALUES ('15', '0', '0', '0', '0', '奢华', '0', '0', '1');
-INSERT INTO `meiui_classification` VALUES ('14', '0', '0', '0', '0', '扁平化', '0', '0', '1');
-INSERT INTO `meiui_classification` VALUES ('13', '0', '0', '0', '0', '登陆', '0', '0', '1');
+INSERT INTO `meiui_classification` VALUES ('15', '0', '0', '0', '0', 'å¥¢åŽ', '0', '0', '1');
+INSERT INTO `meiui_classification` VALUES ('14', '0', '0', '0', '0', 'æ‰å¹³åŒ–', '0', '0', '1');
+INSERT INTO `meiui_classification` VALUES ('13', '0', '0', '0', '0', 'ç™»é™†', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for meiui_feedback
@@ -122,51 +122,51 @@ INSERT INTO `meiui_pic` VALUES ('2', '8', 'path', '2', 'http://7nar8n.com1.z0.gl
 INSERT INTO `meiui_pic` VALUES ('3', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('4', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E4%BF%A1%E6%81%AF%E6%B5%81.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('5', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
-INSERT INTO `meiui_pic` VALUES ('12', '84', 'Enjoy', '2', '127.0.0.1/load/init_data/APP/Enjoy/信息流.jpg', '750', '1334', 'brief default tag  Enjoy,信息流', '4', '1455955960', '1');
+INSERT INTO `meiui_pic` VALUES ('12', '84', 'Enjoy', '2', '127.0.0.1/load/init_data/APP/Enjoy/ä¿¡æ¯æµ.jpg', '750', '1334', 'brief default tag  Enjoy,ä¿¡æ¯æµ', '4', '1455955960', '1');
 INSERT INTO `meiui_pic` VALUES ('6', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E5%BC%95%E5%AF%BC%E9%A1%B5.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('7', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%90%9C%E7%B4%A2.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('8', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E9%80%89%E6%8B%A9%E6%8E%A7%E4%BB%B6.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('9', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E9%82%AE%E7%AE%B1%E8%AE%BE%E7%BD%AE.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('10', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
 INSERT INTO `meiui_pic` VALUES ('11', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE.jpg', '750', '1334', 'null brief default', '6', '1453362801', '1');
-INSERT INTO `meiui_pic` VALUES ('50', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/信息流.jpg', '750', '1334', 'brief default tag  Enjoy,信息流', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('51', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/找回密码.jpg', '750', '1334', 'brief default tag  Enjoy,找回密码', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('52', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/注册.jpg', '750', '1334', 'brief default tag  Enjoy,注册', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('53', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/浮层.jpg', '750', '1334', 'brief default tag  Enjoy,浮层', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('54', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/用户协议.jpg', '750', '1334', 'brief default tag  Enjoy,用户协议', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('55', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/信息流.jpg', '750', '1334', 'brief default tag  Like,信息流', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('56', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/引导页.jpg', '750', '1334', 'brief default tag  Like,引导页', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('57', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/标签.jpg', '750', '1334', 'brief default tag  Like,标签', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('58', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/注册，登录.jpg', '750', '1334', 'brief default tag  Like,注册，登录', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('59', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/浮层.jpg', '750', '1334', 'brief default tag  Like,浮层', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('60', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/注册，登录.jpg', '750', '1334', 'brief default tag  Path,注册，登录', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('61', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/账号验证.jpg', '750', '1334', 'brief default tag  Path,账号验证', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('62', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/验证码.jpg', '750', '1334', 'brief default tag  Path,验证码', '4', '1456110287', '1');
-INSERT INTO `meiui_pic` VALUES ('63', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/信息流.jpg', '750', '1334', 'brief default tag  Twitter,信息流', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('64', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/头像设置.jpg', '750', '1334', 'brief default tag  Twitter,头像设置', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('65', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/引导页.jpg', '750', '1334', 'brief default tag  Twitter,引导页', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('66', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/搜索.jpg', '750', '1334', 'brief default tag  Twitter,搜索', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('67', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/极简，头像设置.jpg', '750', '1334', 'brief default tag  Twitter,极简，头像设置', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('68', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/标签，个人资料.jpg', '750', '1334', 'brief default tag  Twitter,标签，个人资料', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('69', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/注册，登录.jpg', '750', '1334', 'brief default tag  Twitter,注册，登录', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('70', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/详情页.jpg', '750', '1334', 'brief default tag  Twitter,详情页', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('71', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/选择控件.jpg', '750', '1334', 'brief default tag  Twitter,选择控件', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('72', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/邮箱设置.jpg', '750', '1334', 'brief default tag  Twitter,邮箱设置', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('73', '86', '生辰', '2', '52.68.155.92/load/init_data/APP/生辰/极简、纯黑.jpg', '750', '1334', 'brief default tag  生辰,极简、纯黑', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('74', '86', '生辰', '2', '52.68.155.92/load/init_data/APP/生辰/极简，纯白.jpg', '750', '1334', 'brief default tag  生辰,极简，纯白', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('75', '86', '生辰', '2', '52.68.155.92/load/init_data/APP/生辰/选择控件.jpg', '750', '1334', 'brief default tag  生辰,选择控件', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('76', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/个人资料，修改信息.jpg', '750', '1334', 'brief default tag  留白,个人资料，修改信息', '4', '1456110288', '1');
-INSERT INTO `meiui_pic` VALUES ('77', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/举报.jpg', '750', '1334', 'brief default tag  留白,举报', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('78', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/修改头像.jpg', '750', '1334', 'brief default tag  留白,修改头像', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('79', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/弹层，分享.jpg', '750', '1334', 'brief default tag  留白,弹层，分享', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('80', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/手机注册，极简.jpg', '750', '1334', 'brief default tag  留白,手机注册，极简', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('81', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/抽屉式.jpg', '750', '1334', 'brief default tag  留白,抽屉式', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('82', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/搜索，关注.jpg', '750', '1334', 'brief default tag  留白,搜索，关注', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('83', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/模板，cover.jpg', '750', '1334', 'brief default tag  留白,模板，cover', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('84', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/注册，个人资料.jpg', '750', '1334', 'brief default tag  留白,注册，个人资料', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('85', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/滤镜选择.jpg', '750', '1334', 'brief default tag  留白,滤镜选择', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('86', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/登录，微信登录.jpg', '750', '1334', 'brief default tag  留白,登录，微信登录', '4', '1456110289', '1');
-INSERT INTO `meiui_pic` VALUES ('87', '87', '留白', '2', '52.68.155.92/load/init_data/APP/留白/详情页.jpg', '750', '1334', 'brief default tag  留白,详情页', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('50', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/ä¿¡æ¯æµ.jpg', '750', '1334', 'brief default tag  Enjoy,ä¿¡æ¯æµ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('51', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/æ‰¾å›žå¯†ç .jpg', '750', '1334', 'brief default tag  Enjoy,æ‰¾å›žå¯†ç ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('52', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/æ³¨å†Œ.jpg', '750', '1334', 'brief default tag  Enjoy,æ³¨å†Œ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('53', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/æµ®å±‚.jpg', '750', '1334', 'brief default tag  Enjoy,æµ®å±‚', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('54', '84', 'Enjoy', '2', '52.68.155.92/load/init_data/APP/Enjoy/ç”¨æˆ·åè®®.jpg', '750', '1334', 'brief default tag  Enjoy,ç”¨æˆ·åè®®', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('55', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/ä¿¡æ¯æµ.jpg', '750', '1334', 'brief default tag  Like,ä¿¡æ¯æµ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('56', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/å¼•å¯¼é¡µ.jpg', '750', '1334', 'brief default tag  Like,å¼•å¯¼é¡µ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('57', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/æ ‡ç­¾.jpg', '750', '1334', 'brief default tag  Like,æ ‡ç­¾', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('58', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/æ³¨å†Œï¼Œç™»å½•.jpg', '750', '1334', 'brief default tag  Like,æ³¨å†Œï¼Œç™»å½•', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('59', '85', 'Like', '2', '52.68.155.92/load/init_data/APP/Like/æµ®å±‚.jpg', '750', '1334', 'brief default tag  Like,æµ®å±‚', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('60', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/æ³¨å†Œï¼Œç™»å½•.jpg', '750', '1334', 'brief default tag  Path,æ³¨å†Œï¼Œç™»å½•', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('61', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/è´¦å·éªŒè¯.jpg', '750', '1334', 'brief default tag  Path,è´¦å·éªŒè¯', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('62', '8', 'path', '2', '52.68.155.92/load/init_data/APP/Path/éªŒè¯ç .jpg', '750', '1334', 'brief default tag  Path,éªŒè¯ç ', '4', '1456110287', '1');
+INSERT INTO `meiui_pic` VALUES ('63', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/ä¿¡æ¯æµ.jpg', '750', '1334', 'brief default tag  Twitter,ä¿¡æ¯æµ', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('64', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/å¤´åƒè®¾ç½®.jpg', '750', '1334', 'brief default tag  Twitter,å¤´åƒè®¾ç½®', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('65', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/å¼•å¯¼é¡µ.jpg', '750', '1334', 'brief default tag  Twitter,å¼•å¯¼é¡µ', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('66', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/æœç´¢.jpg', '750', '1334', 'brief default tag  Twitter,æœç´¢', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('67', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/æžç®€ï¼Œå¤´åƒè®¾ç½®.jpg', '750', '1334', 'brief default tag  Twitter,æžç®€ï¼Œå¤´åƒè®¾ç½®', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('68', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/æ ‡ç­¾ï¼Œä¸ªäººèµ„æ–™.jpg', '750', '1334', 'brief default tag  Twitter,æ ‡ç­¾ï¼Œä¸ªäººèµ„æ–™', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('69', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/æ³¨å†Œï¼Œç™»å½•.jpg', '750', '1334', 'brief default tag  Twitter,æ³¨å†Œï¼Œç™»å½•', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('70', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/è¯¦æƒ…é¡µ.jpg', '750', '1334', 'brief default tag  Twitter,è¯¦æƒ…é¡µ', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('71', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/é€‰æ‹©æŽ§ä»¶.jpg', '750', '1334', 'brief default tag  Twitter,é€‰æ‹©æŽ§ä»¶', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('72', '9', 'twitter', '2', '52.68.155.92/load/init_data/APP/Twitter/é‚®ç®±è®¾ç½®.jpg', '750', '1334', 'brief default tag  Twitter,é‚®ç®±è®¾ç½®', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('73', '86', 'ç”Ÿè¾°', '2', '52.68.155.92/load/init_data/APP/ç”Ÿè¾°/æžç®€ã€çº¯é»‘.jpg', '750', '1334', 'brief default tag  ç”Ÿè¾°,æžç®€ã€çº¯é»‘', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('74', '86', 'ç”Ÿè¾°', '2', '52.68.155.92/load/init_data/APP/ç”Ÿè¾°/æžç®€ï¼Œçº¯ç™½.jpg', '750', '1334', 'brief default tag  ç”Ÿè¾°,æžç®€ï¼Œçº¯ç™½', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('75', '86', 'ç”Ÿè¾°', '2', '52.68.155.92/load/init_data/APP/ç”Ÿè¾°/é€‰æ‹©æŽ§ä»¶.jpg', '750', '1334', 'brief default tag  ç”Ÿè¾°,é€‰æ‹©æŽ§ä»¶', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('76', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/ä¸ªäººèµ„æ–™ï¼Œä¿®æ”¹ä¿¡æ¯.jpg', '750', '1334', 'brief default tag  ç•™ç™½,ä¸ªäººèµ„æ–™ï¼Œä¿®æ”¹ä¿¡æ¯', '4', '1456110288', '1');
+INSERT INTO `meiui_pic` VALUES ('77', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/ä¸¾æŠ¥.jpg', '750', '1334', 'brief default tag  ç•™ç™½,ä¸¾æŠ¥', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('78', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/ä¿®æ”¹å¤´åƒ.jpg', '750', '1334', 'brief default tag  ç•™ç™½,ä¿®æ”¹å¤´åƒ', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('79', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/å¼¹å±‚ï¼Œåˆ†äº«.jpg', '750', '1334', 'brief default tag  ç•™ç™½,å¼¹å±‚ï¼Œåˆ†äº«', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('80', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æ‰‹æœºæ³¨å†Œï¼Œæžç®€.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æ‰‹æœºæ³¨å†Œï¼Œæžç®€', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('81', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æŠ½å±‰å¼.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æŠ½å±‰å¼', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('82', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æœç´¢ï¼Œå…³æ³¨.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æœç´¢ï¼Œå…³æ³¨', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('83', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æ¨¡æ¿ï¼Œcover.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æ¨¡æ¿ï¼Œcover', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('84', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æ³¨å†Œï¼Œä¸ªäººèµ„æ–™.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æ³¨å†Œï¼Œä¸ªäººèµ„æ–™', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('85', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/æ»¤é•œé€‰æ‹©.jpg', '750', '1334', 'brief default tag  ç•™ç™½,æ»¤é•œé€‰æ‹©', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('86', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/ç™»å½•ï¼Œå¾®ä¿¡ç™»å½•.jpg', '750', '1334', 'brief default tag  ç•™ç™½,ç™»å½•ï¼Œå¾®ä¿¡ç™»å½•', '4', '1456110289', '1');
+INSERT INTO `meiui_pic` VALUES ('87', '87', 'ç•™ç™½', '2', '52.68.155.92/load/init_data/APP/ç•™ç™½/è¯¦æƒ…é¡µ.jpg', '750', '1334', 'brief default tag  ç•™ç™½,è¯¦æƒ…é¡µ', '4', '1456110289', '1');
 
 -- ----------------------------
 -- Table structure for meiui_pic_link_tag
@@ -200,121 +200,121 @@ INSERT INTO `meiui_pic_link_tag` VALUES ('12', '6', '4', '4', '2', 'twitter');
 INSERT INTO `meiui_pic_link_tag` VALUES ('13', '6', '6', '6', '2', 'search');
 INSERT INTO `meiui_pic_link_tag` VALUES ('14', '6', '7', '7', '2', 'blue_search');
 INSERT INTO `meiui_pic_link_tag` VALUES ('15', '6', '3', '8', '2', 'user_pic');
-INSERT INTO `meiui_pic_link_tag` VALUES ('241', '4', '50', '57', '2', '信息流');
+INSERT INTO `meiui_pic_link_tag` VALUES ('241', '4', '50', '57', '2', 'ä¿¡æ¯æµ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('242', '4', '50', '58', '2', 'Enjoy');
-INSERT INTO `meiui_pic_link_tag` VALUES ('243', '4', '51', '59', '2', '找回密码');
+INSERT INTO `meiui_pic_link_tag` VALUES ('243', '4', '51', '59', '2', 'æ‰¾å›žå¯†ç ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('244', '4', '51', '58', '2', 'Enjoy');
-INSERT INTO `meiui_pic_link_tag` VALUES ('245', '4', '52', '60', '2', '注册');
+INSERT INTO `meiui_pic_link_tag` VALUES ('245', '4', '52', '60', '2', 'æ³¨å†Œ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('246', '4', '52', '58', '2', 'Enjoy');
-INSERT INTO `meiui_pic_link_tag` VALUES ('247', '4', '53', '61', '2', '浮层');
+INSERT INTO `meiui_pic_link_tag` VALUES ('247', '4', '53', '61', '2', 'æµ®å±‚');
 INSERT INTO `meiui_pic_link_tag` VALUES ('248', '4', '53', '58', '2', 'Enjoy');
-INSERT INTO `meiui_pic_link_tag` VALUES ('249', '4', '54', '62', '2', '用户协议');
+INSERT INTO `meiui_pic_link_tag` VALUES ('249', '4', '54', '62', '2', 'ç”¨æˆ·åè®®');
 INSERT INTO `meiui_pic_link_tag` VALUES ('250', '4', '54', '58', '2', 'Enjoy');
-INSERT INTO `meiui_pic_link_tag` VALUES ('251', '4', '55', '57', '2', '信息流');
+INSERT INTO `meiui_pic_link_tag` VALUES ('251', '4', '55', '57', '2', 'ä¿¡æ¯æµ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('252', '4', '55', '63', '2', 'Like');
-INSERT INTO `meiui_pic_link_tag` VALUES ('253', '4', '56', '64', '2', '引导页');
+INSERT INTO `meiui_pic_link_tag` VALUES ('253', '4', '56', '64', '2', 'å¼•å¯¼é¡µ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('254', '4', '56', '63', '2', 'Like');
-INSERT INTO `meiui_pic_link_tag` VALUES ('255', '4', '57', '65', '2', '标签');
+INSERT INTO `meiui_pic_link_tag` VALUES ('255', '4', '57', '65', '2', 'æ ‡ç­¾');
 INSERT INTO `meiui_pic_link_tag` VALUES ('256', '4', '57', '63', '2', 'Like');
-INSERT INTO `meiui_pic_link_tag` VALUES ('257', '4', '58', '60', '2', '注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('258', '4', '58', '66', '2', '登录');
+INSERT INTO `meiui_pic_link_tag` VALUES ('257', '4', '58', '60', '2', 'æ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('258', '4', '58', '66', '2', 'ç™»å½•');
 INSERT INTO `meiui_pic_link_tag` VALUES ('259', '4', '58', '63', '2', 'Like');
-INSERT INTO `meiui_pic_link_tag` VALUES ('260', '4', '59', '61', '2', '浮层');
+INSERT INTO `meiui_pic_link_tag` VALUES ('260', '4', '59', '61', '2', 'æµ®å±‚');
 INSERT INTO `meiui_pic_link_tag` VALUES ('261', '4', '59', '63', '2', 'Like');
-INSERT INTO `meiui_pic_link_tag` VALUES ('262', '4', '60', '60', '2', '注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('263', '4', '60', '66', '2', '登录');
+INSERT INTO `meiui_pic_link_tag` VALUES ('262', '4', '60', '60', '2', 'æ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('263', '4', '60', '66', '2', 'ç™»å½•');
 INSERT INTO `meiui_pic_link_tag` VALUES ('264', '4', '60', '5', '2', 'path');
-INSERT INTO `meiui_pic_link_tag` VALUES ('265', '4', '61', '67', '2', '账号验证');
+INSERT INTO `meiui_pic_link_tag` VALUES ('265', '4', '61', '67', '2', 'è´¦å·éªŒè¯');
 INSERT INTO `meiui_pic_link_tag` VALUES ('266', '4', '61', '5', '2', 'path');
-INSERT INTO `meiui_pic_link_tag` VALUES ('267', '4', '62', '68', '2', '验证码');
+INSERT INTO `meiui_pic_link_tag` VALUES ('267', '4', '62', '68', '2', 'éªŒè¯ç ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('268', '4', '62', '5', '2', 'path');
-INSERT INTO `meiui_pic_link_tag` VALUES ('269', '4', '63', '57', '2', '信息流');
+INSERT INTO `meiui_pic_link_tag` VALUES ('269', '4', '63', '57', '2', 'ä¿¡æ¯æµ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('270', '4', '63', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('271', '4', '64', '69', '2', '头像设置');
+INSERT INTO `meiui_pic_link_tag` VALUES ('271', '4', '64', '69', '2', 'å¤´åƒè®¾ç½®');
 INSERT INTO `meiui_pic_link_tag` VALUES ('272', '4', '64', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('273', '4', '65', '64', '2', '引导页');
+INSERT INTO `meiui_pic_link_tag` VALUES ('273', '4', '65', '64', '2', 'å¼•å¯¼é¡µ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('274', '4', '65', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('275', '4', '66', '70', '2', '搜索');
+INSERT INTO `meiui_pic_link_tag` VALUES ('275', '4', '66', '70', '2', 'æœç´¢');
 INSERT INTO `meiui_pic_link_tag` VALUES ('276', '4', '66', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('277', '4', '67', '71', '2', '极简');
-INSERT INTO `meiui_pic_link_tag` VALUES ('278', '4', '67', '69', '2', '头像设置');
+INSERT INTO `meiui_pic_link_tag` VALUES ('277', '4', '67', '71', '2', 'æžç®€');
+INSERT INTO `meiui_pic_link_tag` VALUES ('278', '4', '67', '69', '2', 'å¤´åƒè®¾ç½®');
 INSERT INTO `meiui_pic_link_tag` VALUES ('279', '4', '67', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('280', '4', '68', '65', '2', '标签');
-INSERT INTO `meiui_pic_link_tag` VALUES ('281', '4', '68', '72', '2', '个人资料');
+INSERT INTO `meiui_pic_link_tag` VALUES ('280', '4', '68', '65', '2', 'æ ‡ç­¾');
+INSERT INTO `meiui_pic_link_tag` VALUES ('281', '4', '68', '72', '2', 'ä¸ªäººèµ„æ–™');
 INSERT INTO `meiui_pic_link_tag` VALUES ('282', '4', '68', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('283', '4', '69', '60', '2', '注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('284', '4', '69', '66', '2', '登录');
+INSERT INTO `meiui_pic_link_tag` VALUES ('283', '4', '69', '60', '2', 'æ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('284', '4', '69', '66', '2', 'ç™»å½•');
 INSERT INTO `meiui_pic_link_tag` VALUES ('285', '4', '69', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('286', '4', '70', '73', '2', '详情页');
+INSERT INTO `meiui_pic_link_tag` VALUES ('286', '4', '70', '73', '2', 'è¯¦æƒ…é¡µ');
 INSERT INTO `meiui_pic_link_tag` VALUES ('287', '4', '70', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('288', '4', '71', '74', '2', '选择控件');
+INSERT INTO `meiui_pic_link_tag` VALUES ('288', '4', '71', '74', '2', 'é€‰æ‹©æŽ§ä»¶');
 INSERT INTO `meiui_pic_link_tag` VALUES ('289', '4', '71', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('290', '4', '72', '75', '2', '邮箱设置');
+INSERT INTO `meiui_pic_link_tag` VALUES ('290', '4', '72', '75', '2', 'é‚®ç®±è®¾ç½®');
 INSERT INTO `meiui_pic_link_tag` VALUES ('291', '4', '72', '4', '2', 'twitter');
-INSERT INTO `meiui_pic_link_tag` VALUES ('292', '4', '73', '76', '2', '极简、纯黑');
-INSERT INTO `meiui_pic_link_tag` VALUES ('293', '4', '73', '77', '2', '生辰');
-INSERT INTO `meiui_pic_link_tag` VALUES ('294', '4', '74', '71', '2', '极简');
-INSERT INTO `meiui_pic_link_tag` VALUES ('295', '4', '74', '78', '2', '纯白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('296', '4', '74', '77', '2', '生辰');
-INSERT INTO `meiui_pic_link_tag` VALUES ('297', '4', '75', '74', '2', '选择控件');
-INSERT INTO `meiui_pic_link_tag` VALUES ('298', '4', '75', '77', '2', '生辰');
-INSERT INTO `meiui_pic_link_tag` VALUES ('299', '4', '76', '72', '2', '个人资料');
-INSERT INTO `meiui_pic_link_tag` VALUES ('300', '4', '76', '79', '2', '修改信息');
-INSERT INTO `meiui_pic_link_tag` VALUES ('301', '4', '76', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('302', '4', '77', '81', '2', '举报');
-INSERT INTO `meiui_pic_link_tag` VALUES ('303', '4', '77', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('215', '4', '40', '36', '2', '修改头像');
-INSERT INTO `meiui_pic_link_tag` VALUES ('216', '4', '40', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('217', '4', '41', '50', '2', '弹层');
-INSERT INTO `meiui_pic_link_tag` VALUES ('218', '4', '41', '51', '2', '分享');
-INSERT INTO `meiui_pic_link_tag` VALUES ('219', '4', '41', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('220', '4', '42', '52', '2', '手机注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('221', '4', '42', '46', '2', '极简');
-INSERT INTO `meiui_pic_link_tag` VALUES ('222', '4', '42', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('223', '4', '43', '39', '2', '抽屉式');
-INSERT INTO `meiui_pic_link_tag` VALUES ('224', '4', '43', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('225', '4', '44', '26', '2', '搜索');
-INSERT INTO `meiui_pic_link_tag` VALUES ('226', '4', '44', '53', '2', '关注');
-INSERT INTO `meiui_pic_link_tag` VALUES ('227', '4', '44', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('228', '4', '45', '54', '2', '模板');
+INSERT INTO `meiui_pic_link_tag` VALUES ('292', '4', '73', '76', '2', 'æžç®€ã€çº¯é»‘');
+INSERT INTO `meiui_pic_link_tag` VALUES ('293', '4', '73', '77', '2', 'ç”Ÿè¾°');
+INSERT INTO `meiui_pic_link_tag` VALUES ('294', '4', '74', '71', '2', 'æžç®€');
+INSERT INTO `meiui_pic_link_tag` VALUES ('295', '4', '74', '78', '2', 'çº¯ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('296', '4', '74', '77', '2', 'ç”Ÿè¾°');
+INSERT INTO `meiui_pic_link_tag` VALUES ('297', '4', '75', '74', '2', 'é€‰æ‹©æŽ§ä»¶');
+INSERT INTO `meiui_pic_link_tag` VALUES ('298', '4', '75', '77', '2', 'ç”Ÿè¾°');
+INSERT INTO `meiui_pic_link_tag` VALUES ('299', '4', '76', '72', '2', 'ä¸ªäººèµ„æ–™');
+INSERT INTO `meiui_pic_link_tag` VALUES ('300', '4', '76', '79', '2', 'ä¿®æ”¹ä¿¡æ¯');
+INSERT INTO `meiui_pic_link_tag` VALUES ('301', '4', '76', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('302', '4', '77', '81', '2', 'ä¸¾æŠ¥');
+INSERT INTO `meiui_pic_link_tag` VALUES ('303', '4', '77', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('215', '4', '40', '36', '2', 'ä¿®æ”¹å¤´åƒ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('216', '4', '40', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('217', '4', '41', '50', '2', 'å¼¹å±‚');
+INSERT INTO `meiui_pic_link_tag` VALUES ('218', '4', '41', '51', '2', 'åˆ†äº«');
+INSERT INTO `meiui_pic_link_tag` VALUES ('219', '4', '41', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('220', '4', '42', '52', '2', 'æ‰‹æœºæ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('221', '4', '42', '46', '2', 'æžç®€');
+INSERT INTO `meiui_pic_link_tag` VALUES ('222', '4', '42', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('223', '4', '43', '39', '2', 'æŠ½å±‰å¼');
+INSERT INTO `meiui_pic_link_tag` VALUES ('224', '4', '43', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('225', '4', '44', '26', '2', 'æœç´¢');
+INSERT INTO `meiui_pic_link_tag` VALUES ('226', '4', '44', '53', '2', 'å…³æ³¨');
+INSERT INTO `meiui_pic_link_tag` VALUES ('227', '4', '44', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('228', '4', '45', '54', '2', 'æ¨¡æ¿');
 INSERT INTO `meiui_pic_link_tag` VALUES ('229', '4', '45', '55', '2', 'cover');
-INSERT INTO `meiui_pic_link_tag` VALUES ('230', '4', '45', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('231', '4', '46', '17', '2', '注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('232', '4', '46', '47', '2', '个人资料');
-INSERT INTO `meiui_pic_link_tag` VALUES ('233', '4', '46', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('234', '4', '47', '43', '2', '滤镜选择');
-INSERT INTO `meiui_pic_link_tag` VALUES ('235', '4', '47', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('236', '4', '48', '45', '2', '登录');
-INSERT INTO `meiui_pic_link_tag` VALUES ('237', '4', '48', '56', '2', '微信登录');
-INSERT INTO `meiui_pic_link_tag` VALUES ('238', '4', '48', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('239', '4', '49', '29', '2', '详情页');
-INSERT INTO `meiui_pic_link_tag` VALUES ('240', '4', '49', '13', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('304', '4', '78', '82', '2', '修改头像');
-INSERT INTO `meiui_pic_link_tag` VALUES ('305', '4', '78', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('306', '4', '79', '83', '2', '弹层');
-INSERT INTO `meiui_pic_link_tag` VALUES ('307', '4', '79', '84', '2', '分享');
-INSERT INTO `meiui_pic_link_tag` VALUES ('308', '4', '79', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('309', '4', '80', '85', '2', '手机注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('310', '4', '80', '71', '2', '极简');
-INSERT INTO `meiui_pic_link_tag` VALUES ('311', '4', '80', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('312', '4', '81', '86', '2', '抽屉式');
-INSERT INTO `meiui_pic_link_tag` VALUES ('313', '4', '81', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('314', '4', '82', '70', '2', '搜索');
-INSERT INTO `meiui_pic_link_tag` VALUES ('315', '4', '82', '87', '2', '关注');
-INSERT INTO `meiui_pic_link_tag` VALUES ('316', '4', '82', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('317', '4', '83', '88', '2', '模板');
+INSERT INTO `meiui_pic_link_tag` VALUES ('230', '4', '45', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('231', '4', '46', '17', '2', 'æ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('232', '4', '46', '47', '2', 'ä¸ªäººèµ„æ–™');
+INSERT INTO `meiui_pic_link_tag` VALUES ('233', '4', '46', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('234', '4', '47', '43', '2', 'æ»¤é•œé€‰æ‹©');
+INSERT INTO `meiui_pic_link_tag` VALUES ('235', '4', '47', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('236', '4', '48', '45', '2', 'ç™»å½•');
+INSERT INTO `meiui_pic_link_tag` VALUES ('237', '4', '48', '56', '2', 'å¾®ä¿¡ç™»å½•');
+INSERT INTO `meiui_pic_link_tag` VALUES ('238', '4', '48', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('239', '4', '49', '29', '2', 'è¯¦æƒ…é¡µ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('240', '4', '49', '13', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('304', '4', '78', '82', '2', 'ä¿®æ”¹å¤´åƒ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('305', '4', '78', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('306', '4', '79', '83', '2', 'å¼¹å±‚');
+INSERT INTO `meiui_pic_link_tag` VALUES ('307', '4', '79', '84', '2', 'åˆ†äº«');
+INSERT INTO `meiui_pic_link_tag` VALUES ('308', '4', '79', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('309', '4', '80', '85', '2', 'æ‰‹æœºæ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('310', '4', '80', '71', '2', 'æžç®€');
+INSERT INTO `meiui_pic_link_tag` VALUES ('311', '4', '80', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('312', '4', '81', '86', '2', 'æŠ½å±‰å¼');
+INSERT INTO `meiui_pic_link_tag` VALUES ('313', '4', '81', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('314', '4', '82', '70', '2', 'æœç´¢');
+INSERT INTO `meiui_pic_link_tag` VALUES ('315', '4', '82', '87', '2', 'å…³æ³¨');
+INSERT INTO `meiui_pic_link_tag` VALUES ('316', '4', '82', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('317', '4', '83', '88', '2', 'æ¨¡æ¿');
 INSERT INTO `meiui_pic_link_tag` VALUES ('318', '4', '83', '89', '2', 'cover');
-INSERT INTO `meiui_pic_link_tag` VALUES ('319', '4', '83', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('320', '4', '84', '60', '2', '注册');
-INSERT INTO `meiui_pic_link_tag` VALUES ('321', '4', '84', '72', '2', '个人资料');
-INSERT INTO `meiui_pic_link_tag` VALUES ('322', '4', '84', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('323', '4', '85', '90', '2', '滤镜选择');
-INSERT INTO `meiui_pic_link_tag` VALUES ('324', '4', '85', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('325', '4', '86', '66', '2', '登录');
-INSERT INTO `meiui_pic_link_tag` VALUES ('326', '4', '86', '91', '2', '微信登录');
-INSERT INTO `meiui_pic_link_tag` VALUES ('327', '4', '86', '80', '2', '留白');
-INSERT INTO `meiui_pic_link_tag` VALUES ('328', '4', '87', '73', '2', '详情页');
-INSERT INTO `meiui_pic_link_tag` VALUES ('329', '4', '87', '80', '2', '留白');
+INSERT INTO `meiui_pic_link_tag` VALUES ('319', '4', '83', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('320', '4', '84', '60', '2', 'æ³¨å†Œ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('321', '4', '84', '72', '2', 'ä¸ªäººèµ„æ–™');
+INSERT INTO `meiui_pic_link_tag` VALUES ('322', '4', '84', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('323', '4', '85', '90', '2', 'æ»¤é•œé€‰æ‹©');
+INSERT INTO `meiui_pic_link_tag` VALUES ('324', '4', '85', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('325', '4', '86', '66', '2', 'ç™»å½•');
+INSERT INTO `meiui_pic_link_tag` VALUES ('326', '4', '86', '91', '2', 'å¾®ä¿¡ç™»å½•');
+INSERT INTO `meiui_pic_link_tag` VALUES ('327', '4', '86', '80', '2', 'ç•™ç™½');
+INSERT INTO `meiui_pic_link_tag` VALUES ('328', '4', '87', '73', '2', 'è¯¦æƒ…é¡µ');
+INSERT INTO `meiui_pic_link_tag` VALUES ('329', '4', '87', '80', '2', 'ç•™ç™½');
 
 -- ----------------------------
 -- Table structure for meiui_search
@@ -331,9 +331,9 @@ CREATE TABLE `meiui_search` (
 -- ----------------------------
 -- Records of meiui_search
 -- ----------------------------
-INSERT INTO `meiui_search` VALUES ('1', '搜索', '0', '1');
-INSERT INTO `meiui_search` VALUES ('2', '搜索', '0', '2');
-INSERT INTO `meiui_search` VALUES ('3', '搜索啊', '0', '1');
+INSERT INTO `meiui_search` VALUES ('1', 'æœç´¢', '0', '1');
+INSERT INTO `meiui_search` VALUES ('2', 'æœç´¢', '0', '2');
+INSERT INTO `meiui_search` VALUES ('3', 'æœç´¢å•Š', '0', '1');
 INSERT INTO `meiui_search` VALUES ('4', 'awsa', '0', '2');
 INSERT INTO `meiui_search` VALUES ('5', 'wpq', '0', '2');
 INSERT INTO `meiui_search` VALUES ('6', 'xc', '0', '2');
@@ -364,41 +364,41 @@ INSERT INTO `meiui_tag` VALUES ('5', 'path', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('6', 'search', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('7', 'blue_search', '6', '1453362801', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('8', 'user_pic', '6', '1453362801', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('57', '信息流', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('57', 'ä¿¡æ¯æµ', '4', '1456110287', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('58', 'Enjoy', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('59', '找回密码', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('60', '注册', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('61', '浮层', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('62', '用户协议', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('59', 'æ‰¾å›žå¯†ç ', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('60', 'æ³¨å†Œ', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('61', 'æµ®å±‚', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('62', 'ç”¨æˆ·åè®®', '4', '1456110287', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('63', 'Like', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('64', '引导页', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('65', '标签', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('66', '登录', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('67', '账号验证', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('68', '验证码', '4', '1456110287', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('69', '头像设置', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('70', '搜索', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('71', '极简', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('72', '个人资料', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('73', '详情页', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('74', '选择控件', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('75', '邮箱设置', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('76', '极简、纯黑', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('77', '生辰', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('78', '纯白', '4', '1456110288', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('79', '修改信息', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('80', '留白', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('81', '举报', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('82', '修改头像', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('83', '弹层', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('84', '分享', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('85', '手机注册', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('86', '抽屉式', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('87', '关注', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('88', '模板', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('64', 'å¼•å¯¼é¡µ', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('65', 'æ ‡ç­¾', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('66', 'ç™»å½•', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('67', 'è´¦å·éªŒè¯', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('68', 'éªŒè¯ç ', '4', '1456110287', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('69', 'å¤´åƒè®¾ç½®', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('70', 'æœç´¢', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('71', 'æžç®€', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('72', 'ä¸ªäººèµ„æ–™', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('73', 'è¯¦æƒ…é¡µ', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('74', 'é€‰æ‹©æŽ§ä»¶', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('75', 'é‚®ç®±è®¾ç½®', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('76', 'æžç®€ã€çº¯é»‘', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('77', 'ç”Ÿè¾°', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('78', 'çº¯ç™½', '4', '1456110288', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('79', 'ä¿®æ”¹ä¿¡æ¯', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('80', 'ç•™ç™½', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('81', 'ä¸¾æŠ¥', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('82', 'ä¿®æ”¹å¤´åƒ', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('83', 'å¼¹å±‚', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('84', 'åˆ†äº«', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('85', 'æ‰‹æœºæ³¨å†Œ', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('86', 'æŠ½å±‰å¼', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('87', 'å…³æ³¨', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('88', 'æ¨¡æ¿', '4', '1456110289', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('89', 'cover', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('90', '滤镜选择', '4', '1456110289', '1', '1');
-INSERT INTO `meiui_tag` VALUES ('91', '微信登录', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('90', 'æ»¤é•œé€‰æ‹©', '4', '1456110289', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('91', 'å¾®ä¿¡ç™»å½•', '4', '1456110289', '1', '1');
 
 -- ----------------------------
 -- Table structure for meiui_user
