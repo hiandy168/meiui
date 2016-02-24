@@ -7,7 +7,7 @@
 
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("products", "&larr; 返回") }}
+            {{ link_to("tag/list", "&larr; 返回") }}
         </li>
         <li class="pull-right">
             {{ submit_button("保存", "class": "btn btn-success") }}
