@@ -31,4 +31,72 @@ class PicController extends ControllerBase
         $this->view->page = $paginator->getPaginate();
         $this->view->companies = $pic;
     }
+
+    public function createAction()
+    {
+        if ($this->request->isPost()) {
+            $form = new ClassificationForm;
+            $company = new MeiuiTag();
+            $company->create_time = time();
+            $company->create_user = $_SESSION['auth']['id'];
+            $data = $this->request->getPost();
+            if (!$form->isValid($data, $company)) {
+                foreach ($form->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+                return $this->forward('pic/create');
+            }
+
+            if ($company->save() == false) {
+                foreach ($company->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+                return $this->forward('pic/create');
+            }
+
+            $form->clear();
+
+            $this->flash->success("pic was created successfully");
+            return $this->forward("pic/list");
+        } else {
+            $this->view->form = new ClassificationForm(null, array('edit' => true));
+        }
+    }
+
+    public function deleteAction(){
+        $id = $this->request->getQuery("id", "int");
+        if($id){
+            $user = $this->getPic($id);
+            if($user){
+                $chang = array('1'=>3,'3'=>2, '2'=>3);
+                $user->using_flag = $chang[$user->using_flag];
+                if (!$user->save()) {
+                    $this->flash->error('保存失败');
+                    return $this->forward("pic/list");
+                }else{
+                    $this->flash->success('保存成功');
+                    return $this->forward("pic/list");
+                }
+            } else {
+                $this->flash->error('保存失败');
+                return $this->forward("pic/list");
+            }
+        } else {
+            $this->flash->error('保存失败');
+            return $this->forward("pic/list");
+        }
+
+    }
+
+    private  function getPic($id){
+        $conditions = " id = :id: ";
+        $parameters = array(
+            "id" => "$id"
+        );
+        $changeClassification = MeiuiPic::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        return $changeClassification;
+    }
 }

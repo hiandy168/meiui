@@ -32,7 +32,7 @@
                 <td>{{ pic.id }}</td>
                 <td>{{ pic.app_name }}</td>
                 <td>{{ pic.pic_sys }}</td>
-                <td> <a href="{{ pic.pic_url }}">点击查看</div></td>
+                <td> <a href="{{ pic.pic_url }}">点击查看</a></td>
                 <td>{{ pic.pic_w }}*{{ pic.pic_w }}</td>
                 <td>{{ pic.brief }}</td>
                 <td>{{ pic.create_user }}</td>
@@ -46,10 +46,10 @@
             <tr>
                 <td colspan="10" align="right">
                     <div class="btn-group">
-                        {{ link_to("pic/list/", '<i class="icon-fast-backward"></i> First', "class": "btn btn-default") }}
-                        {{ link_to("pic/list/?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-default") }}
-                        {{ link_to("pic/list/?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-default") }}
-                        {{ link_to("pic/list/?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-default") }}
+                        {{ link_to("pic/list/", '<i class="icon-fast-backward"></i> 首页', "class": "btn btn-default") }}
+                        {{ link_to("pic/list/?page=" ~ page.before, '<i class="icon-step-backward"></i> 上页', "class": "btn btn-default") }}
+                        {{ link_to("pic/list/?page=" ~ page.next, '<i class="icon-step-forward"></i> 下页', "class": "btn btn-default") }}
+                        {{ link_to("pic/list/?page=" ~ page.last, '<i class="icon-fast-forward"></i> 末页', "class": "btn btn-default") }}
                         <span class="help-inline">{{ page.current }}/{{ page.total_pages }}</span>
                     </div>
                 </td>
