@@ -45,7 +45,7 @@ class Search extends Base
 
         foreach($all_pic-> items as $pic_value){
             $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
-            $user = MeiuiUsers::findFirst('id='.$pic->create_user);
+            $user = MeiuiUser::findFirst('id='.$pic->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
             $tag = '';
             if (count($tags) > 0) {
