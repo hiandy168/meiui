@@ -42,15 +42,20 @@ class Search extends Base
         $all_pic = $paginator->getPaginate();
         $data['status'] = '200200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
-
+        $app_auth = $_SESSION['app_auth'];
         foreach($all_pic-> items as $pic_value){
             $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
             $user = MeiuiUser::findFirst('id='.$pic->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
-            $tag = '';
+            $sys_tag = [];
+            $user_tag = [];
             if (count($tags) > 0) {
                 foreach($tags as $v){
-                    $tag .= $v-> tag_name . ',';
+                    if($v->user_id == $app_auth['app_user_id']){
+                        $user_tag[] = $v-> tag_name ;
+                    } else {
+                        $sys_tag[] = $v-> tag_name ;
+                    }
                 }
             }
             $data['data']['items'][] = array(
@@ -63,7 +68,8 @@ class Search extends Base
                 'user_pic' => $user->user_pic,
                 'app_name' => $pic->app_name,
                 'brief' => $pic->brief,
-                'tag' => $tag,
+                'sys_tag' => $sys_tag,
+                'user_tag' => $user_tag,
             );
         }
         $data['alert']['msg'] = $this->lang['request_success'];
