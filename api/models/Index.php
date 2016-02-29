@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL || ~E_NOTICE);
 use Phalcon\Paginator\Adapter\Model as Paginator;
 class Index extends Base
 {

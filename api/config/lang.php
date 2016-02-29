@@ -10,4 +10,5 @@ return array(
     'token_error' => 'token 错误',
     'lack_user_info' => '用户信息缺少',
     'save_user_error' => '用户保存出错',
+    'user_link_fail' => '用户关联失败',
 );

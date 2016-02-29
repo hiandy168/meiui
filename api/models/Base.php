@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL || ~E_NOTICE);
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 class Base
 {
