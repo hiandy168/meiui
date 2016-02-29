@@ -54,7 +54,11 @@ class Login extends Base
                     );
                 }
                 $data['status'] = '500200';
-                $data['data'] = array();
+                $data['data'] = array(
+                    'user_id' => $user->id,
+                    'user_name' => $user->username,
+                    'user_pic' => $user->user_pic,
+                );
                 $data['alert']['msg'] = $this->lang['request_success'];
                 die(json_encode($data));
             } else {

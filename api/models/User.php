@@ -72,10 +72,9 @@ class User extends Base
         return $user_tag;
     }
 
-    public function publish(){
+    public function center(){
         $data = $this->main;
         $data['status'] = '400200';
-        $data['data']['page'] = '1/15';
         $data['data']['user_name'] = '阿拉丁';
         $data['data']['user_id'] = '007';
         for($i=0; $i<10; $i++){
