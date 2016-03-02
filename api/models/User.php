@@ -91,22 +91,54 @@ class User extends Base
             $data['alert']['msg'] = $this->lang['lack_user_info'];
             die(json_encode($data));
         }
-        for($i=0; $i<10; $i++){
-            $data['data']['items'][] = array(
-                'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                'pic_detail' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                'pic_h' => '12',
-                'pic_w' => '24',
-                'pic_detail_h' => '12',
-                'pic_detail_w' => '24',
-                'brief' => '这是一个短很长很长的简介',
-                'app_id' => '520',
-                'user_id' => '007',
-                'user_name' => 'aaa',
-                'user_pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',
-                'app_name' => 'aaa',
-                'classification' => 'biaoqian'
+        $conditions = " user_id = :user_id: ";
+        $parameters = array(
+            "user_id" => intval($_GET['user_id']),
+        );
+        $user_tag = MeiuiUserTag::find(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        // 遍历用户标签
+        foreach($user_tag as $tag){
+            $conditions = " tag_id = :tag_id: group by pic_id";
+            $parameters = array(
+                "tag_id" => $tag->tag_id,
             );
+            $all_pic = MeiuiPicLinkTag::find(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            foreach($all_pic as $pic_value){
+                $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
+                $user = MeiuiUser::findFirst('id='.$pic->create_user);
+                $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
+                $sys_tag = [];
+                $user_tag = [];
+                if (count($tags) > 0) {
+                    foreach($tags as $v){
+                        if($v->user_id == intval($_GET['user_id'])){
+                            $user_tag[] = $v-> tag_name ;
+                        } else {
+                            $sys_tag[] = $v-> tag_name ;
+                        }
+                    }
+                }
+                $data['data']['tags'][$pic_value->tag_name]['items'][] = array(
+                    'pic_id' => $pic->id,
+                    'pic' => $pic->pic_url,
+                    'pic_h' => $pic->pic_h,
+                    'pic_w' => $pic->pic_w,
+                    'app_id' => $pic->app_id,
+                    'user_id' => $pic->create_user,
+                    'user_name' => $user->username,
+                    'user_pic' => $user->user_pic,
+                    'app_name' => $pic->app_name,
+                    'brief' => $pic->brief,
+                    'sys_tag' => $sys_tag,
+                    'user_tag' => $user_tag,
+                );
+            }
         }
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
