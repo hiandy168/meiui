@@ -75,8 +75,22 @@ class User extends Base
     public function center(){
         $data = $this->main;
         $data['status'] = '400200';
-        $data['data']['user_name'] = '阿拉丁';
-        $data['data']['user_id'] = '007';
+        $conditions = " id = :id: ";
+        $parameters = array(
+            "id" => intval($_GET['user_id']),
+        );
+        $user = MeiuiUser::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if ($user) {
+            $data['data']['user_pic'] = $user->pic;
+            $data['data']['user_name'] = $user->username;
+            $data['data']['user_id'] = $user->id;
+        } else {
+            $data['alert']['msg'] = $this->lang['lack_user_info'];
+            die(json_encode($data));
+        }
         for($i=0; $i<10; $i++){
             $data['data']['items'][] = array(
                 'pic' => 'www.baidu.com/img/baidu_jgylogo3.gif',

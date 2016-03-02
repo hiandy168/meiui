@@ -59,6 +59,7 @@ class Search extends Base
                 }
             }
             $data['data']['items'][] = array(
+                'pic_id' => $pic->id,
                 'pic' => $pic->pic_url,
                 'pic_h' => $pic->pic_h,
                 'pic_w' => $pic->pic_w,
