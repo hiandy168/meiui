@@ -9,48 +9,45 @@ class User extends Base
     public function init(){
 
     }
-    public function add_tag_link(){
+
+    public function edit_tag_link(){
         $data = $this->main;
         $data['status'] = '400200';
         $user_id = intval($_GET['user_id']);
         $pic_id = intval($_GET['pic_id']);
         $tag_name = addslashes($_GET['tag_name']);
-        if($user_id and $pic_id and $tag_name){
-            $tag_link_pic = $this->insert_tag_link_pic($tag_name, $pic_id, $user_id);
-            $rs = $this->collection($tag_link_pic->tag_id, $user_id);
-            if($rs){
-                $data['alert']['msg'] = $this->lang['request_success'];
-            } else {
-                $data['status'] = '402200';
-                $data['alert']['msg'] = $this->lang['user_link_fail'];
+        if($user_id and $pic_id){
+            $this->del_tag_link();
+            $tag_name = explode(',', $tag_name);
+            foreach($tag_name as $one_tag_name){
+                if($one_tag_name){
+                    $tag_link_pic = $this->insert_tag_link_pic($one_tag_name, $pic_id, $user_id);
+                    $this->collection($tag_link_pic->tag_id, $user_id);
+                    $data['alert']['msg'] = $this->lang['request_success'];
+                }
             }
         } else {
             $data['status'] = '401200';
             $data['alert']['msg'] = $this->lang['lack_user_info'];
         }
-
         die(json_encode($data));
     }
 
-    public function del_tag_link(){
+    private function del_tag_link(){
         $data = $this->main;
         $data['status'] = '400200';
-        $tag_id = intval($_GET['tag_id']);
         $user_id = intval($_GET['user_id']);
-        $conditions = " tag_id = :tag_id: and  user_id = :user_id: ";
+        $conditions = " user_id = :user_id: ";
         $parameters = array(
-            "tag_id" => $tag_id,
             "user_id" => $user_id,
         );
-        $user_tag = MeiuiUserTag::findFirst(array(
+        $user_tag = MeiuiUserTag::find(array(
             $conditions,
             "bind" => $parameters
         ));
         if($user_tag){
             $user_tag->delete();
         }
-        $data['alert']['msg'] = $this->lang['request_success'];
-        die(json_encode($data));
     }
     private function collection($tag_id, $user_id){
         $conditions = " tag_id = :tag_id: and  user_id = :user_id: ";
