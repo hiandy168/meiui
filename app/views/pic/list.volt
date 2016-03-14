@@ -47,7 +47,7 @@
             var brief = item.value;
             $.ajax({
               type: 'POST',
-              url: 'http://ui.mk.com/pic/changeBrief',
+              url: '/pic/changeBrief',
               data: {'id':id, 'brief':brief},
               success: function(data){
                 //alert(data.type);
