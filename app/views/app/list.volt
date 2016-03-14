@@ -27,7 +27,7 @@
             <tr>
                 <td>{{ app.id }}</td>
                 <td>{{ app.app_name }}</td>
-                <td>{{ app.app_sys }}</td>
+                <td>{{ app.getAppSysDetail() }}</td>
                 <td>{{ app.description }}</td>
                 <td>{{ app.create_user }}</td>
                 <td>{{ date("Y-m-d H:i:s",app.create_time) }}</td>

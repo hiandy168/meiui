@@ -15,7 +15,6 @@
             <th>分类数</th>
             <th>收藏总数</th>
             <th>上传数</th>
-            <th>操作</th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +25,6 @@
             <td>{{ user.getMeiuiUserData().user_classification_count }}</td>
             <td>{{ user.getMeiuiUserData().user_collection_count }}</td>
             <td>{{ user.getMeiuiUserData().user_upload_count }}</td>
-            <td width="7%">{{ link_to("user/delete/?id=" ~ user.id, '<i class="glyphicon glyphicon-remove"></i> 删除', "class": "btn btn-default") }}</td>
         </tr>
     {% if loop.last %}
     </tbody>

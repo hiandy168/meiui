@@ -36,4 +36,13 @@ class MeiuiApp extends Model
         }
     }
 
+    public function getAppSysDetail(){
+        switch($this-> app_sys){
+            case 1:
+                return 'android';
+            case 2:
+                return 'ios';
+        }
+    }
+
 }

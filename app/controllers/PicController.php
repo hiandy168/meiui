@@ -99,4 +99,20 @@ class PicController extends ControllerBase
         ));
         return $changeClassification;
     }
+
+    public function changeBriefAction(){
+        $id = intval($_POST['id']);
+        $data['type'] = false;
+        if($id){
+            $pic = $this->getPic($id);
+            if($pic){
+                $chang = addslashes($_POST['brief']);
+                $pic->brief = $chang;
+                if ($pic->save()) {
+                    $data['type'] = true;
+                }
+            }
+       }
+       die(json_encode($data));
+    }
 }

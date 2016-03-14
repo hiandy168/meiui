@@ -32,15 +32,31 @@
                 <td>{{ pic.id }}</td>
                 <td>{{ pic.app_name }}</td>
                 <td>{{ pic.pic_sys }}</td>
-                <td> <a href="{{ pic.pic_url }}">点击查看</a></td>
+                <td> <a href="{{ pic.pic_url }}" target="_blank">点击查看</a></td>
                 <td>{{ pic.pic_w }}*{{ pic.pic_w }}</td>
-                <td>{{ pic.brief }}</td>
+                <td><input id="pic_brief_{{ pic.id }}" name="pic_brief_keyword" class="form-control" value="{{ pic.brief }}"  onblur="myFunction(this,{{ pic.id }});" /></td>
                 <td>{{ pic.create_user }}</td>
                 <td>{{ date("Y-m-d H:i:s",pic.create_time) }}</td>
                 <td>{{ pic.getFlagDetail()['0'] }}</td>
                 <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, '<i class="glyphicon glyphicon-remove"></i> '~ pic.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
             </tr>
         </tbody>
+        <script>
+        function myFunction(item,id)
+        {
+            var brief = item.value;
+            $.ajax({
+              type: 'POST',
+              url: 'http://ui.mk.com/pic/changeBrief',
+              data: {'id':id, 'brief':brief},
+              success: function(data){
+                //alert(data.type);
+              },
+              dataType: 'json'
+            });
+        }
+
+        </script>
     {% if loop.last %}
         <tbody>
             <tr>
