@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL || ~E_NOTICE);
 class InstallController extends ControllerBase
 {
     public function initialize()
@@ -9,8 +9,7 @@ class InstallController extends ControllerBase
 
     public function indexAction()
     {
-//        $this-> listDir(APP_PATH . "public/load/init_data/APP");
-//        die();
+        $this-> listDir(APP_PATH . "public/load/init_data/APP");
     }
 
     public function listDir($dir)
@@ -28,12 +27,13 @@ class InstallController extends ControllerBase
                     } else {
                         if($file!="." && $file!="..")
                         {
-
+                            $file_info = getimagesize($dir.$file);
+                            $file = iconv ('GBK', 'utf-8', $file);
                             $dir_arr = explode('APP/', $dir);
                             $app = iconv ('GBK', 'utf-8', rtrim($dir_arr[1], '/'));
                             $tags = explode('.', $file);
-                            if($tags[1]=='jpg'){
-                                $this-> insert_data($app, iconv ('GBK', 'utf-8', $file) , getimagesize($dir.$file));
+                            if($tags[1]=='jpg' or $tags[1]=='PNG'){
+                                $this-> insert_data($app, $file , $file_info);
                             }
 //                        $real_file =  $app_name . ',' .  $file."<br>";
                         }
@@ -61,7 +61,7 @@ class InstallController extends ControllerBase
         }
         //再判断PIC 是否存在，不存在新建PIC
         $tags = explode('.', $file);
-        $pic_url = 'http://www.meiui.me/'.$app.'/'.$file;
+        $pic_url = 'http://www.meiui.me/load/init_data/APP/'.$app.'/'.$file;
 
         $conditions = " pic_url = :pic_url: ";
         $parameters = array(
@@ -103,6 +103,7 @@ class InstallController extends ControllerBase
         if(!$db_tag){
             $db_tag = new MeiuiTag();
             $db_tag-> tag_name = $tag;
+            $db_tag-> tag_type = 2;
             $db_tag-> create_user = $_SESSION['auth']['id'];
             $db_tag-> create_time = time();
             $db_tag->save();

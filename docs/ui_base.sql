@@ -88,7 +88,7 @@ CREATE TABLE `meiui_pic_link_tag` (
   `user_id` int(10) NOT NULL COMMENT '用户id',
   `pic_id` int(10) NOT NULL COMMENT '图片id',
   `tag_id` int(10) NOT NULL COMMENT '分类标签ID',
-  `tag_type` tinyint(1) NOT NULL DEFAULT '2' COMMENT '标签类型 1 系统  2 用户',
+  `tag_type` tinyint(1) NOT NULL DEFAULT '2' COMMENT '标签类型 1 用户  2 系统',
   `tag_name` varchar(100) NOT NULL COMMENT '标签名字',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

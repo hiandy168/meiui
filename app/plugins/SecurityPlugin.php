@@ -56,6 +56,7 @@ class SecurityPlugin extends Plugin
 //				'about'      => array('index'),
 //				'user'       => array('register'),
 				'api'       => array('index'),
+				'install'       => array('index'),
 //                'feedback'   => array('index', 'send'),
 				'errors'     => array('show401', 'show404', 'show500'),
 				'session'    => array('index', 'register', 'start', 'end'),
