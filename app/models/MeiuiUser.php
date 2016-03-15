@@ -44,6 +44,8 @@ class MeiuiUser extends Model
     {
         if ($this->source == '1') {
             return '微信';
+        } else if($this->source == '3'){
+            return '后台用户';
         } else {
             return '网站注册';
         }

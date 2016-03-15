@@ -29,8 +29,10 @@ class UserController extends ControllerBase
                 $this->flash->error('Passwords are different');
                 return false;
             }
-            $user = new MeiuiUsers();
+            $user = new MeiuiUser();
             $user->username = $username;
+            $user->user_pic = 'http://www.meiui.me/img/head.jpg';
+            $user->source = 2;
             $user->password = sha1($password);
             $user->phone = $phone;
             $user->email = $email;

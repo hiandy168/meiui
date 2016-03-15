@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-04 15:51:41
+Date: 2016-03-15 13:59:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -93,9 +93,9 @@ CREATE TABLE `meiui_pic` (
 -- ----------------------------
 -- Records of meiui_pic
 -- ----------------------------
-INSERT INTO `meiui_pic` VALUES ('1', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default', '6', '1453362801', '2');
-INSERT INTO `meiui_pic` VALUES ('2', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default', '6', '1453362801', '3');
-INSERT INTO `meiui_pic` VALUES ('3', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default', '6', '1453362801', '3');
+INSERT INTO `meiui_pic` VALUES ('1', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default as asd', '6', '1453362801', '2');
+INSERT INTO `meiui_pic` VALUES ('2', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default  aaaaa', '6', '1453362801', '3');
+INSERT INTO `meiui_pic` VALUES ('3', '8', 'path', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default gffgf', '6', '1453362801', '3');
 INSERT INTO `meiui_pic` VALUES ('4', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default', '6', '1453362801', '3');
 INSERT INTO `meiui_pic` VALUES ('5', '8', 'twitter', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'null brief default', '6', '1453362801', '3');
 INSERT INTO `meiui_pic` VALUES ('12', '84', 'Enjoy', '2', 'http://7nar8n.com1.z0.glb.clouddn.com/%E6%B3%A8%E5%86%8C%EF%BC%8C%E7%99%BB%E5%BD%95.jpg', '750', '1334', 'brief default tag  Enjoy,信息流', '4', '1455955960', '1');
@@ -156,7 +156,7 @@ CREATE TABLE `meiui_pic_link_tag` (
   `tag_type` tinyint(1) NOT NULL DEFAULT '2' COMMENT '标签类型 1 系统  2 用户',
   `tag_name` varchar(100) NOT NULL COMMENT '标签名字',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=332 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=336 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_pic_link_tag
@@ -293,6 +293,10 @@ INSERT INTO `meiui_pic_link_tag` VALUES ('328', '4', '87', '73', '2', '详情页
 INSERT INTO `meiui_pic_link_tag` VALUES ('329', '4', '87', '80', '2', '留白');
 INSERT INTO `meiui_pic_link_tag` VALUES ('330', '6', '23', '93', '2', 'APP');
 INSERT INTO `meiui_pic_link_tag` VALUES ('331', '6', '40', '94', '2', 'test_test');
+INSERT INTO `meiui_pic_link_tag` VALUES ('332', '6', '6', '2', '2', 'login');
+INSERT INTO `meiui_pic_link_tag` VALUES ('333', '6', '6', '3', '2', 'validate');
+INSERT INTO `meiui_pic_link_tag` VALUES ('334', '6', '6', '93', '2', 'APP');
+INSERT INTO `meiui_pic_link_tag` VALUES ('335', '6', '6', '95', '2', 'new');
 
 -- ----------------------------
 -- Table structure for meiui_search
@@ -329,7 +333,7 @@ CREATE TABLE `meiui_tag` (
   `tag_type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态1 个人  2 系统',
   `using_flag` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态1 显示  2 屏蔽',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_tag
@@ -380,6 +384,7 @@ INSERT INTO `meiui_tag` VALUES ('91', '微信登录', '4', '1456110289', '2', '1
 INSERT INTO `meiui_tag` VALUES ('92', 'ttst', '4', '1456124116', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('93', 'APP', '4', '1456733945', '1', '1');
 INSERT INTO `meiui_tag` VALUES ('94', 'test_test', '6', '1456902903', '1', '1');
+INSERT INTO `meiui_tag` VALUES ('95', 'new', '6', '1457597887', '1', '1');
 
 -- ----------------------------
 -- Table structure for meiui_user
@@ -450,15 +455,10 @@ CREATE TABLE `meiui_user_tag` (
   `created_at` int(10) unsigned NOT NULL COMMENT '时间戳',
   PRIMARY KEY (`id`),
   KEY `tag_id` (`tag_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_user_tag
 -- ----------------------------
-INSERT INTO `meiui_user_tag` VALUES ('2', '6', '1', '0');
-INSERT INTO `meiui_user_tag` VALUES ('3', '6', '2', '0');
-INSERT INTO `meiui_user_tag` VALUES ('4', '6', '3', '0');
-INSERT INTO `meiui_user_tag` VALUES ('5', '6', '4', '0');
-INSERT INTO `meiui_user_tag` VALUES ('6', '6', '5', '0');
-INSERT INTO `meiui_user_tag` VALUES ('7', '6', '6', '0');
-INSERT INTO `meiui_user_tag` VALUES ('39', '6', '94', '1456902903');
+INSERT INTO `meiui_user_tag` VALUES ('54', '6', '95', '1457599089');
+INSERT INTO `meiui_user_tag` VALUES ('53', '6', '2', '1457599089');
