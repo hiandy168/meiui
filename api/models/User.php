@@ -192,6 +192,7 @@ class User extends Base
             $db_tag_link_pic-> pic_id = $pic_id;
             $db_tag_link_pic-> user_id = $user_id;
             $db_tag_link_pic-> tag_id = $tag->id;
+            $db_tag_link_pic-> tag_type = 1;
             $db_tag_link_pic-> tag_name = $tag->tag_name;
             $db_tag_link_pic->save();
         }

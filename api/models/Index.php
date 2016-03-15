@@ -38,7 +38,7 @@ class Index extends Base
                 foreach($tags as $v){
                     if(in_array($v->tag_id, $login_collect_tag)){
                         $user_tag[] = $v-> tag_name ;
-                    } else {
+                    } else if($v->tag_type == 2){
                         $sys_tag[] = $v-> tag_name ;
                     }
                 }
