@@ -169,6 +169,7 @@ class User extends Base
         if(!$db_tag){
             $db_tag = new MeiuiTag();
             $db_tag-> tag_name = $tag;
+            $db_tag-> tag_type = 1;
             $db_tag-> create_user = $user_id;
             $db_tag-> create_time = time();
             $db_tag->save();
