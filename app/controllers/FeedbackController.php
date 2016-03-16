@@ -23,7 +23,6 @@ class FeedbackController extends ControllerBase
         $search = MeiuiFeedback::find($parameters);
         if (count($search) == 0) {
             $this->flash->notice("The search did not find any feedback");
-            return $this->forward("search/list");
         }
 
         $paginator = new Paginator(array(

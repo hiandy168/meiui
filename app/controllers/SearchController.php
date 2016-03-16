@@ -21,8 +21,7 @@ class SearchController extends ControllerBase
 
         $search = MeiuiSearch::find("del_flag = 1");
         if (count($search) == 0) {
-            $this->flash->notice("The search did not find any classification");
-            return $this->forward("search/list");
+            $this->flash->notice("The search did not find any data");
         }
 
         $paginator = new Paginator(array(
