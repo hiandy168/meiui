@@ -45,33 +45,35 @@ class Search extends Base
         $app_auth = $_SESSION['app_auth'];
         foreach($all_pic-> items as $pic_value){
             $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
-            $user = MeiuiUser::findFirst('id='.$pic->create_user);
-            $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
-            $sys_tag = [];
-            $user_tag = [];
-            if (count($tags) > 0) {
-                foreach($tags as $v){
-                    if($v->user_id == $app_auth['app_user_id']){
-                        $user_tag[] = $v-> tag_name ;
-                    } else {
-                        $sys_tag[] = $v-> tag_name ;
+            if($pic){
+                $user = MeiuiUser::findFirst('id='.$pic->create_user);
+                $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
+                $sys_tag = [];
+                $user_tag = [];
+                if (count($tags) > 0) {
+                    foreach($tags as $v){
+                        if($v->user_id == $app_auth['app_user_id']){
+                            $user_tag[] = $v-> tag_name ;
+                        } else {
+                            $sys_tag[] = $v-> tag_name ;
+                        }
                     }
                 }
+                $data['data']['items'][] = array(
+                    'pic_id' => $pic->id,
+                    'pic' => $pic->pic_url,
+                    'pic_h' => $pic->pic_h,
+                    'pic_w' => $pic->pic_w,
+                    'app_id' => $pic->app_id,
+                    'user_id' => $pic->create_user,
+                    'user_name' => $user->username,
+                    'user_pic' => $user->user_pic,
+                    'app_name' => $pic->app_name,
+                    'brief' => $pic->brief,
+                    'sys_tag' => $sys_tag,
+                    'user_tag' => $user_tag,
+                );
             }
-            $data['data']['items'][] = array(
-                'pic_id' => $pic->id,
-                'pic' => $pic->pic_url,
-                'pic_h' => $pic->pic_h,
-                'pic_w' => $pic->pic_w,
-                'app_id' => $pic->app_id,
-                'user_id' => $pic->create_user,
-                'user_name' => $user->username,
-                'user_pic' => $user->user_pic,
-                'app_name' => $pic->app_name,
-                'brief' => $pic->brief,
-                'sys_tag' => $sys_tag,
-                'user_tag' => $user_tag,
-            );
         }
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
