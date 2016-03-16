@@ -66,7 +66,7 @@ CREATE TABLE `meiui_pic` (
   `pic_url` varchar(250) NOT NULL DEFAULT '' COMMENT '图片URL 地址',
   `pic_w` int(6) NOT NULL DEFAULT '0' COMMENT '图片宽',
   `pic_h` int(6) NOT NULL DEFAULT '0' COMMENT '图片高',
-  `brief` mediumtext NOT NULL COMMENT '简介',
+  `brief` varchar(255) NOT NULL DEFAULT '' COMMENT '简介',
   `create_user` int(10) NOT NULL COMMENT '创建者id',
   `create_time` int(11) NOT NULL COMMENT '创建时间',
   `using_flag` int(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态1 未审核通过  2 删除 3 显示',
