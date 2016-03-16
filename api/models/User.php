@@ -121,6 +121,7 @@ class User extends Base
                         }
                     }
                 }
+                $data['data']['tags'][$pic_value->tag_name]['tag_name'] = $pic_value->tag_name;
                 $data['data']['tags'][$pic_value->tag_name]['items'][] = array(
                     'pic_id' => $pic->id,
                     'pic' => $pic->pic_url,
