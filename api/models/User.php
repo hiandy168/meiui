@@ -106,6 +106,7 @@ class User extends Base
                 $conditions,
                 "bind" => $parameters
             ));
+            $tag_tree = array();
             foreach($all_pic as $pic_value){
                 $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
                 $user = MeiuiUser::findFirst('id='.$pic->create_user);
@@ -121,8 +122,8 @@ class User extends Base
                         }
                     }
                 }
-                $data['data']['tags'][$pic_value->tag_name]['tag_name'] = $pic_value->tag_name;
-                $data['data']['tags'][$pic_value->tag_name]['items'][] = array(
+                $tag_tree['tag_name'] = $pic_value->tag_name;
+                $tag_tree['items'][] = array(
                     'pic_id' => $pic->id,
                     'pic' => $pic->pic_url,
                     'pic_h' => $pic->pic_h,
@@ -137,6 +138,7 @@ class User extends Base
                     'user_tag' => $user_tag,
                 );
             }
+            $data['data']['tags'][] = $tag_tree;
         }
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
