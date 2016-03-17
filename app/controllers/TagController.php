@@ -24,7 +24,6 @@ class TagController extends ControllerBase
         $classification = MeiuiTag::find($parameters);
         if (count($classification) == 0) {
             $this->flash->notice("The search did not find any classification");
-            return $this->forward("classification/create");
         }
 
         $paginator = new Paginator(array(
