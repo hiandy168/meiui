@@ -19,8 +19,8 @@ class Index extends Base
             "page"  => $page
         ));
         $all_pic = $paginator->getPaginate();
-        $data['status'] = '100200';
-        $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
+        $this -> main['status'] = '100200';
+        $this -> main['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
         $login_user_id = intval($_GET['user_id']);
         $login_user_collect = MeiuiUserTag::find('user_id='.$login_user_id);
         $login_collect_tag = [];
@@ -43,7 +43,7 @@ class Index extends Base
                     }
                 }
             }
-            $data['data']['items'][] = array(
+            $this -> main['data']['items'][] = array(
                 'pic_id' => $value->id,
                 'pic' => $value->pic_url,
                 'pic_h' => $value->pic_h,
@@ -58,6 +58,7 @@ class Index extends Base
                 'user_tag' => $user_tag,
             );
         }
-        die(json_encode($data));
+        $this -> main['alert']['msg'] = $this->lang['request_success'];
+        die(json_encode($this -> main));
     }
 }

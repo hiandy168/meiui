@@ -1,0 +1,82 @@
+﻿测试地址：http://52.68.155.92
+正式地址：meiui.me
+
+------------------REQUEST 规范----------------------
+请求方式：HTTP  POST/GET
+
+{
+	token: "ac8d164d217a56459cfcac8d31e2085b",  //md5('meiui' + 'mac' + '20160107')
+	mac: "identification",  // 移动机器端唯一标识
+	form1: "any_data",
+	form2: "any_data"
+}
+
+/api/index/?function=Index/index&mac=12&token=ae7b155ebd33acb4e69b70446c800d91
+------------------REQUEST 规范----------------------
+
+
+
+
+
+------------------RESPONSE 规范---------------------
+
+
+返回方式：HTTP  JSON 格式
+
+{
+	status: "100200", // 前三位表示业务逻辑（100：主页，200：搜索默认页，300：消息，400：用户信息，500：登陆） 后三位尽量HTTP 协议一致，有待完善
+	data: { // 详细业务数据
+	    page: "2/49", // 固定有 page 参数
+		内部数据根据接口不同而不同
+	},
+	alert: { // 返回消息格式
+		msg: "成功"
+	}
+}
+
+------------------RESPONSE 规范---------------------
+
+
+一、首页
+1、首页数据接口（请求时，增加用户id字段，用于分别是否返回个人标签）
+/api/index/?function=Index/index&mac=meiui&page=1&token=7b41408d1993764335d57232973934de
+
+2、标签的编辑接口（同时加入到我的收藏）
+/api/index/?function=User/edit_tag_link&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=6&pic_id=6&tag_name=login,new
+
+
+二、搜索
+1、热门搜索的关键字
+/api/index/?function=Search/index&mac=meiui&token=7b41408d1993764335d57232973934de
+
+2、搜索结果（接口返回数据接口和首页一样）
+/api/index/?function=Search/search&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&keyword=信息
+
+
+四、我
+
+1、登陆是新建账号接口
+/api/index/?function=Login/weixin&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&username=ap_t&user_pic=http://www.meiui.me/img/head.jpg
+
+2、获取个人信息（我的标签、我的上传） (需要修改 下周二给你)
+/api/index/?function=User/center&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=6
+
+
+-----------------------------------------------------接口测试逻辑------------------------------------------------------------
+1. 首页数据接口（/api/index/?function=Index/index&mac=meiui&page=2&token=7b41408d1993764335d57232973934de）
+
+2. 热门搜索的关键字 （/api/index/?function=Search/index&mac=meiui&token=7b41408d1993764335d57232973934de）
+
+3. 搜索结果（/api/index/?function=Search/search&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&keyword=信息）
+
+4. 登陆是新建账号接口（/api/index/?function=Login/weixin&mac=meiui&token=7b41408d1993764335d57232973934de&username=ap_t&user_pic=http://www.meiui.me/img/head.jpg）
+
+5. 标签的编辑接口（/api/index/?function=User/edit_tag_link&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_id=6&tag_name=login,new）
+
+6. 获取个人信息 （/api/index/?function=User/center&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2）
+
+7. 首页数据接口（/api/index/?function=Index/index&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&user_id=2）
+
+
+
+-----------------------------------------------------接口测试逻辑------------------------------------------------------------
