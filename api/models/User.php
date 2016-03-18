@@ -37,9 +37,11 @@ class User extends Base
         $data = $this->main;
         $data['status'] = '400200';
         $user_id = intval($_GET['user_id']);
-        $conditions = " user_id = :user_id: ";
+        $pic_id = intval($_GET['pic_id']);
+        $conditions = " user_id = :user_id: and  pic_id = :pic_id: ";
         $parameters = array(
             "user_id" => $user_id,
+            "pic_id" => $pic_id,
         );
         $user_tag = MeiuiUserTag::find(array(
             $conditions,
@@ -98,34 +100,36 @@ class User extends Base
             $conditions,
             "bind" => $parameters
         ));
-        // 遍历用户标签
+        $tag_tree = [];
+        $login_collect_tag = [];
         foreach($user_tag as $tag){
-            $conditions = " tag_id = :tag_id: group by pic_id";
-            $parameters = array(
-                "tag_id" => $tag->tag_id,
-            );
-            $all_pic = MeiuiPicLinkTag::find(array(
-                $conditions,
-                "bind" => $parameters
-            ));
-            $tag_tree = array();
-            foreach($all_pic as $pic_value){
-                $pic = MeiuiPic::findFirst('id='.$pic_value->pic_id);
+            $tag_tree[$tag->tag_id][] = $tag;
+            $login_collect_tag[] = $tag->tag_id;
+        }
+        // 遍历用户标签
+        foreach($tag_tree as $tag_key => $tag_value){
+            $tag_arr = array();
+            foreach($tag_value as $one_pic){
+                $pic = MeiuiPic::findFirst('id='.$one_pic->pic_id);
                 $user = MeiuiUser::findFirst('id='.$pic->create_user);
                 $tags = MeiuiPicLinkTag::find('pic_id='.$pic->id);
                 $sys_tag = [];
                 $user_tag = [];
+                $tag_name = '';
                 if (count($tags) > 0) {
                     foreach($tags as $v){
-                        if($v->user_id == intval($_GET['user_id'])){
+                        if($v-> tag_id == $tag_key){
+                            $tag_name =  $v-> tag_name;
+                        }
+                        if(in_array($v->tag_id, $login_collect_tag)){
                             $user_tag[] = $v-> tag_name ;
-                        } else {
+                        } else if($v->tag_type == 2){
                             $sys_tag[] = $v-> tag_name ;
                         }
                     }
                 }
-                $tag_tree['tag_name'] = $pic_value->tag_name;
-                $tag_tree['items'][] = array(
+                $tag_arr['tag_name'] = $tag_name;
+                $tag_arr['items'][] = array(
                     'pic_id' => $pic->id,
                     'pic' => $pic->pic_url,
                     'pic_h' => $pic->pic_h,
@@ -140,7 +144,7 @@ class User extends Base
                     'user_tag' => $user_tag,
                 );
             }
-            $data['data']['tags'][] = $tag_tree;
+            $data['data']['tags'][] = $tag_arr;
         }
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
