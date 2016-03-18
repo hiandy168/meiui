@@ -52,6 +52,11 @@
 2、搜索结果（接口返回数据接口和首页一样）
 /api/index/?function=Search/search&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&keyword=信息
 
+三、消息
+
+1. 添加意见反馈
+/api/index/?function=User/add_feedback&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&msg=no_app
+
 
 四、我
 

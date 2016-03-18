@@ -152,11 +152,23 @@ class User extends Base
         die(json_encode($data));
     }
 
-    public function feedback(){
+    public function add_feedback(){
         $data = $this->main;
         $data['status'] = '400200';
-        $data['data'] = array();
-        $data['alert']['msg'] = $this->lang['feedback_success'];
+        if(addslashes($_GET['msg']) and intval($_GET['user_id'])){
+            $feedback = new MeiuiFeedback();
+            $feedback->msg = addslashes($_GET['msg']);
+            $feedback->username = intval($_GET['user_id']);
+            $feedback->phone = '15068159661';
+            $feedback->created_at = time();
+            if ($feedback->save() == false) {
+                $data['alert']['msg'] = $this->lang['feedback_fail'];
+            } else {
+                $data['alert']['msg'] = $this->lang['feedback_success'];
+            }
+        } else {
+            $data['alert']['msg'] = $this->lang['feedback_fail'];
+        }
         die(json_encode($data));
     }
 
