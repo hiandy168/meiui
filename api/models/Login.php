@@ -21,6 +21,7 @@ class Login extends Base
                 if(!$user){
                     $user = new MeiuiUser();
                     $user->username = $_GET['username'];
+                    $user->nickname = $_GET['nickname'];
                     $user->user_pic = $_GET['user_pic'];
                     $user->created_at = time();
                     $user->password = sha1('meiui');
@@ -42,21 +43,21 @@ class Login extends Base
                         }
                         $_SESSION['app_auth'] = array(
                             'app_user_id'=> $user->id,
-                            'app_user_name'=> $user->username,
+                            'app_user_name'=> $user->nickname,
                             'app_user_pic'=>$user->user_pic
                         );
                     }
                 } else {
                     $_SESSION['app_auth'] = array(
                         'app_user_id'=> $user->id,
-                        'app_user_name'=> $user->username,
+                        'app_user_name'=> $user->nickname,
                         'app_user_pic'=>$user->user_pic
                     );
                 }
                 $data['status'] = '500200';
                 $data['data'] = array(
                     'user_id' => $user->id,
-                    'user_name' => $user->username,
+                    'user_name' => $user->nickname,
                     'user_pic' => $user->user_pic,
                 );
                 $data['alert']['msg'] = $this->lang['request_success'];

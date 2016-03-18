@@ -86,7 +86,7 @@ class User extends Base
         ));
         if ($user) {
             $data['data']['user_pic'] = $user->user_pic;
-            $data['data']['user_name'] = $user->username;
+            $data['data']['user_name'] = $user->nickname;
             $data['data']['user_id'] = $user->id;
         } else {
             $data['alert']['msg'] = $this->lang['lack_user_info'];
