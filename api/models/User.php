@@ -22,7 +22,7 @@ class User extends Base
             foreach($tag_name as $one_tag_name){
                 if($one_tag_name){
                     $tag_link_pic = $this->insert_tag_link_pic($one_tag_name, $pic_id, $user_id);
-                    $this->collection($tag_link_pic->tag_id, $user_id);
+                    $this->collection($tag_link_pic->tag_id, $user_id, $pic_id);
                     $data['alert']['msg'] = $this->lang['request_success'];
                 }
             }
@@ -49,11 +49,12 @@ class User extends Base
             $user_tag->delete();
         }
     }
-    private function collection($tag_id, $user_id){
-        $conditions = " tag_id = :tag_id: and  user_id = :user_id: ";
+    private function collection($tag_id, $user_id, $pic_id){
+        $conditions = " tag_id = :tag_id: and  user_id = :user_id:  and  pic_id = :pic_id: ";
         $parameters = array(
             "tag_id" => $tag_id,
             "user_id" => $user_id,
+            "pic_id" => $pic_id,
         );
         $user_tag = MeiuiUserTag::findFirst(array(
             $conditions,
@@ -63,6 +64,7 @@ class User extends Base
             $user_tag = new MeiuiUserTag();
             $user_tag-> tag_id = $tag_id;
             $user_tag-> user_id = $user_id;
+            $user_tag-> pic_id = $pic_id;
             $user_tag-> created_at = time();
             $user_tag->save();
         }
@@ -81,7 +83,7 @@ class User extends Base
             "bind" => $parameters
         ));
         if ($user) {
-            $data['data']['user_pic'] = $user->pic;
+            $data['data']['user_pic'] = $user->user_pic;
             $data['data']['user_name'] = $user->username;
             $data['data']['user_id'] = $user->id;
         } else {

@@ -63,7 +63,7 @@
 1、登陆是新建账号接口
 /api/index/?function=Login/weixin&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&username=ap_t&user_pic=http://www.meiui.me/img/head.jpg
 
-2、获取个人信息（我的标签、我的上传） (需要修改 下周二给你)
+2、获取个人信息（我的标签、我的上传）
 /api/index/?function=User/center&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=6
 
 
