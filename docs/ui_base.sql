@@ -180,6 +180,7 @@ DROP TABLE IF EXISTS `meiui_user_tag`;
 CREATE TABLE `meiui_user_tag` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `user_id` int(10) unsigned NOT NULL COMMENT '用户ID',
+  `pic_id` int(10) NOT NULL COMMENT '图片id',
   `tag_id` int(10) unsigned NOT NULL COMMENT '用户关联标签ID',
   `created_at` int(10) unsigned NOT NULL COMMENT '时间戳',
   PRIMARY KEY (`id`),
