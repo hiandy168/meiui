@@ -51,6 +51,7 @@ class User extends Base
             $user_tag->delete();
         }
     }
+
     private function collection($tag_id, $user_id, $pic_id){
         $conditions = " tag_id = :tag_id: and  user_id = :user_id:  and  pic_id = :pic_id: ";
         $parameters = array(
@@ -170,7 +171,7 @@ class User extends Base
             if ($feedback->save() == false) {
                 $data['alert']['msg'] = $this->lang['feedback_fail'];
             } else {
-                $data['alert']['msg'] = $this->lang['feedback_success'];
+                $data['alert']['msg'] = $this->lang['request_success'];
             }
         } else {
             $data['alert']['msg'] = $this->lang['feedback_fail'];
