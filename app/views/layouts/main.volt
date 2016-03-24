@@ -18,6 +18,6 @@
     {{ content() }}
     <hr>
     <footer>
-        <p>&copy; Company 2015</p>
+        <p style='text-align: center;'>麻乌科技 Copyright &copy; 2016 沪ICP备16009432号-1 联系方式：185-2159-8476</p>
     </footer>
 </div>

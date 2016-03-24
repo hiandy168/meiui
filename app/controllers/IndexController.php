@@ -10,9 +10,6 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        return $this->forward('session/index');die();
-        if (!$this->request->isPost()) {
-            $this->flash->notice('好消息！好消息！ 全新的MEIUI 上线了！');
-        }
+        $this->view->setLayoutsDir("index/");
     }
 }
