@@ -9,6 +9,10 @@ class Base
     public $sys = array();
 
     public function __construct(){
+        $this -> lang = require(APP_PATH . 'api/config/lang.php');
+        $this -> status = require(APP_PATH . 'api/config/status.php');
+        $this -> sys = require(APP_PATH . 'api/config/sys.php');
+        $this -> validator();
         $this -> main = array(
             'status' => '', // 前三位表示业务逻辑（100：主页，200：搜索默认页，300：消息，400：用户信息，500：登陆） 后三位尽量HTTP 协议一致，有待完善
             'data' => array( // 详细业务数据
@@ -18,10 +22,6 @@ class Base
                 'msg' => $this->lang['request_success']
             ),
         );
-        $this -> lang = require(APP_PATH . 'api/config/lang.php');
-        $this -> status = require(APP_PATH . 'api/config/status.php');
-        $this -> sys = require(APP_PATH . 'api/config/sys.php');
-        $this -> validator();
     }
     // TODO 需要把GET 改成 POST
     public function validator(){
