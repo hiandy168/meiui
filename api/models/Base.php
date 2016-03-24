@@ -15,7 +15,7 @@ class Base
                 'page' => '0/0'
             ),
             'alert' => array( // 返回消息格式
-                'msg' => ''
+                'msg' => $this->lang['request_success']
             ),
         );
         $this -> lang = require(APP_PATH . 'api/config/lang.php');

@@ -113,6 +113,12 @@ CREATE TABLE `meiui_search` (
 -- Records of meiui_search
 -- ----------------------------
 
+INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('1', '邮箱提醒', '0', '1');
+INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('2', '权限申请', '0', '1');
+INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('3', '验证码', '0', '1');
+INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('4', '注册页面', '0', '1');
+INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('5', '通讯录', '0', '1');
+
 -- ----------------------------
 -- Table structure for meiui_tag
 -- ----------------------------

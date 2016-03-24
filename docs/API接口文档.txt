@@ -74,7 +74,7 @@
 
 3. 搜索结果（/api/index/?function=Search/search&mac=meiui&page=1&token=7b41408d1993764335d57232973934de&keyword=信息）
 
-4. 登陆是新建账号接口（/api/index/?function=Login/weixin&mac=meiui&token=7b41408d1993764335d57232973934de&username=ap_t&user_pic=http://www.meiui.me/img/head.jpg）
+4. 登陆是新建账号接口（/api/index/?function=Login/weixin&mac=meiui&token=7b41408d1993764335d57232973934de&username=ap_t&nickname=ap_nickname&user_pic=http://www.meiui.me/img/head.jpg）
 
 5. 标签的编辑接口（/api/index/?function=User/edit_tag_link&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_id=6&tag_name=login,new）
 
