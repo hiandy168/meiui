@@ -16,19 +16,25 @@ class User extends Base
         $user_id = intval($_GET['user_id']);
         $pic_id = intval($_GET['pic_id']);
         $tag_name = addslashes($_GET['tag_name']);
-        if($user_id and $pic_id){
-            $this->del_tag_link();
-            $tag_name = explode(',', $tag_name);
-            foreach($tag_name as $one_tag_name){
-                if($one_tag_name){
-                    $tag_link_pic = $this->insert_tag_link_pic($one_tag_name, $pic_id, $user_id);
-                    $this->collection($tag_link_pic->tag_id, $user_id, $pic_id);
-                    $data['alert']['msg'] = $this->lang['request_success'];
-                }
-            }
-        } else {
+        $len_tag = strlen($tag_name);
+        if($len_tag > 99){
             $data['status'] = '401200';
             $data['alert']['msg'] = $this->lang['lack_user_info'];
+        } else {
+            if($user_id and $pic_id){
+                $this->del_tag_link();
+                $tag_name = explode(',', $tag_name);
+                foreach($tag_name as $one_tag_name){
+                    if($one_tag_name){
+                        $tag_link_pic = $this->insert_tag_link_pic($one_tag_name, $pic_id, $user_id);
+                        $this->collection($tag_link_pic->tag_id, $user_id, $pic_id);
+                        $data['alert']['msg'] = $this->lang['request_success'];
+                    }
+                }
+            } else {
+                $data['status'] = '401200';
+                $data['alert']['msg'] = $this->lang['lack_user_info'];
+            }
         }
         die(json_encode($data));
     }
