@@ -37,7 +37,7 @@ class Index extends Base
             $conditions,
             "bind" => $parameters
         ));
-        if($index_order){
+        if($index_order->rule_value){
             $all_pic-> items = $this->get_rand_pic();
         }
         foreach($all_pic-> items as $value){
