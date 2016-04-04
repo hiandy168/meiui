@@ -29,6 +29,17 @@ class Index extends Base
                 $login_collect_tag[] = $collect->tag_id;
             }
         }
+        $conditions = " rule_name = :rule_name: ";
+        $parameters = array(
+            "rule_name" => "index_order"
+        );
+        $index_order = MeiuiRule::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($index_order){
+            $all_pic-> items = $this->get_rand_pic();
+        }
         foreach($all_pic-> items as $value){
             $user = MeiuiUser::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
@@ -60,5 +71,22 @@ class Index extends Base
         }
         $this -> main['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($this -> main));
+    }
+
+    public function get_rand_pic(){
+        $pic_where = '';
+        for($rand_id_array = [] ; count($rand_id_array) < 8 ;){
+            $rand_id = rand(1,385);
+            if(!in_array($rand_id, $rand_id_array)){
+                $rand_id_array[] = $rand_id;
+                if($pic_where){
+                    $pic_where = $pic_where . ' , ' . $rand_id;
+                } else {
+                    $pic_where = $rand_id;
+                }
+            }
+        }
+        $rand_pic_array = MeiuiPic::find('id in (  ' . $pic_where . ' )');
+        return $rand_pic_array;
     }
 }

@@ -64,6 +64,11 @@ class Elements extends Component
             'action' => 'list',
             'any' => true
         ),
+        '内容管理' => array(
+            'controller' => 'content',
+            'action' => 'view',
+            'any' => true
+        ),
 
     );
 
