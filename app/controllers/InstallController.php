@@ -55,7 +55,7 @@ class InstallController extends ControllerBase
         if(!$db_app){
             $db_app = new MeiuiApp();
             $db_app-> app_name = $app;
-            $db_app-> create_user = $_SESSION['auth']['id'];
+            $db_app-> create_user = 1;
             $db_app-> create_time = time();
             $db_app->save();
         }
@@ -79,7 +79,7 @@ class InstallController extends ControllerBase
             $db_pic-> pic_w = $file_info[0];
             $db_pic-> pic_h = $file_info[1];
             $db_pic-> brief = '';
-            $db_pic-> create_user = $_SESSION['auth']['id'];
+            $db_pic-> create_user = 1;
             $db_pic-> create_time = time();
             $db_pic->save();
         }
@@ -104,7 +104,7 @@ class InstallController extends ControllerBase
             $db_tag = new MeiuiTag();
             $db_tag-> tag_name = $tag;
             $db_tag-> tag_type = 2;
-            $db_tag-> create_user = $_SESSION['auth']['id'];
+            $db_tag-> create_user = 1;
             $db_tag-> create_time = time();
             $db_tag->save();
         }
@@ -125,7 +125,7 @@ class InstallController extends ControllerBase
         if(!$db_tag_link_pic){
             $db_tag_link_pic = new MeiuiPicLinkTag();
             $db_tag_link_pic-> pic_id = $pic_id;
-            $db_tag_link_pic-> user_id = $_SESSION['auth']['id'];
+            $db_tag_link_pic-> user_id = 1;
             $db_tag_link_pic-> tag_id = $tag->id;
             $db_tag_link_pic-> tag_name = $tag->tag_name;
             $db_tag_link_pic->save();

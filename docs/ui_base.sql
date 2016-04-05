@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-15 14:51:30
+Date: 2016-04-05 22:17:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,6 +98,22 @@ CREATE TABLE `meiui_pic_link_tag` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for meiui_rule
+-- ----------------------------
+DROP TABLE IF EXISTS `meiui_rule`;
+CREATE TABLE `meiui_rule` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `rule_name` varchar(150) NOT NULL COMMENT '规则名称',
+  `rule_value` text NOT NULL COMMENT '规则内容',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of meiui_rule
+-- ----------------------------
+INSERT INTO `meiui_rule` VALUES ('1', 'index_order', '8');
+
+-- ----------------------------
 -- Table structure for meiui_search
 -- ----------------------------
 DROP TABLE IF EXISTS `meiui_search`;
@@ -107,17 +123,16 @@ CREATE TABLE `meiui_search` (
   `image_count` varchar(70) NOT NULL DEFAULT '0' COMMENT '分类下图片数',
   `del_flag` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1未删除 2删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of meiui_search
 -- ----------------------------
-
-INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('1', '邮箱提醒', '0', '1');
-INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('2', '权限申请', '0', '1');
-INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('3', '验证码', '0', '1');
-INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('4', '注册页面', '0', '1');
-INSERT INTO `meiui_search` (`id`, `keyword`, `image_count`, `del_flag`) VALUES ('5', '通讯录', '0', '1');
+INSERT INTO `meiui_search` VALUES ('1', '邮箱提醒', '0', '1');
+INSERT INTO `meiui_search` VALUES ('2', '权限申请', '0', '1');
+INSERT INTO `meiui_search` VALUES ('3', '验证码', '0', '1');
+INSERT INTO `meiui_search` VALUES ('4', '注册页面', '0', '1');
+INSERT INTO `meiui_search` VALUES ('5', '通讯录', '0', '1');
 
 -- ----------------------------
 -- Table structure for meiui_tag
@@ -189,6 +204,7 @@ CREATE TABLE `meiui_user_tag` (
   `pic_id` int(10) NOT NULL COMMENT '图片id',
   `tag_id` int(10) unsigned NOT NULL COMMENT '用户关联标签ID',
   `created_at` int(10) unsigned NOT NULL COMMENT '时间戳',
+  `del_flag` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1正常 2为删除',
   PRIMARY KEY (`id`),
   KEY `tag_id` (`tag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -196,4 +212,3 @@ CREATE TABLE `meiui_user_tag` (
 -- ----------------------------
 -- Records of meiui_user_tag
 -- ----------------------------
-alter table meiui_user_tag add  `del_flag` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1正常 2为删除';
