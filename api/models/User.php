@@ -113,6 +113,7 @@ class User extends Base
             $tag_tree[$tag->tag_id][] = $tag;
             $login_collect_tag[] = $tag->tag_id;
         }
+        krsort($tag_tree);
         // 遍历用户标签
         foreach($tag_tree as $tag_key => $tag_value){
             $tag_arr = array();
