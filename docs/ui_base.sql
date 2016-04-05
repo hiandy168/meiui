@@ -196,3 +196,4 @@ CREATE TABLE `meiui_user_tag` (
 -- ----------------------------
 -- Records of meiui_user_tag
 -- ----------------------------
+alter table meiui_user_tag add  `del_flag` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1正常 2为删除';

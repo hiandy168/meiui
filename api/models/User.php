@@ -16,25 +16,25 @@ class User extends Base
         $user_id = intval($_GET['user_id']);
         $pic_id = intval($_GET['pic_id']);
         $tag_name = addslashes($_GET['tag_name']);
-        $len_tag = strlen($tag_name);
-        if($len_tag > 99){
-            $data['status'] = '401200';
-            $data['alert']['msg'] = $this->lang['lack_user_info'];
-        } else {
-            if($user_id and $pic_id){
-                $this->del_tag_link();
-                $tag_name = explode(',', $tag_name);
-                foreach($tag_name as $one_tag_name){
+        if($user_id and $pic_id){
+            $this->del_tag_link();
+            $tag_name = explode(',', $tag_name);
+            foreach($tag_name as $one_tag_name){
+                $len_tag = strlen($tag_name);
+                if($len_tag > 99){
+                    $data['status'] = '401200';
+                    $data['alert']['msg'] = $this->lang['lack_user_info'];
+                } else {
                     if($one_tag_name){
                         $tag_link_pic = $this->insert_tag_link_pic($one_tag_name, $pic_id, $user_id);
                         $this->collection($tag_link_pic->tag_id, $user_id, $pic_id);
                         $data['alert']['msg'] = $this->lang['request_success'];
                     }
                 }
-            } else {
-                $data['status'] = '401200';
-                $data['alert']['msg'] = $this->lang['lack_user_info'];
             }
+        } else {
+            $data['status'] = '401200';
+            $data['alert']['msg'] = $this->lang['lack_user_info'];
         }
         die(json_encode($data));
     }
@@ -54,7 +54,10 @@ class User extends Base
             "bind" => $parameters
         ));
         if($user_tag){
-            $user_tag->delete();
+            foreach($user_tag as $one_tag){
+                $one_tag->del_flag = 2;
+                $one_tag->save();
+            }
         }
     }
 
@@ -75,8 +78,10 @@ class User extends Base
             $user_tag-> user_id = $user_id;
             $user_tag-> pic_id = $pic_id;
             $user_tag-> created_at = time();
-            $user_tag->save();
+        } else {
+            $user_tag->del_flag = 1;
         }
+        $user_tag->save();
         return $user_tag;
     }
 
@@ -99,7 +104,7 @@ class User extends Base
             $data['alert']['msg'] = $this->lang['lack_user_info'];
             die(json_encode($data));
         }
-        $conditions = " user_id = :user_id: ";
+        $conditions = " user_id = :user_id: and del_flag = 1";
         $parameters = array(
             "user_id" => intval($_GET['user_id']),
         );

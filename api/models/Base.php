@@ -16,12 +16,14 @@ class Base
         $this -> main = array(
             'status' => '', // 前三位表示业务逻辑（100：主页，200：搜索默认页，300：消息，400：用户信息，500：登陆） 后三位尽量HTTP 协议一致，有待完善
             'data' => array( // 详细业务数据
-                'page' => '0/0'
+                'page' => '0/0',
+                'user_tag_history' => [],
             ),
             'alert' => array( // 返回消息格式
                 'msg' => $this->lang['request_success']
             ),
         );
+        $this->set_user_tag();
     }
     // TODO 需要把GET 改成 POST
     public function validator(){
@@ -65,5 +67,32 @@ class Base
             'tag' => $tag,
         );
         return $pic_item;
+    }
+
+    public function set_user_tag(){
+        $conditions = " user_id = :user_id: ";
+        $parameters = array(
+            "user_id" => intval($_GET['user_id']),
+        );
+        $user_tag = MeiuiUserTag::find(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($user_tag){
+            foreach($user_tag as $one){
+                $conditions = " id = :id: ";
+                $parameters = array(
+                    "id" => $one->tag_id,
+                );
+                $history_tag = MeiuiTag::findFirst(array(
+                    $conditions,
+                    "bind" => $parameters
+                ));
+                if($history_tag){
+                    $this -> main['data']['user_tag_history'][] = $history_tag->tag_name;
+                }
+            }
+            $this -> main['data']['user_tag_history'] = array_unique($this -> main['data']['user_tag_history']);
+        }
     }
 }
