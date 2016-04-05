@@ -44,7 +44,7 @@ class Search extends Base
         $data['status'] = '200200';
         $data['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
         $login_user_id = intval($_GET['user_id']);
-        $login_user_collect = MeiuiUserTag::find('user_id='.$login_user_id);
+        $login_user_collect = MeiuiUserTag::find('user_id = '.$login_user_id . '  and del_flag = 1 ');
         $login_collect_tag = [];
         if (count($login_user_collect) > 0) {
             foreach($login_user_collect as $collect){
