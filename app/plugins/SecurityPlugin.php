@@ -43,7 +43,7 @@ class SecurityPlugin extends Plugin
                 'tag'               => array('list', 'create','delete'),
                 'content'               => array('view'),
                 'pic'               => array('list', 'create','delete','changeBrief'),
-                'search'            => array('list', 'create','delete'),
+                'search'            => array('list', 'create','delete','userSearchList'),
                 'feedback'          => array('list', 'view'),
                 'app'               => array('list','unpass'),
 			);

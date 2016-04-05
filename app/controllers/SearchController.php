@@ -34,7 +34,28 @@ class SearchController extends ControllerBase
         $this->view->companies = $search;
     }
 
+    public function userSearchListAction()
+    {
+        if ($this->request->getQuery("page", "int")){
+            $numberPage = $this->request->getQuery("page", "int");
+        } else {
+            $numberPage = 1;
+        }
 
+        $search = MeiuiSearch::find("del_flag = 3");
+        if (count($search) == 0) {
+            $this->flash->notice("The search did not find any data");
+        }
+
+        $paginator = new Paginator(array(
+            "data"  => $search,
+            "limit" => 10,
+            "page"  => $numberPage
+        ));
+
+        $this->view->page = $paginator->getPaginate();
+        $this->view->companies = $search;
+    }
 
     /**
      * Creates a new company

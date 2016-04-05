@@ -25,6 +25,7 @@ class Search extends Base
         if(isset($_GET['page'])){
             $page = intval($_GET['page']);
         }
+        $this->set_search_history();
         $keyword = $_GET['keyword'];
         $conditions = " tag_name LIKE :tag_name: group by pic_id";
         $parameters = array(
@@ -77,5 +78,26 @@ class Search extends Base
         }
         $data['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($data));
+    }
+
+    public function set_search_history(){
+        $keyword = $_GET['keyword'];
+        $conditions = " keyword = :keyword: and del_flag = 3 ";
+        $parameters = array(
+            "keyword" => $keyword,
+        );
+        $search = MeiuiSearch::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($search){
+            $search-> image_count = $search->image_count + 1;
+        } else {
+            $search = new MeiuiSearch();
+            $search-> keyword = $keyword;
+            $search-> image_count = 1;
+            $search-> del_flag = 3;
+        }
+        $search->save();
     }
 }
