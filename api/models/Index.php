@@ -22,7 +22,7 @@ class Index extends Base
         $this -> main['status'] = '100200';
         $this -> main['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
         $login_user_id = intval($_GET['user_id']);
-        $login_user_collect = MeiuiUserTag::find('user_id='.$login_user_id);
+        $login_user_collect = MeiuiUserTag::find('user_id='.$login_user_id . '  and del_flag = 1 ');
         $login_collect_tag = [];
         if (count($login_user_collect) > 0) {
             foreach($login_user_collect as $collect){
