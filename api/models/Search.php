@@ -60,7 +60,7 @@ class Search extends Base
                 $user_tag = [];
                 if (count($tags) > 0) {
                     foreach($tags as $v){
-                        if(in_array($v->tag_id, $login_collect_tag)){
+                        if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
                             $user_tag[] = $v-> tag_name ;
                             if($v->tag_type == 2){
                                 $sys_tag[] = $v-> tag_name ;

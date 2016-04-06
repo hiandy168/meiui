@@ -21,14 +21,6 @@ class Index extends Base
         $all_pic = $paginator->getPaginate();
         $this -> main['status'] = '100200';
         $this -> main['data']['page'] = $all_pic-> current. '/' . $all_pic-> total_pages;
-        $login_user_id = intval($_GET['user_id']);
-        $login_user_collect = MeiuiUserTag::find('user_id='.$login_user_id . '  and del_flag = 1 ');
-        $login_collect_tag = [];
-        if (count($login_user_collect) > 0) {
-            foreach($login_user_collect as $collect){
-                $login_collect_tag[] = $collect->tag_id;
-            }
-        }
         $conditions = " rule_name = :rule_name: ";
         $parameters = array(
             "rule_name" => "index_order"
@@ -47,7 +39,7 @@ class Index extends Base
             $user_tag = [];
             if (count($tags) > 0) {
                 foreach($tags as $v){
-                    if(in_array($v->tag_id, $login_collect_tag)){
+                    if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
                         $user_tag[] = $v-> tag_name ;
                         if($v->tag_type == 2){
                             $sys_tag[] = $v-> tag_name ;
@@ -75,7 +67,7 @@ class Index extends Base
         $this -> main['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($this -> main));
     }
-
+    // 获取随机图片
     public function get_rand_pic(){
         $pic_where = '';
         for($rand_id_array = [] ; count($rand_id_array) < 8 ;){

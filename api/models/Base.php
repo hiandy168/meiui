@@ -7,7 +7,7 @@ class Base
     public $lang = array();
     public $status = array();
     public $sys = array();
-
+    public $user_tag_array = array();
     public function __construct(){
         $this -> lang = require(APP_PATH . 'api/config/lang.php');
         $this -> status = require(APP_PATH . 'api/config/status.php');
@@ -24,6 +24,7 @@ class Base
             ),
         );
         $this->set_user_tag();
+        $this->set_user_tag_arr();
     }
     // TODO 需要把GET 改成 POST
     public function validator(){
@@ -93,6 +94,22 @@ class Base
                 }
             }
             $this -> main['data']['user_tag_history'] = array_unique($this -> main['data']['user_tag_history']);
+        }
+    }
+
+    public function set_user_tag_arr(){
+        $login_user_id = intval($_GET['user_id']);
+        if($login_user_id){
+            $login_user_collect = MeiuiUserTag::find('user_id = '.$login_user_id);
+            if (count($login_user_collect) > 0) {
+                foreach($login_user_collect as $collect){
+                    if($collect->del_flag == 1){
+                        $this->user_tag_array['tag_key_pic_value'][$collect->tag_id][$collect->pic_id] = $collect->del_flag;
+                        $this->user_tag_array['pic_key_pic_value'][$collect->pic_id][$collect->tag_id] = $collect->del_flag;
+                        $this->user_tag_array['del_flag'][$collect->tag_id][] = $collect->pic_id;
+                    }
+                }
+            }
         }
     }
 }
