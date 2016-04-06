@@ -90,7 +90,9 @@ class Base
                     "bind" => $parameters
                 ));
                 if($history_tag){
-                    $this -> main['data']['user_tag_history'][] = $history_tag->tag_name;
+                    if(!in_array($history_tag->tag_name, $this -> main['data']['user_tag_history'])){
+                        $this -> main['data']['user_tag_history'][] = $history_tag->tag_name;
+                    }
                 }
             }
             $this -> main['data']['user_tag_history'] = array_unique($this -> main['data']['user_tag_history']);
