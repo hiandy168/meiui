@@ -17,7 +17,7 @@ class SessionController extends ControllerBase
     {
         if (!$this->request->isPost()) {
             $this->tag->setDefault('email', 'meiui@meiui.me');
-            $this->tag->setDefault('password', 'meiuiME');
+//            $this->tag->setDefault('password', 'meiuiME');
         }
     }
 
