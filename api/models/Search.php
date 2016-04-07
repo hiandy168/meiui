@@ -9,7 +9,7 @@ class Search extends Base
     public function index(){
         $data = $this->main;
         $data['status'] = '200200';
-        $all_search = MeiuiSearch::find();
+        $all_search = MeiuiSearch::find(' del_flag = 1 ');
         foreach($all_search as $search){
             $data['data']['items'][] = array(
                 'tag_title' => $search->keyword,
