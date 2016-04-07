@@ -95,7 +95,7 @@ class Base
                     }
                 }
             }
-            $this -> main['data']['user_tag_history'] = array_unique($this -> main['data']['user_tag_history']);
+            $this -> main['data']['user_tag_history'] = array_reverse($this -> main['data']['user_tag_history']);
         }
     }
 
