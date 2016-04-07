@@ -57,6 +57,7 @@ class User extends Base
             foreach($user_tag as $one_tag){
                 $one_tag->del_flag = 2;
                 $one_tag->save();
+                $this->del_tag_link_pic($pic_id, $one_tag->tag_id);
             }
         }
     }
@@ -235,5 +236,31 @@ class User extends Base
             $db_tag_link_pic->save();
         }
         return $db_tag_link_pic;
+    }
+
+    private function del_tag_link_pic($pic_id, $tag_id){
+        $conditions = " tag_id = :tag_id: and  pic_id = :pic_id: and del_flag = 1 ";
+        $parameters = array(
+            "tag_id" => $tag_id,
+            "pic_id" => $pic_id,
+        );
+        $user_tag = MeiuiUserTag::find(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($user_tag){
+            $conditions = " tag_id = :tag_id: and pic_id =:pic_id:";
+            $parameters = array(
+                "tag_id" => $tag_id,
+                "pic_id" => $pic_id,
+            );
+            $db_tag_link_pic = MeiuiPicLinkTag::findFirst(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            if($db_tag_link_pic){
+                $db_tag_link_pic->delete();
+            }
+        }
     }
 }
