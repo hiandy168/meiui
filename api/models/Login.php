@@ -109,9 +109,15 @@ class Login extends Base
             $json_data = curl_exec($ch);
             $array = json_decode($json_data,true);
 //            echo '<pre>';print_r($array);
+            if(isset($array['msg']) == '发送成功'){
+                $data['data']['code'] = $rand_text;
+            } else {
+                $data['data']['code'] = 0;
+                $data['alert']['msg'] = $array['detail'];
+            }
             // 发送模板短信
             curl_close($ch);
-            $data['data']['code'] = $rand_text;
+
         } else {
             $data['status'] = $this -> status['lack_user_info'];
             $data['data'] = array();
