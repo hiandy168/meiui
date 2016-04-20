@@ -5,4 +5,5 @@ return array(
     'token_error' => 999998, // token 错误
     'lack_user_info' => 501200, // token 错误
     'save_user_error' => 502200, // token 错误
+    'pwd_user_error' => 503200, // 密码错误
 );

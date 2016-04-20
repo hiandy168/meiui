@@ -12,4 +12,5 @@ return array(
     'lack_user_info' => '用户信息缺少',
     'save_user_error' => '用户保存出错',
     'user_link_fail' => '用户关联失败',
+    'pwd_user_error' => '密码错误',
 );
