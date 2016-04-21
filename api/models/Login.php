@@ -174,7 +174,21 @@ class Login extends Base
             }
             // 发送模板短信
             curl_close($ch);
-
+            $conditions = " username = :username:";
+            $parameters = array(
+                "username" => $mobile,
+            );
+            $user = MeiuiUser::findFirst(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            if($user){
+                $data['data'] = array(
+                    'user_id' => $user->id,
+                    'user_name' => $user->nickname,
+                    'user_pic' => $user->user_pic,
+                );
+            }
         } else {
             $data['status'] = $this -> status['lack_user_info'];
             $data['data'] = array();
