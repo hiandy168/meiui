@@ -83,7 +83,11 @@ class Login extends Base
             if(!$user){
                 $user = new MeiuiUser();
                 $user->username = $_GET['username'];
-                $user->nickname = $_GET['nickname'];
+                if($_GET['nickname']){
+                    $user->nickname = $_GET['nickname'];
+                } else {
+                    $user->nickname = $_GET['username'];
+                }
                 $user->user_pic = 'http://www.meiui.me/img/head.jpg';
                 $user->created_at = time();
                 $user->password = sha1(addslashes($_GET['password']));
