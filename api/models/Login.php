@@ -183,7 +183,7 @@ class Login extends Base
                 "bind" => $parameters
             ));
             if($user){
-                $data['data'] = array(
+                $data['data']['user_info'] = array(
                     'user_id' => $user->id,
                     'user_name' => $user->nickname,
                     'user_pic' => $user->user_pic,
