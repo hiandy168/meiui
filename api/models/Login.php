@@ -257,26 +257,33 @@ class Login extends Base
             $conditions,
             "bind" => $parameters
         ));
-        if($_GET['nickname']){
-            $user->nickname = addslashes($_GET['nickname']);
-        }
-        if($_GET['user_pic']){
-            $user->nickname = addslashes($_GET['user_pic']);
-        }
-        if($user->save()){
-            $data['status'] = '500200';
-            $data['data'] = array(
-                'user_id' => $user->id,
-                'user_name' => $user->nickname,
-                'user_pic' => $user->user_pic,
-            );
-            $data['alert']['msg'] = $this->lang['request_success'];
-        } else {
+        if(!$user){
             $data['status'] = $this-> status['save_user_error'];
             $data['data'] = array();
             $data['alert']['msg'] = $this-> lang['save_user_error'];
+            die(json_encode($data));
+        } else {
+            if($_GET['nickname']){
+                $user->nickname = addslashes($_GET['nickname']);
+            }
+            if($_GET['user_pic']){
+                $user->nickname = addslashes($_GET['user_pic']);
+            }
+            if($user->save()){
+                $data['status'] = '500200';
+                $data['data'] = array(
+                    'user_id' => $user->id,
+                    'user_name' => $user->nickname,
+                    'user_pic' => $user->user_pic,
+                );
+                $data['alert']['msg'] = $this->lang['request_success'];
+            } else {
+                $data['status'] = $this-> status['save_user_error'];
+                $data['data'] = array();
+                $data['alert']['msg'] = $this-> lang['save_user_error'];
+            }
+            die(json_encode($data));
         }
-        die(json_encode($data));
 
     }
 }
