@@ -5,6 +5,7 @@ class Login extends Base
     public function __construct(){
         parent::__construct();
     }
+
     public function weixin(){
         $data = $this->main;
         if(!empty($_GET['username']) and !empty($_GET['user_pic'])){
@@ -198,6 +199,55 @@ class Login extends Base
     }
 
     public function pwd_back(){
+        $data = $this->main;
+        if(!empty($_GET['username']) and !empty($_GET['password'])){
+            $conditions = " username = :username:";
+            $parameters = array(
+                "username" => $_GET['username'],
+            );
+            $user = MeiuiUser::findFirst(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            if(!$user){
+                $data['status'] = $this-> status['save_user_error'];
+                $data['data'] = array();
+                $data['alert']['msg'] = $this-> lang['save_user_error'];
+                die(json_encode($data));
+            } else {
+                $user->password = sha1($_GET['password']);
+                $user->save();
+            }
+            $data['status'] = '500200';
+            $data['data'] = array(
+                'user_id' => $user->id,
+                'user_name' => $user->nickname,
+                'user_pic' => $user->user_pic,
+            );
+            $data['alert']['msg'] = $this->lang['request_success'];
+            die(json_encode($data));
+        } else {
+            $data['status'] = $this -> status['lack_user_info'];
+            $data['data'] = array();
+            $data['alert']['msg'] = $this->lang['lack_user_info'];
+            die(json_encode($data));
+        }
+
+    }
+
+    public function upload_pic(){
+        $data = $this->main;
+        if(isset($_FILES['file']["name"])){
+            move_uploaded_file($_FILES['file']['tmp_name'], "./upload/" . time() . $_FILES["file"]["name"]);
+            $data['data']['img_url'] = 'meiui.me' . "/upload/" . time() . $_FILES["file"]["name"];
+        } else {
+            $data['status'] = $this-> status['save_user_error'];
+            $data['alert']['msg'] = '缺少文件数据';
+        }
+        die(json_encode($data));
+    }
+
+    public function edit_user(){
         $data = $this->main;
         if(!empty($_GET['username']) and !empty($_GET['password'])){
             $conditions = " username = :username:";

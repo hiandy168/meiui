@@ -11,16 +11,16 @@ class ApiController extends ControllerBase
     {
 //        $this-> listDir(APP_PATH . "public/load/init_data/APP");
 //        die();
-        if (!$this->request->isPost()) {
+//        if (!$this->request->isPost()) {
             $function = $_GET['function'];
             $function_mean = explode('/', $function);
             $reflectionMethod = new ReflectionMethod($function_mean[0], $function_mean[1]);
             $reflectionMethod->invoke(new $function_mean[0]);
             die();
-        } else {
-            echo 'no post';
-            die();
-        }
+//        } else {
+//            echo 'no post';
+//            die();
+//        }
     }
 
     public function listDir($dir)
