@@ -249,24 +249,21 @@ class Login extends Base
 
     public function edit_user(){
         $data = $this->main;
-        if(!empty($_GET['username']) and !empty($_GET['password'])){
-            $conditions = " username = :username:";
-            $parameters = array(
-                "username" => $_GET['username'],
-            );
-            $user = MeiuiUser::findFirst(array(
-                $conditions,
-                "bind" => $parameters
-            ));
-            if(!$user){
-                $data['status'] = $this-> status['save_user_error'];
-                $data['data'] = array();
-                $data['alert']['msg'] = $this-> lang['save_user_error'];
-                die(json_encode($data));
-            } else {
-                $user->password = sha1($_GET['password']);
-                $user->save();
-            }
+        $conditions = " username = :username:";
+        $parameters = array(
+            "username" => $_GET['username'],
+        );
+        $user = MeiuiUser::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($_GET['nickname']){
+            $user->nickname = addslashes($_GET['nickname']);
+        }
+        if($_GET['user_pic']){
+            $user->nickname = addslashes($_GET['user_pic']);
+        }
+        if($user->save()){
             $data['status'] = '500200';
             $data['data'] = array(
                 'user_id' => $user->id,
@@ -274,13 +271,12 @@ class Login extends Base
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
-            die(json_encode($data));
         } else {
-            $data['status'] = $this -> status['lack_user_info'];
+            $data['status'] = $this-> status['save_user_error'];
             $data['data'] = array();
-            $data['alert']['msg'] = $this->lang['lack_user_info'];
-            die(json_encode($data));
+            $data['alert']['msg'] = $this-> lang['save_user_error'];
         }
+        die(json_encode($data));
 
     }
 }
