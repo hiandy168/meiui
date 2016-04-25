@@ -203,7 +203,7 @@ class Login extends Base
     public function pwd_back(){
         $data = $this->main;
         if(!empty($_GET['user_id']) and !empty($_GET['password'])){
-            $conditions = " user_id = :user_id:";
+            $conditions = " id = :user_id:";
             $parameters = array(
                 "user_id" => $_GET['user_id'],
             );
@@ -251,7 +251,7 @@ class Login extends Base
 
     public function edit_user(){
         $data = $this->main;
-        $conditions = " user_id = :user_id:";
+        $conditions = " id = :user_id:";
         $parameters = array(
             "user_id" => $_GET['user_id'],
         );
