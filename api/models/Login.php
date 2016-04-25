@@ -56,7 +56,8 @@ class Login extends Base
             $data['status'] = '500200';
             $data['data'] = array(
                 'user_id' => $user->id,
-                'user_name' => $user->nickname,
+                'nickname' => $user->nickname,
+                'username' => $user->username,
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
@@ -120,7 +121,8 @@ class Login extends Base
             $data['status'] = '500200';
             $data['data'] = array(
                 'user_id' => $user->id,
-                'user_name' => $user->nickname,
+                'nickname' => $user->nickname,
+                'username' => $user->username,
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
@@ -219,11 +221,11 @@ class Login extends Base
                 $user->save();
             }
             $data['status'] = '500200';
-            $data['data'] = array(
-                'user_id' => $user->id,
-                'user_name' => $user->nickname,
-                'user_pic' => $user->user_pic,
-            );
+//            $data['data'] = array(
+//                'user_id' => $user->id,
+//                'user_name' => $user->nickname,
+//                'user_pic' => $user->user_pic,
+//            );
             $data['alert']['msg'] = $this->lang['request_success'];
             die(json_encode($data));
         } else {
@@ -271,11 +273,11 @@ class Login extends Base
             }
             if($user->save()){
                 $data['status'] = '500200';
-                $data['data'] = array(
-                    'user_id' => $user->id,
-                    'user_name' => $user->nickname,
-                    'user_pic' => $user->user_pic,
-                );
+//                $data['data'] = array(
+//                    'user_id' => $user->id,
+//                    'user_name' => $user->nickname,
+//                    'user_pic' => $user->user_pic,
+//                );
                 $data['alert']['msg'] = $this->lang['request_success'];
             } else {
                 $data['status'] = $this-> status['save_user_error'];
