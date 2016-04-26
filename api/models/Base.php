@@ -14,7 +14,7 @@ class Base
         $this -> sys = require(APP_PATH . 'api/config/sys.php');
         $this -> validator();
         $this -> main = array(
-            'status' => '', // 前三位表示业务逻辑（100：主页，200：搜索默认页，300：消息，400：用户信息，500：登陆） 后三位尽量HTTP 协议一致，有待完善
+            'status' => 999200, // 前三位表示业务逻辑（100：主页，200：搜索默认页，300：消息，400：用户信息，500：登陆） 后三位尽量HTTP 协议一致，有待完善
             'data' => array( // 详细业务数据
                 'page' => '0/0',
                 'user_tag_history' => [],
