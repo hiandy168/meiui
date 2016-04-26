@@ -169,7 +169,7 @@ class Login extends Base
             $json_data = curl_exec($ch);
             $array = json_decode($json_data,true);
 //            echo '<pre>';print_r($array);
-            if(isset($array['msg']) == '发送成功'){
+            if(isset($array['msg']) and  $array['msg'] == '发送成功'){
                 $data['data']['code'] = $rand_text;
             } else {
                 $data['data']['code'] = 0;
