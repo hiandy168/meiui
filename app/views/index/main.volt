@@ -60,7 +60,7 @@
 			font-size: 46px;
 		}
 		.qrcodeTip{
-			margin-top:24px;
+			margin-top:0px;
 		}
 		.footer{
 			margin-top:100px;
