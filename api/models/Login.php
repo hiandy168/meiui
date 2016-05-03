@@ -249,6 +249,18 @@ class Login extends Base
         die(json_encode($data));
     }
 
+    public function inner_upload_pic(){
+        if(isset($_FILES['user_pic']["name"])){
+            move_uploaded_file($_FILES['user_pic']['tmp_name'], "./upload/" . time() . $_FILES["user_pic"]["name"]);
+            $url = 'meiui.me' . "/upload/" . time() . $_FILES["user_pic"]["name"];
+            return $url;
+        } else {
+            $data['status'] = $this-> status['save_user_error'];
+            $data['alert']['msg'] = '缺少文件数据';
+            die(json_encode($data));
+        }
+    }
+
     public function edit_user(){
         $data = $this->main;
         $conditions = " id = :user_id:";
@@ -269,7 +281,8 @@ class Login extends Base
                 $user->nickname = addslashes($_GET['nickname']);
             }
             if($_GET['user_pic']){
-                $user->nickname = addslashes($_GET['user_pic']);
+//                $user->user_pic = $this->inner_upload_pic();
+                $user->user_pic = addslashes($_GET['user_pic']);
             }
             if($user->save()){
                 $data['status'] = '500200';
