@@ -79,8 +79,8 @@
 		<p class="declaration">看似遥不可及的设计，只不过是一个APP的距离</p>
 		<div class="qrcode">
 			<div class="qrcodeImg">
-				<!-- <img src="/img/qrcode.png" width="265" height="265" alt=""> -->
-				comming soon ...
+				<img src="/img/MeiUI_QR.png" width="200" height="200" alt="">
+				<!-- comming soon ...-->
 			</div>
 			<div class="qrcodeTip">
 				<!--<img src="/img/qrcode.png" alt=""> -->
