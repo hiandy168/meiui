@@ -238,16 +238,15 @@ class Login extends Base
     }
 
     public function upload_pic(){
-//        $data = $this->main;
-//        if(isset($_FILES['file']["name"])){
-////            move_uploaded_file($_FILES['file']['tmp_name'], "./upload/" . time() . $_FILES["file"]["name"]);
-////            $data['data']['img_url'] = 'meiui.me' . "/upload/" . time() . $_FILES["file"]["name"];
-//            $data['data']['img_url'] = $_FILES;
-//        } else {
-//            $data['status'] = $this-> status['save_user_error'];
-//            $data['alert']['msg'] = '缺少文件数据';
-//        }
-        die(json_encode($_FILES));
+        $data = $this->main;
+        if(isset($_FILES['file']["name"])){
+            move_uploaded_file($_FILES['file']['tmp_name'], "./upload/" . time() . $_FILES["file"]["name"]);
+            $data['data']['img_url'] = 'meiui.me' . "/upload/" . time() . $_FILES["file"]["name"];
+        } else {
+            $data['status'] = $this-> status['save_user_error'];
+            $data['alert']['msg'] = '缺少文件数据';
+        }
+        die(json_encode($data));
     }
 
     public function inner_upload_pic(){
