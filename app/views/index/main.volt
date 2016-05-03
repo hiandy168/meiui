@@ -56,6 +56,7 @@
 			height: 265px;line-height: 265px;
 			text-align: center;
 			color:#fff;
+			margin-top:50px;
 			font-size: 46px;
 		}
 		.qrcodeTip{
@@ -83,7 +84,7 @@
 				<!-- comming soon ...-->
 			</div>
 			<div class="qrcodeTip">
-				<!--<img src="/img/qrcode.png" alt=""> -->
+				<img src="/img/qrcodeTip.png" width="160"  alt="">
 			</div>
 			<div class="footer">
 				麻乌科技 Copyright© 2016        沪ICP备16009432号-1        联系方式：185-2159-8476
