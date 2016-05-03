@@ -53,14 +53,14 @@
 			text-align: center;
 		}
 		.qrcodeImg{
-			height: 265px;line-height: 265px;
+			height: 200px;line-height: 200px;
 			text-align: center;
 			color:#fff;
 			margin-top:50px;
 			font-size: 46px;
 		}
 		.qrcodeTip{
-			margin-top:0px;
+			margin-top:24px;
 		}
 		.footer{
 			margin-top:100px;
