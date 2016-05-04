@@ -84,4 +84,47 @@ class Index extends Base
         $rand_pic_array = MeiuiPic::find('id in (  ' . $pic_where . ' )');
         return $rand_pic_array;
     }
+
+    public function get_pic_detail(){
+        $pic_id = intval($_GET['pic_id']);
+        $pic_item = MeiuiPic::find('id = ' . $pic_id );
+        if(count($pic_item)){
+            foreach($pic_item as $value){
+                $user = MeiuiUser::findFirst('id='.$value->create_user);
+                $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
+                $sys_tag = [];
+                $user_tag = [];
+                if (count($tags) > 0) {
+                    foreach($tags as $v){
+                        if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
+                            $user_tag[] = $v-> tag_name ;
+                            if($v->tag_type == 2){
+                                $sys_tag[] = $v-> tag_name ;
+                            }
+                        } else if($v->tag_type == 2){
+                            $sys_tag[] = $v-> tag_name ;
+                        }
+                    }
+                }
+                $this -> main['data']['items'][] = array(
+                    'pic_id' => $value->id,
+                    'pic' => $value->pic_url,
+                    'pic_h' => $value->pic_h,
+                    'pic_w' => $value->pic_w,
+                    'app_id' => $value->app_id,
+                    'user_id' => $value->create_user,
+                    'user_name' => $user->username,
+                    'user_pic' => $user->user_pic,
+                    'app_name' => $value->app_name,
+                    'brief' => $value->brief,
+                    'sys_tag' => $sys_tag,
+                    'user_tag' => $user_tag,
+                );
+            }
+            $this -> main['alert']['msg'] = $this->lang['request_success'];
+        } else {
+            $this -> main['alert']['msg'] = '不存在图片';
+        }
+        die(json_encode($this -> main));
+    }
 }
