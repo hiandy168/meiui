@@ -177,21 +177,21 @@ class Login extends Base
             }
             // 发送模板短信
             curl_close($ch);
-            $conditions = " username = :username:";
-            $parameters = array(
-                "username" => $mobile,
-            );
-            $user = MeiuiUser::findFirst(array(
-                $conditions,
-                "bind" => $parameters
-            ));
-            if($user){
-                $data['data']['user_info'] = array(
-                    'user_id' => $user->id,
-                    'user_name' => $user->nickname,
-                    'user_pic' => $user->user_pic,
-                );
-            }
+//            $conditions = " username = :username:";
+//            $parameters = array(
+//                "username" => $mobile,
+//            );
+//            $user = MeiuiUser::findFirst(array(
+//                $conditions,
+//                "bind" => $parameters
+//            ));
+//            if($user){
+//                $data['data']['user_info'] = array(
+//                    'user_id' => $user->id,
+//                    'user_name' => $user->nickname,
+//                    'user_pic' => $user->user_pic,
+//                );
+//            }
         } else {
             $data['status'] = $this -> status['lack_user_info'];
             $data['data'] = array();
@@ -221,11 +221,11 @@ class Login extends Base
                 $user->save();
             }
             $data['status'] = '500200';
-//            $data['data'] = array(
-//                'user_id' => $user->id,
-//                'user_name' => $user->nickname,
-//                'user_pic' => $user->user_pic,
-//            );
+            $data['data']['user_info'] = array(
+                'user_id' => $user->id,
+                'user_name' => $user->nickname,
+                'user_pic' => $user->user_pic,
+            );
             $data['alert']['msg'] = $this->lang['request_success'];
             die(json_encode($data));
         } else {
