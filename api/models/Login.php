@@ -202,10 +202,10 @@ class Login extends Base
 
     public function pwd_back(){
         $data = $this->main;
-        if(!empty($_GET['user_id']) and !empty($_GET['password'])){
-            $conditions = " id = :user_id:";
+        if(!empty($_GET['username']) and !empty($_GET['password'])){
+            $conditions = " username = :username:";
             $parameters = array(
-                "user_id" => $_GET['user_id'],
+                "username" => $_GET['username'],
             );
             $user = MeiuiUser::findFirst(array(
                 $conditions,
