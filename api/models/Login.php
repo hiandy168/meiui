@@ -223,7 +223,8 @@ class Login extends Base
             $data['status'] = '500200';
             $data['data']['user_info'] = array(
                 'user_id' => $user->id,
-                'user_name' => $user->nickname,
+                'username' => $user->username,
+                'nickname' => $user->nickname,
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
