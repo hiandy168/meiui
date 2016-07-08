@@ -1,7 +1,36 @@
-1. 配置phalcon  注意 vc版本 phalcon 和 php 版本切合
-2. 创建数据库
-3. 导入数据
-
 1. 框架修改
 2. 标签突破1W 修改成 int　查询
 3. 用户分表处理
+
+SELECT
+	REPLACE (
+		meiui_pic.pic_url,
+		'http://www.meiui.me/load/init_data/APP',
+		'http://img.meiui.me/app'
+	)
+FROM
+	meiui_pic
+WHERE
+	meiui_pic.pic_url LIKE "%http://www.meiui.me/load/init_data/APP%"
+LIMIT 20;
+
+UPDATE meiui_user
+SET meiui_user.user_pic = REPLACE (
+	meiui_user.user_pic,
+	'http://www.meiui.me/load/init_data/APP',
+	'http://img.meiui.me/app'
+)
+WHERE
+	meiui_user.user_pic LIKE "%http://www.meiui.me/load/init_data/APP%"
+
+
+SELECT
+	REPLACE (
+		meiui_user.user_pic,
+		'http://meiui.me/upload',
+		'http://img.meiui.me/app'
+	)
+FROM
+	meiui_user
+WHERE
+	meiui_user.user_pic LIKE "%http://meiui.me/upload%";
