@@ -7,6 +7,10 @@
         <li class="previous pull-left">
             {{ link_to("user/list", "&larr; 返回") }}
         </li>
+        <li class="pull-right">
+            {{ link_to("content/add", "单个内容添加") }}
+        </li>
+
     </ul>
 
     <div class="page-header">

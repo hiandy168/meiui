@@ -28,5 +28,8 @@ class ContentController extends ControllerBase
             $this->view->index_order = $index_order;
         }
     }
+    public function addAction(){
+
+    }
 
 }
