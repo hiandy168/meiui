@@ -19,7 +19,7 @@
         <input class="form-control" style="float:left;" value="" name = "img_url" />
     </div>
     <div class="page-header">
-        <h4> 粘贴图片URL，URL 格式需要是可调用的URL比如：http://img.meiui.me/app/AirVisual/空气质量，列表，卡片式.PNG </h4>
+        <h4> 粘贴图片URL，URL 格式需要是可调用的URL比如：/app/AirVisual/空气质量，列表，卡片式.PNG </h4>
     </div>
 </form>
 </div>
