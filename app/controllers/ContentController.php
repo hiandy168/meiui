@@ -36,7 +36,6 @@ class ContentController extends ControllerBase
                 $img_value = explode('/', $array_url[1]);
                 $url_value = getimagesize($img_url);
                 if($url_value){
-                    var_dump($img_value);echo '<br/>';
                     $this->insert_data($img_value[0], $img_value[1], $url_value);
                 }
             }
@@ -51,12 +50,16 @@ class ContentController extends ControllerBase
         $parameters = array(
             "app_name" => $app,
         );
-        var_dump($app);
         $db_app = MeiuiAPP::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));
-        var_dump($db_app);die();
+        register_shutdown_function('shutdown_function');
+        function shutdown_function()
+        {
+            $e = error_get_last();
+            print_r($e);
+        }
         if(!$db_app){
             $db_app = new MeiuiApp();
             $db_app-> app_name = $app;
@@ -64,6 +67,7 @@ class ContentController extends ControllerBase
             $db_app-> create_time = time();
             $db_app->save();
         }
+
         //再判断PIC 是否存在，不存在新建PIC
         $tags = explode('.', $file);
         $pic_url = 'http://img.meiui.me' . $_POST['img_url'];
