@@ -36,6 +36,7 @@ class ContentController extends ControllerBase
                 $img_value = explode('/', $array_url[1]);
                 $url_value = getimagesize($img_url);
                 if($url_value){
+                    var_dump($img_value);echo '<br/>';
                     $this->insert_data($img_value[0], $img_value[1], $url_value);
                 }
             }
@@ -54,6 +55,7 @@ class ContentController extends ControllerBase
             $conditions,
             "bind" => $parameters
         ));
+        var_dump($db_app);die();
         if(!$db_app){
             $db_app = new MeiuiApp();
             $db_app-> app_name = $app;
@@ -73,7 +75,6 @@ class ContentController extends ControllerBase
             $conditions,
             "bind" => $parameters
         ));
-        var_dump($db_pic);die();
         if(!$db_pic){
             $db_pic = new MeiuiPic();
             $db_pic-> app_id = $db_app->id;
