@@ -32,10 +32,10 @@ class ContentController extends ControllerBase
         if($_POST){
             $img_url = 'http://img.meiui.me' . $_POST['img_url'];
             if($img_url){
-                $array_url  = explode('/app/', $img_url);
+                $array_url  = explode('http://img.meiui.me/app/', $img_url);
                 $img_value = explode('/', $array_url[1]);
                 $url_value = getimagesize($img_url);
-                if($url_value){
+                if($url_value and isset($img_value[0]) and isset($img_value[1])){
                     $this->insert_data($img_value[0], $img_value[1], $url_value);
                 }
             }
@@ -92,6 +92,8 @@ class ContentController extends ControllerBase
         foreach($all_tag as $one_tag){
             $this-> insert_tag_link_pic($one_tag, $db_pic->id);
         }
+        $alert_message = "添加成功 <br/>APP:" . $app . '<br/>标签:' . $tags[0] . '<br/>url:' . $pic_url;
+        $this->flash->notice($alert_message);
     }
 
     public function insert_tag($tag){
