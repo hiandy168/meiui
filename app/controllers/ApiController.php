@@ -58,7 +58,7 @@ class ApiController extends ControllerBase
         $parameters = array(
             "app_name" => $app,
         );
-        $db_app = MeiuiAPP::findFirst(array(
+        $db_app = MeiuiApp::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));
