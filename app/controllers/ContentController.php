@@ -51,6 +51,7 @@ class ContentController extends ControllerBase
         $parameters = array(
             "app_name" => $app,
         );
+        var_dump($app);
         $db_app = MeiuiAPP::findFirst(array(
             $conditions,
             "bind" => $parameters
