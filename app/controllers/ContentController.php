@@ -50,11 +50,12 @@ class ContentController extends ControllerBase
         $parameters = array(
             "app_name" => $app,
         );
+        register_shutdown_function('shutdown_function');
         $db_app = MeiuiAPP::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));
-        register_shutdown_function('shutdown_function');
+
         function shutdown_function()
         {
             $e = error_get_last();
