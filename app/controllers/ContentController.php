@@ -50,9 +50,6 @@ class ContentController extends ControllerBase
         $parameters = array(
             "app_name" => $app,
         );
-        register_shutdown_function('shutdown_function');
-        $er = error_get_last();
-        print_r($er);
         $db_app = MeiuiApp::findFirst(array(
             $conditions,
             "bind" => $parameters
@@ -138,9 +135,4 @@ class ContentController extends ControllerBase
         return $db_tag_link_pic;
     }
 
-}
-function shutdown_function()
-{
-    $e = error_get_last();
-    print_r($e);
 }
