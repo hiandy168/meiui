@@ -36,6 +36,7 @@ class ContentController extends ControllerBase
                 $img_value = explode('/', $array_url[1]);
                 $url_value = getimagesize($img_url);
                 if($url_value){
+                    var_dump($url_value);die();
                     $this->insert_data($img_value[0], $img_value[1], $url_value);
                 }
             }
