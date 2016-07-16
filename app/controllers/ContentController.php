@@ -51,16 +51,17 @@ class ContentController extends ControllerBase
             "app_name" => $app,
         );
         register_shutdown_function('shutdown_function');
-        $db_app = MeiuiAPP::findFirst(array(
-            $conditions,
-            "bind" => $parameters
-        ));
-
         function shutdown_function()
         {
             $e = error_get_last();
             print_r($e);
         }
+        $er = error_get_last();
+        print_r($er);
+        $db_app = MeiuiAPP::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
         if(!$db_app){
             $db_app = new MeiuiApp();
             $db_app-> app_name = $app;
