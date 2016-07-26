@@ -13,6 +13,7 @@ class Index extends Base
             $page = intval($_GET['page']);
         }
         $app = MeiuiPic::find();
+        $app_count = count($app);
         $paginator = new Paginator(array(
             "data"  => $app,
             "limit" => 8,
@@ -68,10 +69,10 @@ class Index extends Base
         die(json_encode($this -> main));
     }
     // 获取随机图片
-    public function get_rand_pic(){
+    public function get_rand_pic($app_count){
         $pic_where = '';
         for($rand_id_array = [] ; count($rand_id_array) < 8 ;){
-            $rand_id = rand(1,385);
+            $rand_id = rand(1,$app_count);
             if(!in_array($rand_id, $rand_id_array)){
                 $rand_id_array[] = $rand_id;
                 if($pic_where){
