@@ -31,7 +31,7 @@ class Index extends Base
             "bind" => $parameters
         ));
         if($index_order->rule_value){
-            $all_pic-> items = $this->get_rand_pic();
+            $all_pic-> items = $this->get_rand_pic($app_count);
         }
         foreach($all_pic-> items as $value){
             $user = MeiuiUser::findFirst('id='.$value->create_user);
