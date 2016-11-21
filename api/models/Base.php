@@ -47,7 +47,7 @@ class Base
 
     public function pic_item($pic_id){
         $pic = MeiuiPic::findFirst('id='.$pic_id);
-        $user = MeiuiUsers::findFirst('id='.$pic->create_user);
+        $user = MeiuiUser::findFirst('id='.$pic->create_user);
         $tags = MeiuiPicLinkTag::find('pic_id='.$pic_id);
         $tag = '';
         if (count($tags) > 0) {

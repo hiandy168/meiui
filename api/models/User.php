@@ -23,6 +23,7 @@ class User extends Base
                 $len_tag = strlen($tag_name);
                 if($len_tag > 99){
                     $data['status'] = '401200';
+                    // 用户名过长
                     $data['alert']['msg'] = $this->lang['lack_user_info'];
                 } else {
                     if($one_tag_name){
@@ -262,5 +263,68 @@ class User extends Base
                 $db_tag_link_pic->delete();
             }
         }
+    }
+
+    public function add_collection(){
+        $data = $this->main;
+        $user_id = intval($_GET['user_id']);
+        $pic_id = intval($_GET['pic_id']);
+        $conditions = "user_id = :user_id:  and  pic_id = :pic_id: ";
+        $parameters = array(
+            "user_id" => $user_id,
+            "pic_id" => $pic_id,
+        );
+        $user_collection = MeiuiUserCollection::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if(!$user_collection){
+            $user_collection = new MeiuiUserCollection();
+            $user_collection-> user_id = $user_id;
+            $user_collection-> pic_id = $pic_id;
+            $user_collection-> create_time = time();
+            $user_collection-> del_flag = 1;
+        } else {
+            $user_collection->del_flag = 1;
+        }
+        $user_collection->save();
+        die(json_encode($data));
+    }
+    public function del_collection(){
+        $data = $this->main;
+        $user_id = intval($_GET['user_id']);
+        $pic_id = intval($_GET['pic_id']);
+        $conditions = "user_id = :user_id:  and  pic_id = :pic_id: ";
+        $parameters = array(
+            "user_id" => $user_id,
+            "pic_id" => $pic_id,
+        );
+        $user_collection = MeiuiUserCollection::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($user_collection){
+            $user_collection->del_flag = 2;
+        }
+        $user_collection->save();
+        die(json_encode($data));
+    }
+    public function list_collection(){
+        $data = $this->main;
+        $user_id = intval($_GET['user_id']);
+        $pic_id = intval($_GET['pic_id']);
+        $conditions = "user_id = :user_id:  and  pic_id = :pic_id: ";
+        $parameters = array(
+            "user_id" => $user_id,
+            "pic_id" => $pic_id,
+        );
+        $user_collection = MeiuiUserCollection::find(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($user_collection){
+            var_dump($user_collection);
+        }
+        return $data;
     }
 }

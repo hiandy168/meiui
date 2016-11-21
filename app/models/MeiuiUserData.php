@@ -21,6 +21,6 @@ class MeiuiUserData extends Model
 	 */
 	public function initialize()
 	{
-		$this->hasMany('user_id', 'MeiuiUsers', 'id');
+		$this->hasMany('user_id', 'MeiuiUser', 'id');
 	}
 }
