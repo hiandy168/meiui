@@ -305,18 +305,17 @@ class User extends Base
         ));
         if($user_collection){
             $user_collection->del_flag = 2;
+            $user_collection->save();
         }
-        $user_collection->save();
         die(json_encode($data));
     }
     public function list_collection(){
         $data = $this->main;
         $user_id = intval($_GET['user_id']);
-        $pic_id = intval($_GET['pic_id']);
-        $conditions = "user_id = :user_id:  and  pic_id = :pic_id: ";
+        $conditions = "user_id = :user_id:  and  del_flag = :del_flag:";
         $parameters = array(
             "user_id" => $user_id,
-            "pic_id" => $pic_id,
+            "del_flag" => 1,
         );
         $user_collection = MeiuiUserCollection::find(array(
             $conditions,
