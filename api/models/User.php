@@ -339,7 +339,7 @@ class User extends Base
                         }
                     }
                 }
-                $this -> main['data']['items'][] = array(
+                $data['data']['items'][] = array(
                     'pic_id' => $value->id,
                     'pic' => $value->pic_url,
                     'pic_h' => $value->pic_h,
@@ -355,7 +355,7 @@ class User extends Base
                 );
             }
         }
-        return $data;
+        die(json_encode($data));
     }
     public function my_upload(){
         $data = $this->main;
