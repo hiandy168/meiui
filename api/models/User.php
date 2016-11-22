@@ -326,4 +326,25 @@ class User extends Base
         }
         return $data;
     }
+    public function my_upload(){
+        $data = $this->main;
+        $pic_url = $_GET['pic_url'];
+        $pic_tag = $_GET['pic_tag'];
+        $pic_app = $_GET['pic_app'];
+        $pic_desc = $_GET['pic_desc'];
+        $user_id = $_GET['user_id'];
+        if($pic_app and $pic_tag and $user_id and $pic_url){
+            $meiui_pic_cache = new MeiuiPicCache();
+            $meiui_pic_cache->pic_url = addslashes($pic_url);
+            $meiui_pic_cache->pic_tag = addslashes($pic_tag);
+            $meiui_pic_cache->pic_app = addslashes($pic_app);
+            $meiui_pic_cache->pic_desc = addslashes($pic_desc);
+            $meiui_pic_cache->user_id = intval($user_id);
+            $meiui_pic_cache->create_time = time();
+            $meiui_pic_cache->save();
+        }
+        die(json_encode($data));
+    }
+
+
 }
