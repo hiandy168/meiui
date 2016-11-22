@@ -322,7 +322,38 @@ class User extends Base
             "bind" => $parameters
         ));
         if($user_collection){
-            var_dump($user_collection);
+            foreach($user_collection as $value){
+                $user = MeiuiUser::findFirst('id='.$value->user_id);
+                $tags = MeiuiPicLinkTag::find('pic_id='.$value->pic_id);
+                $sys_tag = [];
+                $user_tag = [];
+                if (count($tags) > 0) {
+                    foreach($tags as $v){
+                        if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
+                            $user_tag[] = $v-> tag_name ;
+                            if($v->tag_type == 2){
+                                $sys_tag[] = $v-> tag_name ;
+                            }
+                        } else if($v->tag_type == 2){
+                            $sys_tag[] = $v-> tag_name ;
+                        }
+                    }
+                }
+                $this -> main['data']['items'][] = array(
+                    'pic_id' => $value->id,
+                    'pic' => $value->pic_url,
+                    'pic_h' => $value->pic_h,
+                    'pic_w' => $value->pic_w,
+                    'app_id' => $value->app_id,
+                    'user_id' => $value->create_user,
+                    'user_name' => $user->username,
+                    'user_pic' => $user->user_pic,
+                    'app_name' => $value->app_name,
+                    'brief' => $value->brief,
+                    'sys_tag' => $sys_tag,
+                    'user_tag' => $user_tag,
+                );
+            }
         }
         return $data;
     }
