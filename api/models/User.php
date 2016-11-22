@@ -341,7 +341,12 @@ class User extends Base
             $meiui_pic_cache->pic_desc = addslashes($pic_desc);
             $meiui_pic_cache->user_id = intval($user_id);
             $meiui_pic_cache->create_time = time();
-            $meiui_pic_cache->save();
+            if(!$meiui_pic_cache->save()){
+                $data['status'] = 410200;
+                $data['alert']['msg'] = '保存失败';
+            };
+        } else {
+            $data['alert']['msg'] = '缺少参数';
         }
         die(json_encode($data));
     }
