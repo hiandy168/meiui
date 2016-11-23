@@ -7,6 +7,9 @@
         <li class="previous pull-left">
             {{ link_to("pic/list", "&larr; 返回") }}
         </li>
+        <li class="previous pull-right">
+            {{ link_to("pic/user_list", "&larr; 用户上传列表") }}
+        </li>
     </ul>
 
     {% for pic in page.items %}
@@ -22,8 +25,8 @@
                 <th>简介</th>
                 <th>创建用户</th>
                 <th>创建时间</th>
-                <th>显示状态</th>
-                <th>操作</th>
+<!--                <th>显示状态</th>-->
+<!--                <th>操作</th>-->
             </tr>
         </thead>
     {% endif %}
@@ -37,8 +40,8 @@
                 <td><input id="pic_brief_{{ pic.id }}" name="pic_brief_keyword" class="form-control" value="{{ pic.brief }}"  onblur="myFunction(this,{{ pic.id }});" /></td>
                 <td>{{ pic.create_user }}</td>
                 <td>{{ date("Y-m-d H:i:s",pic.create_time) }}</td>
-                <td>{{ pic.getFlagDetail()['0'] }}</td>
-                <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, '<i class="glyphicon glyphicon-remove"></i> '~ pic.getFlagDetail()['1'], "class": "btn btn-default") }}</td>
+<!--                <td>{{ pic.getFlagDetail()['0'] }}</td>-->
+<!--                <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, '<i class="glyphicon glyphicon-remove"></i> '~ pic.getFlagDetail()['1'], "class": "btn btn-default") }}</td>-->
             </tr>
         </tbody>
         <script>

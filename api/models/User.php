@@ -323,6 +323,7 @@ class User extends Base
         ));
         if($user_collection){
             foreach($user_collection as $value){
+                $pic = MeiuiUser::findFirst('id='.$value->pic_id);
                 $user = MeiuiUser::findFirst('id='.$value->user_id);
                 $tags = MeiuiPicLinkTag::find('pic_id='.$value->pic_id);
                 $sys_tag = [];
@@ -340,16 +341,16 @@ class User extends Base
                     }
                 }
                 $data['data']['items'][] = array(
-                    'pic_id' => $value->id,
-                    'pic' => $value->pic_url,
-                    'pic_h' => $value->pic_h,
-                    'pic_w' => $value->pic_w,
-                    'app_id' => $value->app_id,
-                    'user_id' => $value->create_user,
+                    'pic_id' => $pic->id,
+                    'pic' => $pic->pic_url,
+                    'pic_h' => $pic->pic_h,
+                    'pic_w' => $pic->pic_w,
+                    'app_id' => $pic->app_id,
+                    'user_id' => $pic->create_user,
                     'user_name' => $user->username,
                     'user_pic' => $user->user_pic,
-                    'app_name' => $value->app_name,
-                    'brief' => $value->brief,
+                    'app_name' => $pic->app_name,
+                    'brief' => $pic->brief,
                     'sys_tag' => $sys_tag,
                     'user_tag' => $user_tag,
                 );

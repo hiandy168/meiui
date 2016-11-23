@@ -32,6 +32,28 @@ class PicController extends ControllerBase
         $this->view->companies = $pic;
     }
 
+    public function user_listAction()
+    {
+        if ($this->request->getQuery("page", "int")){
+            $numberPage = $this->request->getQuery("page", "int");
+        } else {
+            $numberPage = 1;
+        }
+        $pic = MeiuiPic::find();
+        if (count($pic) == 0) {
+            $this->flash->notice("The search did not find any pic");
+        }
+
+        $paginator = new Paginator(array(
+            "data"  => $pic,
+            "limit" => 10,
+            "page"  => $numberPage
+        ));
+
+        $this->view->page = $paginator->getPaginate();
+        $this->view->companies = $pic;
+    }
+
     public function createAction()
     {
         if ($this->request->isPost()) {
