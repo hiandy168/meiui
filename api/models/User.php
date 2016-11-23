@@ -283,9 +283,9 @@ class User extends Base
             $user_collection-> user_id = $user_id;
             $user_collection-> pic_id = $pic_id;
             $user_collection-> create_time = time();
-            $user_collection-> del_flag = 1;
+            $user_collection-> pic_flag = 1;
         } else {
-            $user_collection->del_flag = 1;
+            $user_collection->pic_flag = 1;
         }
         $user_collection->save();
         die(json_encode($data));
@@ -304,7 +304,7 @@ class User extends Base
             "bind" => $parameters
         ));
         if($user_collection){
-            $user_collection->del_flag = 2;
+            $user_collection->pic_flag = 2;
             $user_collection->save();
         }
         die(json_encode($data));
@@ -312,10 +312,10 @@ class User extends Base
     public function list_collection(){
         $data = $this->main;
         $user_id = intval($_GET['user_id']);
-        $conditions = "user_id = :user_id:  and  del_flag = :del_flag:";
+        $conditions = "user_id = :user_id:  and  pic_flag = :pic_flag:";
         $parameters = array(
             "user_id" => $user_id,
-            "del_flag" => 1,
+            "pic_flag" => 1,
         );
         $user_collection = MeiuiUserCollection::find(array(
             $conditions,

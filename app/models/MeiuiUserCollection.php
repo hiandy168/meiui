@@ -8,5 +8,5 @@ class MeiuiUserCollection extends Model
     public $pic_id;
     public $user_id;
     public $create_time;
-    public $del_flag;
+    public $pic_flag;
 }
