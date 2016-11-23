@@ -323,7 +323,6 @@ class User extends Base
         ));
         if($user_collection){
             foreach($user_collection as $value){
-                var_dump($value);die();
                 $pic = MeiuiUser::findFirst('id='.$value->pic_id);
                 $user = MeiuiUser::findFirst('id='.$value->user_id);
                 $tags = MeiuiPicLinkTag::find('pic_id='.$value->pic_id);
@@ -341,6 +340,7 @@ class User extends Base
                         }
                     }
                 }
+                var_dump($pic);die();
                 $data['data']['items'][] = array(
                     'pic_id' => $pic->id,
                     'pic' => $pic->pic_url,
