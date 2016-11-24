@@ -39,7 +39,7 @@ class PicController extends ControllerBase
         } else {
             $numberPage = 1;
         }
-        $pic = MeiuiPic::find();
+        $pic = MeiuiPicCache::find();
         if (count($pic) == 0) {
             $this->flash->notice("The search did not find any pic");
         }
@@ -49,8 +49,7 @@ class PicController extends ControllerBase
             "limit" => 10,
             "page"  => $numberPage
         ));
-        $pic = $paginator->getPaginate();
-        var_dump($pic);die();
+  
         $this->view->page = $paginator->getPaginate();
     }
 

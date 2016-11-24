@@ -11,4 +11,12 @@ class MeiuiPicCache extends Model
     public $pic_desc;
     public $user_id;
     public $create_time;
+    public $pic_flag;
+    public function get_pic_flag(){
+        if($this->pic_flag == 1){
+            return '审核未通过';
+        } else {
+            return '审核通过';
+        }
+    }
 }
