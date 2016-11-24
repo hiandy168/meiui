@@ -49,9 +49,9 @@ class PicController extends ControllerBase
             "limit" => 10,
             "page"  => $numberPage
         ));
-
+        $pic = $paginator->getPaginate();
+        var_dump($pic);die();
         $this->view->page = $paginator->getPaginate();
-        $this->view->companies = $pic;
     }
 
     public function createAction()
