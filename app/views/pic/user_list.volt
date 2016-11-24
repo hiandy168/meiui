@@ -34,7 +34,7 @@
             <td>{{ pic.user_id }}</td>
             <td>{{ date("Y-m-d H:i:s",pic.create_time) }}</td>
             <td>{{ pic.get_pic_flag()}}</td>
-            <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, '<i class="glyphicon glyphicon-remove"></i> '~ '录入系统', "class": "btn btn-default") }}</td>
+            <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '录入系统', "class": "btn btn-default") }}{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '退回用户', "class": "btn btn-default") }}</td>
         </tr>
         </tbody>
 
