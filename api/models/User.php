@@ -374,6 +374,7 @@ class User extends Base
             $meiui_pic_cache->user_id = intval($user_id);
             $meiui_pic_cache->create_time = time();
             if(!$meiui_pic_cache->save()){
+                var_dump($meiui_pic_cache);
                 $data['status'] = 410200;
                 $data['alert']['msg'] = '保存失败';
             };
