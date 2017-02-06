@@ -375,10 +375,11 @@ class User extends Base
             $meiui_pic_cache->create_time = time();
             $meiui_pic_cache->pic_flag = 1;
             if(!$meiui_pic_cache->save()){
-                var_dump($meiui_pic_cache);
                 $data['status'] = 410200;
                 $data['alert']['msg'] = '保存失败';
-            };
+            } else {
+                $data['data']['pic_id'] = $meiui_pic_cache-> id;
+            }
         } else {
             $data['alert']['msg'] = '缺少参数';
         }
