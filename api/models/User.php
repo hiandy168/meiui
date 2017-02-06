@@ -373,6 +373,7 @@ class User extends Base
             $meiui_pic_cache->pic_desc = addslashes($pic_desc);
             $meiui_pic_cache->user_id = intval($user_id);
             $meiui_pic_cache->create_time = time();
+            $meiui_pic_cache->pic_flag = 1;
             if(!$meiui_pic_cache->save()){
                 var_dump($meiui_pic_cache);
                 $data['status'] = 410200;
