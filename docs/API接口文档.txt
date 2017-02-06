@@ -90,4 +90,10 @@
 1. 添加收藏接口 /api/index/?function=User/add_collection&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_id=111
 2. 上传接口 /api/index/?function=User/my_upload&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_url=http://img.meiui.me/app/AirVisual/%E7%A9%BA%E6%B0%94%E8%B4%A8%E9%87%8F%EF%BC%8C%E8%AF%A6%E6%83%85%E9%A1%B5%EF%BC%8C%E5%A4%A9%E6%B0%94.PNG&pic_tag=ttt&pic_app=taobao&pic_desc=buy
 3. 收藏列表接口 /api/index/?function=User/list_collection&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2
+
+
+mysql----------
+更新手机号: update meiui_user set phone='phone'
+设置手机号: update meiui_user as mu, (select * from meiui_user where LENGTH(username) < 20) as phone_user set mu.phone=mu.username,mu.source=2 where mu.id=phone_user.id
+mysql----------
 -------------------------------------------------------二次优化接口--------------------------------------------------------------
