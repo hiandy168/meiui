@@ -378,7 +378,7 @@ class User extends Base
                 $data['status'] = 410200;
                 $data['alert']['msg'] = '保存失败';
             } else {
-                $data['data']['pic_id'] = $meiui_pic_cache-> id;
+//                $data['data']['pic_id'] = $meiui_pic_cache-> id;
             }
         } else {
             $data['alert']['msg'] = '缺少参数';
