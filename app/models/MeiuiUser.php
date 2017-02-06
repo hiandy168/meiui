@@ -43,11 +43,13 @@ class MeiuiUser extends Model
     public function getSourceDetail()
     {
         if ($this->source == '1') {
-            return '微信';
+            return '微信用户';
         } else if($this->source == '3'){
-            return '后台用户';
+            return '系统用户';
+        } else if($this->source == '2'){
+            return '手机用户';
         } else {
-            return '网站注册';
+            return '未知来源';
         }
     }
 }

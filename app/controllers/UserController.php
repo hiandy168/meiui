@@ -66,7 +66,7 @@ class UserController extends ControllerBase
         } else {
             $numberPage = 1;
         }
-        $Users = MeiuiUser::find("del_flag = 1");
+        $Users = MeiuiUser::find(array("del_flag = 1",'order'=>' created_at desc'));
         if (count($Users) == 0) {
             $this->flash->notice("The search did not find any user");
             return $this->forward("user/index");

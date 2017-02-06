@@ -21,7 +21,7 @@
     {% endif %}
         <tr>
             <td>{{ user.getSourceDetail() }}</td>
-            <td>{{ user.nickname }}</td>
+            <td>{{ user.nickname }} {{ user.phone }}</td>
             <td>{{ user.getMeiuiUserData().user_classification_count }}</td>
             <td>{{ user.getMeiuiUserData().user_collection_count }}</td>
             <td>{{ user.getMeiuiUserData().user_upload_count }}</td>
