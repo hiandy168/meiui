@@ -13,6 +13,11 @@ class MeiuiTag extends Model
     public $tag_type;
     public $using_flag;
 
+    public function initialize()
+    {
+        $this->belongsTo('create_user', 'MeiuiUser', 'id');
+    }
+
     public function getTypeDetail(){
         if ($this->tag_type == '1') {
             return '个人';

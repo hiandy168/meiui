@@ -31,7 +31,7 @@
             <tr>
                 <td>{{ one_tag.id }}</td>
                 <td>{{ one_tag.tag_name }}</td>
-                <td>{{ one_tag.create_user }}</td>
+                <td>{{ one_tag.getMeiuiUser().nickname }}</td>
                 <td>{{ date("Y-m-d H:i:s",one_tag.create_time) }}</td>
                 <td>{{ one_tag.getTypeDetail() }}</td>
                 <td>{{ one_tag.getFlagDetail()['0'] }}</td>

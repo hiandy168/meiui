@@ -19,7 +19,7 @@ class TagController extends ControllerBase
             $numberPage = 1;
         }
 
-        $parameters = array();
+        $parameters = array('order' => ' create_time desc');
 
         $classification = MeiuiTag::find($parameters);
         if (count($classification) == 0) {

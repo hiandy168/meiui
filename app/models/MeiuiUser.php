@@ -38,6 +38,7 @@ class MeiuiUser extends Model
     public function initialize()
     {
         $this->belongsTo('id', 'MeiuiUserData', 'user_id');
+        $this->hasMany('id', 'MeiuiTag', 'create_user');
     }
 
     public function getSourceDetail()
