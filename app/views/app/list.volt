@@ -29,7 +29,7 @@
                 <td>{{ app.app_name }}</td>
                 <td>{{ app.getAppSysDetail() }}</td>
                 <td>{{ app.description }}</td>
-                <td>{{ app..getMeiuiUser().nickname }}</td>
+                <td>{{ app.getMeiuiUser().nickname }}</td>
                 <td>{{ date("Y-m-d H:i:s",app.create_time) }}</td>
             </tr>
         </tbody>
