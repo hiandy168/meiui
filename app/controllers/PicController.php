@@ -17,7 +17,7 @@ class PicController extends ControllerBase
         } else {
             $numberPage = 1;
         }
-        $pic = MeiuiPic::find();
+        $pic = MeiuiPic::find(array('order' => ' create_time desc'));
         if (count($pic) == 0) {
             $this->flash->notice("The search did not find any pic");
         }
