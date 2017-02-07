@@ -18,8 +18,7 @@ class AppController extends ControllerBase
             $numberPage = 1;
         }
 
-        $where = "using_flag != 3";
-        $app = MeiuiApp::find();
+        $app = MeiuiApp::find(array('order' => 'create_time desc'));
         if (count($app) == 0) {
             $this->flash->notice("The search did not find any feedback");
         }

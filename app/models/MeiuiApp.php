@@ -14,6 +14,11 @@ class MeiuiApp extends Model
     public $create_time;
     public $using_flag;
 
+    public function initialize()
+    {
+        $this->belongsTo('create_user', 'MeiuiUser', 'id');
+    }
+
     public function validation()
     {
 //        $this->validate(new UniquenessValidator(array(
