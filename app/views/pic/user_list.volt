@@ -17,6 +17,7 @@
             <th>序号</th>
             <th>APP名称</th>
             <th>图片URL</th>
+            <th>标签</th>
             <th>简介</th>
             <th>创建用户</th>
             <th>创建时间</th>
@@ -30,8 +31,9 @@
             <td>{{ pic.id }}</td>
             <td>{{ pic.pic_app }}</td>
             <td> <a href="{{ pic.pic_url }}" target="_blank">点击查看</a></td>
+            <td>{{ pic.pic_tag}}</td>
             <td>{{ pic.pic_desc}}</td>
-            <td>{{ pic.user_id }}</td>
+            <td>{{ pic.getMeiuiUser().nickname }}</td>
             <td>{{ date("Y-m-d H:i:s",pic.create_time) }}</td>
             <td>{{ pic.get_pic_flag()}}</td>
             <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '录入系统', "class": "btn btn-default") }}{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '退回用户', "class": "btn btn-default") }}</td>

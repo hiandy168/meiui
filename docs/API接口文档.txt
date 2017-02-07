@@ -97,5 +97,6 @@ mysql----------
 设置手机号: update meiui_user as mu, (select * from meiui_user where LENGTH(username) < 20) as phone_user set mu.phone=mu.username,mu.source=2 where mu.id=phone_user.id
 
 更新app状态: update meiui_app set using_flag = '1';
+简介可以为空: alter table meiui_pic modify brief varchar(255) null;
 mysql----------
 -------------------------------------------------------二次优化接口--------------------------------------------------------------

@@ -17,6 +17,12 @@ class MeiuiPic extends Model
     public $create_user;
     public $create_time;
     public $using_flag;
+
+    public function initialize()
+    {
+        $this->belongsTo('create_user', 'MeiuiUser', 'id');
+    }
+
     public function getFlagDetail()
     {
         if ($this->using_flag == '1') {

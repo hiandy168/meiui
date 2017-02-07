@@ -12,6 +12,12 @@ class MeiuiPicCache extends Model
     public $user_id;
     public $create_time;
     public $pic_flag;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'MeiuiUser', 'id');
+    }
+
     public function get_pic_flag(){
         if($this->pic_flag == 1){
             return '未审核';

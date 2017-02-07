@@ -40,6 +40,8 @@ class MeiuiUser extends Model
         $this->belongsTo('id', 'MeiuiUserData', 'user_id');
         $this->hasMany('id', 'MeiuiTag', 'create_user');
         $this->hasMany('id', 'MeiuiApp', 'create_user');
+        $this->hasMany('id', 'MeiuiPic', 'create_user');
+        $this->hasMany('id', 'MeiuiPicCache', 'create_user');
     }
 
     public function getSourceDetail()

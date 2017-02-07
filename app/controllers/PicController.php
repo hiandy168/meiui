@@ -39,9 +39,9 @@ class PicController extends ControllerBase
         } else {
             $numberPage = 1;
         }
-        $pic = MeiuiPicCache::find();
+        $pic = MeiuiPicCache::find(array('order' => ' create_time desc'));
         if (count($pic) == 0) {
-            $this->flash->notice("The search did not find any pic");
+            $this->flash->notice("The user data did not find any pic");
         }
 
         $paginator = new Paginator(array(
