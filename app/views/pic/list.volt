@@ -34,7 +34,7 @@
             <tr>
                 <td>{{ pic.id }}</td>
                 <td>{{ pic.app_name }}</td>
-                <td>{{ pic.pic_sys }}</td>
+                <td>IOS</td>
                 <td> <a href="{{ pic.pic_url }}" target="_blank">点击查看</a></td>
                 <td>{{ pic.pic_w }}*{{ pic.pic_w }}</td>
                 <td><input id="pic_brief_{{ pic.id }}" name="pic_brief_keyword" class="form-control" value="{{ pic.brief }}"  onblur="myFunction(this,{{ pic.id }});" /></td>
