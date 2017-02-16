@@ -36,7 +36,7 @@
             <td>{{ pic.getMeiuiUser().nickname }}</td>
             <td>{{ date("Y-m-d H:i:s",pic.create_time) }}</td>
             <td>{{ pic.get_pic_flag()}}</td>
-            <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '录入系统', "class": "btn btn-default") }}{{ link_to("pic/back_msg/?id=" ~ pic.id, ''~ '退回用户', "class": "btn btn-default") }}{{ link_to("pic/edit_user_pic/?id=" ~ pic.id, ''~ '修改内容', "class": "btn btn-default") }}</td>
+            <td width="7%">{{ link_to("pic/delete/?id=" ~ pic.id, ''~ '录入系统', "class": "btn btn-default") }}{{ link_to("pic/edit_user_pic/?id=" ~ pic.id, ''~ '修改内容', "class": "btn btn-default") }}</td>
         </tr>
         </tbody>
 
