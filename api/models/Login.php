@@ -24,7 +24,12 @@ class Login extends Base
                 $user->user_pic = $_GET['user_pic'];
                 $user->created_at = time();
                 $user->password = sha1('meiui');
-                $user->phone = 15068159661;
+                $name_len = strlen($user->username);
+                if($name_len < 20 ){
+                    $user->phone = $user->username;
+                } else {
+                    $user->phone = '';
+                }
                 $user->email = $_GET['username'] . '@meiui.com';
                 if ($user->save() == false) {
                     $data['status'] = $this-> status['save_user_error'];
