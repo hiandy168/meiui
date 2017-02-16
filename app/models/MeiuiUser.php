@@ -58,8 +58,8 @@ class MeiuiUser extends Model
     }
 
     public function getUserPhone(){
-        if($this->username && $this->phone ){
-            if($this->username == $this->phone ){
+        if($this->nickname && $this->phone ){
+            if($this->nickname == $this->phone ){
                 return $this->nickname;
             } else {
                 return $this->nickname . '(' . $this->phone . ')';
