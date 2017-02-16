@@ -26,9 +26,9 @@
     </div>
     <div class="page-header">
         审核状态
-        <input type="radio" name="pic_flag" checked="{{ pic_cache.getFlagCheck('pic_cache.pic_flag')}}" value="1" />
+        <input type="radio" name="pic_flag"  value="1" {{ pic_cache.getFlagCheck('pic_cache.pic_flag')}}/>
         未通过
-        <input type="radio" name="pic_flag" checked="{{ pic_cache.getFlagCheck('pic_cache.pic_flag')}}" value="2"/>
+        <input type="radio" name="pic_flag"  value="2" {{ pic_cache.getFlagCheck('pic_cache.pic_flag')}}/>
         审核通过
     </div>
     <div class="page-header">
