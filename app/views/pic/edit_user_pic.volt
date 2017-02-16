@@ -13,7 +13,7 @@
     </ul>
 
     <div class="page-header">
-        <h2> 内容添加 </h2>
+        <h2> 用户上传内容修改 </h2>
     </div>
     <div class="page-header">
         APP名称<input class="form-control" style="float:left;" value="{{ pic_cache.pic_app}}" name = "pic_app" />
