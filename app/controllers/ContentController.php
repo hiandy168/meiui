@@ -81,7 +81,7 @@ class ContentController extends ControllerBase
             $db_pic-> pic_url = $pic_url;
             $db_pic-> pic_w = $file_info[0];
             $db_pic-> pic_h = $file_info[1];
-            $db_pic-> brief = 'brief default tag  ' . $app . ',' . $tags[0] ;
+            $db_pic-> brief = (string)'' ;
             $db_pic-> create_user = $_SESSION['auth']['id'];
             $db_pic-> create_time = time();
             $db_pic->save();
