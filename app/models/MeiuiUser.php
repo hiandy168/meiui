@@ -56,4 +56,16 @@ class MeiuiUser extends Model
             return '未知来源';
         }
     }
+
+    public function getUserPhone(){
+        if($this->username && $this->phone ){
+            if($this->username == $this->phone ){
+                return $this->username;
+            } else {
+                return $this->username . '(' . $this->phone . ')';
+            }
+        } else {
+            return $this->username;
+        }
+    }
 }
