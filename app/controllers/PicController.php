@@ -130,6 +130,7 @@ class PicController extends ControllerBase
             $conditions,
             "bind" => $parameters
         ));
+        $this->view->pic_cache = $pic_cache;
     }
 
     public function changeBriefAction(){
