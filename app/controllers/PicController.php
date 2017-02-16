@@ -121,6 +121,17 @@ class PicController extends ControllerBase
         return $changeClassification;
     }
 
+    public function edit_user_picAction(){
+        $conditions = " id = :id: ";
+        $parameters = array(
+            "id" => intval($_GET['id'])
+        );
+        $pic_cache = MeiuiPicCache::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+    }
+
     public function changeBriefAction(){
         $id = intval($_POST['id']);
         $data['type'] = false;
