@@ -17,8 +17,12 @@
     </div>
     <div class="page-header">
         APP名称<input class="form-control" style="float:left;" value="{{ pic_cache.pic_app}}" name = "pic_app" />
-        标签<input class="form-control" style="float:left;" value="{{ pic_cache.pic_tag}}" name = "pic_tag" />
-        简介<input class="form-control" style="float:left;" value="{{ pic_cache.pic_desc}}" name = "pic_desc" />
+    </div>
+    <div class="page-header">
+    标签<input class="form-control" style="float:left;" value="{{ pic_cache.pic_tag}}" name = "pic_tag" />
+    </div>
+    <div class="page-header">
+    简介<input class="form-control" style="float:left;" value="{{ pic_cache.pic_desc}}" name = "pic_desc" />
     </div>
     </form>
 </div>
