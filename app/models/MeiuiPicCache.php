@@ -27,4 +27,10 @@ class MeiuiPicCache extends Model
             return '审核未通过';
         }
     }
+
+    public function getFlagCheck($pic_flag){
+        if ($pic_flag == $this->pic_flag){
+            return ' checked ';
+        }
+    }
 }
