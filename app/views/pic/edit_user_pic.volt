@@ -5,7 +5,7 @@
     {{ form("pic/edit_user_pic") }}
     <ul class="pager">
         <li class="previous pull-left">
-            {{ link_to("pic/list", "&larr; 返回") }}
+            {{ link_to("pic/user_list", "&larr; 返回") }}
         </li>
         <li class="pull-right">
             {{ submit_button("保存", "class": "btn btn-success") }}
