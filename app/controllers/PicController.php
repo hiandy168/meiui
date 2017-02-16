@@ -140,6 +140,8 @@ class PicController extends ControllerBase
             $pic_cache->pic_app = $_POST['pic_app'];
             $pic_cache->pic_tag = $_POST['pic_tag'];
             $pic_cache->pic_desc = $_POST['pic_desc'];
+            $pic_cache->pic_desc = $_POST['pic_flag'];
+            $pic_cache->pic_desc = $_POST['back_msg'];
             if ($pic_cache->save()) {
                 $this->flash->success("修改用户数据成功 图片ID" . $id);
                 return $this->forward("pic/user_list");

@@ -93,10 +93,27 @@
 
 
 mysql----------
+查看中文设置编码:set names 'latin1'
 更新手机号: update meiui_user set phone=''
 设置手机号: update meiui_user as mu, (select * from meiui_user where LENGTH(username) < 20) as phone_user set mu.phone=mu.username,mu.source=2 where mu.id=phone_user.id
 
 更新app状态: update meiui_app set using_flag = '1';
 简介可以为空: alter table meiui_pic modify brief varchar(255) null;
+
+新增用户提交图片缓存
+CREATE TABLE `meiui_pic_cache` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `pic_url` varchar(255) NOT NULL DEFAULT '' COMMENT '图片url',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `pic_tag` varchar(200) NOT NULL COMMENT '用户上传图片标签',
+  `pic_app` varchar(100) NOT NULL COMMENT '用户上传图片app',
+  `pic_desc` varchar(255) DEFAULT NULL,
+  `create_time` int(11) NOT NULL COMMENT '创建时间',
+  `pic_flag` tinyint(2) NOT NULL COMMENT '审核状态(1未通过 2审核通过)',
+  `back_msg` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
 mysql----------
 -------------------------------------------------------二次优化接口--------------------------------------------------------------

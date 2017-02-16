@@ -24,6 +24,17 @@
     <div class="page-header">
     简介<input class="form-control" style="float:left;" value="{{ pic_cache.pic_desc}}" name = "pic_desc" />
     </div>
+    <div class="page-header">
+        审核状态
+        <input type="radio" name="pic_flag" value="1" />
+        未通过
+        <input type="radio" name="pic_flag"  value="2"/>
+        审核通过
+    </div>
+    <div class="page-header">
+        如审核未通过,请填写原因
+        <input class="form-control" style="float:left;" value="{{ pic_cache.back_msg}}" name = "back_msg" />
+    </div>
     <input type="hidden" value="{{ pic_cache.id}}" name = "id" />
     </form>
 </div>
