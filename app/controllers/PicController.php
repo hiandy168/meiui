@@ -122,15 +122,31 @@ class PicController extends ControllerBase
     }
 
     public function edit_user_picAction(){
+        $id = $_GET['id'] ? $_GET['id'] : $_POST['id'];
         $conditions = " id = :id: ";
         $parameters = array(
-            "id" => intval($_GET['id'])
+            "id" => $id
         );
         $pic_cache = MeiuiPicCache::findFirst(array(
             $conditions,
             "bind" => $parameters
         ));
-        $this->view->pic_cache = $pic_cache;
+        if(!$pic_cache){
+            $this->flash->success("找不到这个用数据ID" . $id);
+            return $this->forward("pic/user_list");
+            die();
+        }
+        if($_POST){
+            $pic_cache->pic_app = $_POST['pic_app'];
+            $pic_cache->pic_tag = $_POST['pic_tag'];
+            $pic_cache->pic_desc = $_POST['pic_desc'];
+            if ($pic_cache->save()) {
+                $this->flash->success("修改用户数据成功 图片ID" . $id);
+                return $this->forward("pic/user_list");
+            }
+        } else {
+            $this->view->pic_cache = $pic_cache;
+        }
     }
 
     public function changeBriefAction(){

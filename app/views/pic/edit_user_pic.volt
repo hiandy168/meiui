@@ -24,5 +24,6 @@
     <div class="page-header">
     简介<input class="form-control" style="float:left;" value="{{ pic_cache.pic_desc}}" name = "pic_desc" />
     </div>
+    <input type="hidden" value="{{ pic_cache.id}}" name = "id" />
     </form>
 </div>
