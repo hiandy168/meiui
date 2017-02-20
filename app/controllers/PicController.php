@@ -1,10 +1,5 @@
 <?php
-echo 1;
-echo APP_PATH .  'api/sdk/aliyun-oss-php-sdk-master/samples/Common.php';
-//die();
 require APP_PATH .  'api/sdk/aliyun-oss-php-sdk-master/samples/Common.php';
-
-echo 1;die();
 use OSS\OssClient;
 use OSS\Core\OssException;
 use Phalcon\Mvc\Model\Criteria;
