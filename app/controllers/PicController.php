@@ -1,5 +1,7 @@
 <?php
-
+require APP_PATH .  'api/sdk/api/sdk/aliyun-oss-php-sdk-master/samples/Common.php';
+use OSS\OssClient;
+use OSS\Core\OssException;
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
@@ -143,12 +145,36 @@ class PicController extends ControllerBase
             $pic_cache->pic_flag = $_POST['pic_flag'];
             $pic_cache->back_msg = $_POST['back_msg'];
             if ($pic_cache->save()) {
+                $this->picCacheToSys($pic_cache->id);
                 $this->flash->success("修改用户数据成功 图片ID" . $id);
                 return $this->forward("pic/user_list");
             }
         } else {
             $this->view->pic_cache = $pic_cache;
         }
+    }
+
+    public function picCacheToSysAction(){
+
+    }
+
+    public function picCacheToSys($pic_cache_id){
+        $conditions = " id = :id: ";
+        $parameters = array(
+            "id" => $pic_cache_id
+        );
+        $pic_cache = MeiuiPicCache::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        // 1审核未通过   2审核通过
+        if($pic_cache->pic_flag == 2){
+            $bucket = Common::getBucketName();
+            $ossClient = Common::getOssClient();
+            $exist = $ossClient->doesObjectExist($bucket, $pic_cache->pic_app);
+            var_dump($exist);die();
+        }
+
     }
 
     public function changeBriefAction(){

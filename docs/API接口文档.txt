@@ -116,4 +116,7 @@ CREATE TABLE `meiui_pic_cache` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 mysql----------
+
+
+4. 填写oss的accesskey
 -------------------------------------------------------二次优化接口--------------------------------------------------------------
