@@ -1,4 +1,5 @@
 <?php
+echo 1;die();
 require APP_PATH .  'api/sdk/api/sdk/aliyun-oss-php-sdk-master/samples/Common.php';
 echo 1;die();
 use OSS\OssClient;
