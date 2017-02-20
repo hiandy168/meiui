@@ -171,8 +171,14 @@ class PicController extends ControllerBase
         if($pic_cache->pic_flag == 2){
             $bucket = Common::getBucketName();
             $ossClient = Common::getOssClient();
-            $exist = $ossClient->doesObjectExist($bucket, $pic_cache->pic_app);
-            var_dump($exist);die();
+            var_dump($ossClient);die();
+            $fromBucket = $bucket;
+            $fromObject = "oss-php-sdk-test/upload-test-object-name.txt";
+            $toBucket = $bucket;
+            $toObject = $fromObject . '.copy';
+            $options = array();
+            $rs = $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
+            var_dump($rs);die();
         }
 
     }
