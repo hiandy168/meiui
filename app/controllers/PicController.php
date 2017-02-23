@@ -181,7 +181,8 @@ class PicController extends ControllerBase
             $toObject = $fromObject . 'coopy';
             $options = array();
             var_dump($uri);
-            $rs = $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
+            var_dump($toObject);
+            $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
             var_dump($toObject1);die();
         }
 
