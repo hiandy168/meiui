@@ -174,8 +174,10 @@ class PicController extends ControllerBase
             $uri = explode(Common::endpoint, $pic_cache->pic_url);
             $fromBucket = $bucket;
             $fromObject = $uri[1];
+            $ext_array = explode('.', $fromObject);
+            $ext_num = count($ext_array) - 1;
             $toBucket = $bucket;
-            $toObject = 'app/' . $pic_cache->pic_app . '/' . $pic_cache-> pic_tag . '.png';
+            $toObject = 'app/' . $pic_cache->pic_app . '/' . $pic_cache-> pic_tag . ',' . time() . $ext_array[$ext_num];
             $options = array();
             $rs = $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
             var_dump($rs);die();
