@@ -136,7 +136,6 @@ class PicController extends ControllerBase
         if(!$pic_cache){
             $this->flash->success("找不到这个用数据ID" . $id);
             return $this->forward("pic/user_list");
-            die();
         }
         if($_POST){
             $pic_cache->pic_app = $_POST['pic_app'];
@@ -145,28 +144,42 @@ class PicController extends ControllerBase
             $pic_cache->pic_flag = $_POST['pic_flag'];
             $pic_cache->back_msg = $_POST['back_msg'];
             if ($pic_cache->save()) {
-                $this->picCacheToSys($pic_cache->id);
+                $this->picCacheToOss($pic_cache);
+                $this->picCacheToSys($pic_cache);
                 $this->flash->success("修改用户数据成功 图片ID" . $id);
                 return $this->forward("pic/user_list");
             }
         } else {
-            $this->view->pic_cache = $pic_cache;
+            if(isset($_GET['pic_flag']) and $_GET['pic_flag']){
+                $pic_cache->pic_flag = $_GET['pic_flag'];
+                if ($pic_cache->save()) {
+                    $this->picCacheToOss($pic_cache);
+                    $this->picCacheToSys($pic_cache);
+                    $this->flash->success("修改用户数据成功 图片ID" . $id);
+                    return $this->forward("pic/user_list");
+                }
+            } else {
+                $this->view->pic_cache = $pic_cache;
+            }
         }
     }
 
-    public function picCacheToSysAction(){
 
+    public function picCacheToSys($pic_cache){
+        // 1审核未通过   2审核通过
+        if($pic_cache->pic_flag == 2){
+            $content_ctl = new ContentController();
+            $_POST['img_url'] = '/' . $pic_cache->pic_sys_url;
+            $content_ctl->addAction();
+        }
     }
 
-    public function picCacheToSys($pic_cache_id){
-        $conditions = " id = :id: ";
-        $parameters = array(
-            "id" => $pic_cache_id
-        );
-        $pic_cache = MeiuiPicCache::findFirst(array(
-            $conditions,
-            "bind" => $parameters
-        ));
+    /**
+     *
+     * 通过图片缓存表 存到阿里oss
+     *
+     * */
+    public function picCacheToOss($pic_cache){
         // 1审核未通过   2审核通过
         if($pic_cache->pic_flag == 2){
             $bucket = Common::getBucketName();
@@ -180,6 +193,9 @@ class PicController extends ControllerBase
             $toObject = 'app/' . $pic_cache->pic_app . '/' . $pic_cache-> pic_tag . ',' . time() . '.' . $ext_array[$ext_num];
             $options = array();
             $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
+            // 保存系统图片URL
+            $pic_cache->pic_sys_url = $toObject;
+            $pic_cache->save();
         }
 
     }
