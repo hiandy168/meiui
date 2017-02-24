@@ -148,6 +148,8 @@ class PicController extends ControllerBase
                 $this->picCacheToSys($pic_cache);
                 $this->flash->success("修改用户数据成功 图片ID" . $id);
                 return $this->forward("pic/user_list");
+            } else {
+                return $this->forward("pic/user_list");
             }
         } else {
             if(isset($_GET['pic_flag']) and $_GET['pic_flag']){
@@ -179,7 +181,6 @@ class PicController extends ControllerBase
      *
      * */
     public function picCacheToOss($pic_cache){
-        var_dump($pic_cache);die();
         // 1审核未通过   2审核通过
         if($pic_cache->pic_flag == 2 and !$pic_cache->pic_sys_url){
             $bucket = Common::getBucketName();
@@ -191,10 +192,8 @@ class PicController extends ControllerBase
             $ext_num = count($ext_array) - 1;
             $toBucket = $bucket;
             $toObject = 'app/' . $pic_cache->pic_app . '/' . $pic_cache-> pic_tag . ',' . time() . '.' . $ext_array[$ext_num];
-            var_dump($toObject);
             $options = array();
             $rs = $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
-            var_dump($rs);die();
             // 保存系统图片URL
             $pic_cache->pic_sys_url = $toObject;
             $pic_cache->save();
