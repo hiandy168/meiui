@@ -38,6 +38,7 @@ class ContentController extends ControllerBase
 
     public function add_sys_pic($img_url){
         $img_url = 'http://img.meiui.me' . $img_url;
+        echo $img_url;die();
         if($img_url){
             $array_url  = explode('http://img.meiui.me/app/', $img_url);
             $img_value = explode('/', $array_url[1]);
