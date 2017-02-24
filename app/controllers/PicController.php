@@ -179,6 +179,7 @@ class PicController extends ControllerBase
      *
      * */
     public function picCacheToOss($pic_cache){
+        var_dump($pic_cache);die();
         // 1审核未通过   2审核通过
         if($pic_cache->pic_flag == 2 and !$pic_cache->pic_sys_url){
             $bucket = Common::getBucketName();
