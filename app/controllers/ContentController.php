@@ -30,22 +30,19 @@ class ContentController extends ControllerBase
     }
     public function addAction(){
         if($_POST){
-            $this->add_sys_pic($_POST['img_url']);
+            $img_url = 'http://' . Common::bucket . Common::endpoint . $_POST['img_url'];
+            $this->add_sys_pic($img_url);
         }else{
 
         }
     }
 
     public function add_sys_pic($img_url){
-        $img_url = 'http://img.meiui.me' . $img_url;
-        echo $img_url;die();
-        if($img_url){
-            $array_url  = explode('http://img.meiui.me/app/', $img_url);
-            $img_value = explode('/', $array_url[1]);
-            $url_value = getimagesize($img_url);
-            if($url_value and isset($img_value[0]) and isset($img_value[1])){
-                $this->insert_data($img_value[0], $img_value[1], $url_value);
-            }
+        $array_url  = explode('http://' . Common::bucket . Common::endpoint . '/app/', $img_url);
+        $img_value = explode('/', $array_url[1]);
+        $url_value = getimagesize($img_url);
+        if($url_value and isset($img_value[0]) and isset($img_value[1])){
+            $this->insert_data($img_value[0], $img_value[1], $url_value);
         }
     }
 
