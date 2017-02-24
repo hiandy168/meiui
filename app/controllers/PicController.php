@@ -190,8 +190,10 @@ class PicController extends ControllerBase
             $ext_num = count($ext_array) - 1;
             $toBucket = $bucket;
             $toObject = 'app/' . $pic_cache->pic_app . '/' . $pic_cache-> pic_tag . ',' . time() . '.' . $ext_array[$ext_num];
+            var_dump($toObject);
             $options = array();
-            $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
+            $rs = $ossClient->copyObject($fromBucket, $fromObject, $toBucket, $toObject, $options);
+            var_dump($rs);die();
             // 保存系统图片URL
             $pic_cache->pic_sys_url = $toObject;
             $pic_cache->save();
