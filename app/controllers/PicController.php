@@ -171,6 +171,8 @@ class PicController extends ControllerBase
         if($pic_cache->pic_flag == 2){
             $bucket = Common::getBucketName();
             $ossClient = Common::getOssClient();
+            $exist = $ossClient->doesObjectExist($bucket, $pic_cache->pic_app);
+            var_dump($exist);die();
             $uri = explode(Common::endpoint, $pic_cache->pic_url);
             $fromBucket = $bucket;
             $fromObject = $uri[1];
