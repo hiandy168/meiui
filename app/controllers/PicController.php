@@ -148,7 +148,7 @@ class PicController extends ControllerBase
             var_dump($pic_cache->pic_desc);
             var_dump($pic_cache->pic_flag);
             var_dump($pic_cache->back_msg);
-            var_dump(isset($pic_cache->pic_sys_url));
+            var_dump($pic_cache->pic_sys_url);
             if ($pic_cache->save()) {
                 echo 1;die();
                 $this->picCacheToOss($pic_cache);
