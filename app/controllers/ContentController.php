@@ -41,16 +41,16 @@ class ContentController extends ControllerBase
 //        }
     }
 
-    public function add_sys_pic($img_url){
+    public function add_sys_pic($img_url,$user_id){
         $array_url  = explode('http://' . Common::bucket .'.' . Common::endpoint . '/app/', $img_url);
         $img_value = explode('/', $array_url[1]);
         $url_value = getimagesize($img_url);
         if($url_value and isset($img_value[0]) and isset($img_value[1])){
-            $this->insert_data($img_value[0], $img_value[1], $url_value, $img_url);
+            $this->insert_data($img_value[0], $img_value[1], $url_value, $img_url,$user_id);
         }
     }
 
-    public function insert_data($app, $file, $file_info, $pic_url){
+    public function insert_data($app, $file, $file_info, $pic_url,$user_id){
         //先判断APP 是否存在，不存在新建APP
         $conditions = " app_name = :app_name: ";
         $parameters = array(
@@ -63,7 +63,7 @@ class ContentController extends ControllerBase
         if(!$db_app){
             $db_app = new MeiuiApp();
             $db_app-> app_name = $app;
-            $db_app-> create_user = $_SESSION['auth']['id'];
+            $db_app-> create_user = $user_id;
             $db_app-> create_time = time();
             $db_app->save();
         }
@@ -88,7 +88,7 @@ class ContentController extends ControllerBase
             $db_pic-> pic_w = $file_info[0];
             $db_pic-> pic_h = $file_info[1];
             $db_pic-> brief = (string)'' ;
-            $db_pic-> create_user = $_SESSION['auth']['id'];
+            $db_pic-> create_user = $user_id;
             $db_pic-> create_time = time();
             $db_pic->save();
         }
@@ -104,13 +104,13 @@ class ContentController extends ControllerBase
 
         $all_tag[] = $app;
         foreach($all_tag as $one_tag){
-            $this-> insert_tag_link_pic($one_tag, $db_pic->id);
+            $this-> insert_tag_link_pic($one_tag, $db_pic->id,$user_id);
         }
         $alert_message = "添加成功 <br/>APP:" . $app . '<br/>标签:' . $tags[0] . '<br/>url:' . $pic_url;
         $this->flash->notice($alert_message);
     }
 
-    public function insert_tag($tag){
+    public function insert_tag($tag,$user_id){
         $conditions = " tag_name = :tag_name:";
         $parameters = array(
             "tag_name" => $tag,
@@ -122,15 +122,15 @@ class ContentController extends ControllerBase
         if(!$db_tag){
             $db_tag = new MeiuiTag();
             $db_tag-> tag_name = $tag;
-            $db_tag-> create_user = $_SESSION['auth']['id'];
+            $db_tag-> create_user = $user_id;
             $db_tag-> create_time = time();
             $db_tag->save();
         }
         return $db_tag;
     }
 
-    public function insert_tag_link_pic($tag_name, $pic_id){
-        $tag = $this->insert_tag($tag_name);
+    public function insert_tag_link_pic($tag_name, $pic_id,$user_id){
+        $tag = $this->insert_tag($tag_name,$user_id);
         $conditions = " tag_name = :tag_name: and pic_id =:pic_id:";
         $parameters = array(
             "tag_name" => $tag->tag_name,
@@ -143,7 +143,7 @@ class ContentController extends ControllerBase
         if(!$db_tag_link_pic){
             $db_tag_link_pic = new MeiuiPicLinkTag();
             $db_tag_link_pic-> pic_id = $pic_id;
-            $db_tag_link_pic-> user_id = $_SESSION['auth']['id'];
+            $db_tag_link_pic-> user_id = $user_id;
             $db_tag_link_pic-> tag_id = $tag->id;
             $db_tag_link_pic-> tag_name = $tag->tag_name;
             $db_tag_link_pic->save();

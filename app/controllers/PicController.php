@@ -171,7 +171,7 @@ class PicController extends ControllerBase
         // 1审核未通过   2审核通过
         if($pic_cache->pic_flag == 2){
             $content_ctl = new ContentController();
-            $content_ctl->add_sys_pic('http://' . Common::bucket .'.'. Common::endpoint . '/' . $pic_cache->pic_sys_url);
+            $content_ctl->add_sys_pic('http://' . Common::bucket .'.'. Common::endpoint . '/' . $pic_cache->pic_sys_url,$pic_cache->user_id);
         }
     }
 
