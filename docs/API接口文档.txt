@@ -115,7 +115,7 @@ CREATE TABLE `meiui_pic_cache` (
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-alter table meiui_pic_cache add `pic_sys_url` varchar(255) NOT NULL DEFAULT '' COMMENT '系统使用图片url'
+alter table meiui_pic_cache add `pic_sys_url` varchar(255)  DEFAULT null COMMENT '系统使用图片url'
 
 mysql----------
 
