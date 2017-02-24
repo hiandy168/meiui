@@ -169,8 +169,7 @@ class PicController extends ControllerBase
         // 1审核未通过   2审核通过
         if($pic_cache->pic_flag == 2){
             $content_ctl = new ContentController();
-            $_POST['img_url'] = '/' . $pic_cache->pic_sys_url;
-            $content_ctl->addAction();
+            $content_ctl->add_sys_pic('/' . $pic_cache->pic_sys_url);
         }
     }
 
