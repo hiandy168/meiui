@@ -30,7 +30,7 @@ class ContentController extends ControllerBase
     }
     public function addAction(){
         if($_POST){
-            $img_url = 'http://' . Common::bucket . Common::endpoint . $_POST['img_url'];
+            $img_url = 'http://' . Common::bucket .'.'. Common::endpoint . $_POST['img_url'];
             $this->add_sys_pic($img_url);
         }else{
 
@@ -39,7 +39,7 @@ class ContentController extends ControllerBase
 
     public function add_sys_pic($img_url){
         var_dump($img_url);
-        $array_url  = explode('http://' . Common::bucket . Common::endpoint . '/app/', $img_url);
+        $array_url  = explode('http://' . Common::bucket .'.' . Common::endpoint . '/app/', $img_url);
         $img_value = explode('/', $array_url[1]);
         $url_value = getimagesize($img_url);
         var_dump($url_value);die();
