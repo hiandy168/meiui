@@ -38,17 +38,15 @@ class ContentController extends ControllerBase
     }
 
     public function add_sys_pic($img_url){
-        var_dump($img_url);
         $array_url  = explode('http://' . Common::bucket .'.' . Common::endpoint . '/app/', $img_url);
         $img_value = explode('/', $array_url[1]);
         $url_value = getimagesize($img_url);
-        var_dump($url_value);die();
         if($url_value and isset($img_value[0]) and isset($img_value[1])){
-            $this->insert_data($img_value[0], $img_value[1], $url_value);
+            $this->insert_data($img_value[0], $img_value[1], $url_value, $img_url);
         }
     }
 
-    public function insert_data($app, $file, $file_info){
+    public function insert_data($app, $file, $file_info, $pic_url){
         //先判断APP 是否存在，不存在新建APP
         $conditions = " app_name = :app_name: ";
         $parameters = array(
@@ -68,7 +66,7 @@ class ContentController extends ControllerBase
 
         //再判断PIC 是否存在，不存在新建PIC
         $tags = explode('.', $file);
-        $pic_url = 'http://img.meiui.me' . $_POST['img_url'];
+//        $pic_url = 'http://img.meiui.me' . $_POST['img_url'];
 
         $conditions = " pic_url = :pic_url: ";
         $parameters = array(
@@ -92,6 +90,12 @@ class ContentController extends ControllerBase
         }
         // 判断标签 不存在则插入
         $all_tag = explode('，',$tags[0]);
+        $last_num = count($all_tag) - 1;
+        $last_tag = $all_tag[$last_num];
+        if(intval(substr($last_tag, -10)) < 100000000) {
+            $all_tag[$last_num] = substr($last_tag, 0, -10);
+        }
+
         $all_tag[] = $app;
         foreach($all_tag as $one_tag){
             $this-> insert_tag_link_pic($one_tag, $db_pic->id);
