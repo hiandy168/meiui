@@ -38,9 +38,11 @@ class ContentController extends ControllerBase
     }
 
     public function add_sys_pic($img_url){
+        var_dump($img_url);
         $array_url  = explode('http://' . Common::bucket . Common::endpoint . '/app/', $img_url);
         $img_value = explode('/', $array_url[1]);
         $url_value = getimagesize($img_url);
+        var_dump($url_value);die();
         if($url_value and isset($img_value[0]) and isset($img_value[1])){
             $this->insert_data($img_value[0], $img_value[1], $url_value);
         }
