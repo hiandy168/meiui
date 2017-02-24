@@ -143,7 +143,6 @@ class PicController extends ControllerBase
             $pic_cache->pic_desc = $_POST['pic_desc'];
             $pic_cache->pic_flag = $_POST['pic_flag'];
             $pic_cache->back_msg = $_POST['back_msg'];
-            var_dump($pic_cache);
             if ($pic_cache->save()) {
                 echo 1;die();
                 $this->picCacheToOss($pic_cache);
