@@ -29,12 +29,16 @@ class ContentController extends ControllerBase
         }
     }
     public function addAction(){
-        if($_POST){
-            $img_url = 'http://' . Common::bucket .'.'. Common::endpoint . $_POST['img_url'];
-            $this->add_sys_pic($img_url);
-        }else{
+        $alert_message = "暂停开放 <br/>请联系monkey";
+        $this->flash->notice($alert_message);
 
-        }
+        // TODO 注意标签分割字符串问题
+//        if($_POST){
+//            $img_url = 'http://' . Common::bucket .'.'. Common::endpoint . $_POST['img_url'];
+//            $this->add_sys_pic($img_url);
+//        }else{
+//
+//        }
     }
 
     public function add_sys_pic($img_url){
@@ -88,11 +92,13 @@ class ContentController extends ControllerBase
             $db_pic-> create_time = time();
             $db_pic->save();
         }
+        // 原本基础数据图片标签分隔符不同
+//        $all_tag = explode('，',$tags[0]);
+        $all_tag = explode(',',$tags[0]);
         // 判断标签 不存在则插入
-        $all_tag = explode('，',$tags[0]);
         $last_num = count($all_tag) - 1;
         $last_tag = $all_tag[$last_num];
-        if(intval(substr($last_tag, -10)) < 100000000) {
+        if(intval(substr($last_tag, -10)) > 100000000) {
             $all_tag[$last_num] = substr($last_tag, 0, -10);
         }
 
