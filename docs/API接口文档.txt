@@ -92,6 +92,9 @@
 3. 收藏列表接口 /api/index/?function=User/list_collection&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2
 
 
+4. 取消收藏接口 /api/index/?function=User/del_collection&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_id=111
+5. 我的消息
+
 mysql----------
 查看中文设置编码:set names 'latin1'
 更新手机号: update meiui_user set phone=''
@@ -116,6 +119,17 @@ CREATE TABLE `meiui_pic_cache` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 alter table meiui_pic_cache add `pic_sys_url` varchar(255)  DEFAULT null COMMENT '系统使用图片url'
+
+
+用户消息
+CREATE TABLE `meiui_user_msg` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `user_id` varchar(32) NOT NULL COMMENT '用户名',
+  `created_at` int(10) unsigned NOT NULL COMMENT '时间戳',
+  `msg_flag` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1未处理 2已处理',
+  `msg` varchar(255) NOT NULL COMMENT '反馈内容',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 mysql----------
 
