@@ -141,6 +141,47 @@ class Login extends Base
 
     }
 
+    public function login_mobile(){
+        $data = $this->main;
+        if(!empty($_GET['username']) and !empty($_GET['password'])){
+            $conditions = " username = :username:";
+            $parameters = array(
+                "username" => $_GET['username'],
+            );
+            $user = MeiuiUser::findFirst(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            if(!$user){
+                $data['status'] = $this -> status['lack_user_info'];
+                $data['data'] = array();
+                $data['alert']['msg'] = $this->lang['lack_user_info'];
+                die(json_encode($data));
+            } else {
+                if($user->password != sha1($_GET['password'])){
+                    $data['status'] = $this -> status['pwd_user_error'];
+                    $data['data'] = array();
+                    $data['alert']['msg'] = $this->lang['pwd_user_error'];
+                    die(json_encode($data));
+                }
+            }
+            $data['status'] = '500200';
+            $data['data'] = array(
+                'user_id' => $user->id,
+                'nickname' => $user->nickname,
+                'username' => $user->username,
+                'user_pic' => $user->user_pic,
+            );
+            $data['alert']['msg'] = $this->lang['request_success'];
+            die(json_encode($data));
+        } else {
+            $data['status'] = $this -> status['lack_user_info'];
+            $data['data'] = array();
+            $data['alert']['msg'] = $this->lang['lack_user_info'];
+            die(json_encode($data));
+        }
+    }
+
     public function get_msg(){
         $data = $this->main;
         header("Content-Type:text/html;charset=utf-8");

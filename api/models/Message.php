@@ -20,14 +20,14 @@ class Message extends Base
         );
         // 用户信息数
         $user_msg_count = MeiuiUserMsg::count(array(
-            'limit' => array('number' => $limit, 'offset' => $num),
+//            'limit' => array('number' => $limit, 'offset' => $num),
             $conditions,
             "bind" => $parameters
         ));
         $all_page = ceil($user_msg_count / $limit);
         // 去当前页的8条信息
         $user_msg = MeiuiUserMsg::find(array(
-            'limit' => array('number' => $limit, 'offset' => $num),
+//            'limit' => array('number' => $limit, 'offset' => $num),
             $conditions,
             "bind" => $parameters
         ));
