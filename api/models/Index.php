@@ -33,6 +33,23 @@ class Index extends Base
         if($index_order->rule_value){
             $all_pic-> items = $this->get_rand_pic($app_count);
         }
+
+        $user_id = intval($_GET['user_id']);
+        $user_collection_pic_id = [];
+        if($user_id){
+            $conditions = "user_id = :user_id:  and  pic_flag = :pic_flag:";
+            $parameters = array(
+                "user_id" => $user_id,
+                "pic_flag" => 1,
+            );
+            $user_collection = MeiuiUserCollection::find(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            foreach ($user_collection as $one_collection){
+                $user_collection_pic_id[] = $one_collection->pic_id;
+            }
+        }
         foreach($all_pic-> items as $value){
             $user = MeiuiUser::findFirst('id='.$value->create_user);
             $tags = MeiuiPicLinkTag::find('pic_id='.$value->id);
@@ -50,7 +67,7 @@ class Index extends Base
                     }
                 }
             }
-            $this -> main['data']['items'][] = array(
+            $o_item = array(
                 'pic_id' => $value->id,
                 'pic' => $value->pic_url,
                 'pic_h' => $value->pic_h,
@@ -64,6 +81,12 @@ class Index extends Base
                 'sys_tag' => $sys_tag,
                 'user_tag' => $user_tag,
             );
+            if(in_array($value->id,$user_collection_pic_id)){
+                $o_item['is_like'] = 1;
+            } else {
+                $o_item['is_like'] = 2;
+            }
+            $this -> main['data']['items'][] = $o_item;
         }
         $this -> main['alert']['msg'] = $this->lang['request_success'];
         die(json_encode($this -> main));
@@ -89,6 +112,22 @@ class Index extends Base
     public function get_pic_detail(){
         $pic_id = intval($_GET['pic_id']);
         $pic_item = MeiuiPic::find('id = ' . $pic_id );
+        $user_id = intval($_GET['user_id']);
+        $user_collection_pic_id = [];
+        if($user_id){
+            $conditions = "user_id = :user_id:  and  pic_flag = :pic_flag:";
+            $parameters = array(
+                "user_id" => $user_id,
+                "pic_flag" => 1,
+            );
+            $user_collection = MeiuiUserCollection::find(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            foreach ($user_collection as $one_collection){
+                $user_collection_pic_id[] = $one_collection->pic_id;
+            }
+        }
         if(count($pic_item)){
             foreach($pic_item as $value){
                 $user = MeiuiUser::findFirst('id='.$value->create_user);
@@ -107,7 +146,7 @@ class Index extends Base
                         }
                     }
                 }
-                $this -> main['data']['items'][] = array(
+                $o_item = array(
                     'pic_id' => $value->id,
                     'pic' => $value->pic_url,
                     'pic_h' => $value->pic_h,
@@ -121,6 +160,13 @@ class Index extends Base
                     'sys_tag' => $sys_tag,
                     'user_tag' => $user_tag,
                 );
+
+                if(in_array($value->id,$user_collection_pic_id)){
+                    $o_item['is_like'] = 1;
+                } else {
+                    $o_item['is_like'] = 2;
+                }
+                $this -> main['data']['items'][] = $o_item;
             }
             $this -> main['alert']['msg'] = $this->lang['request_success'];
         } else {

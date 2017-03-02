@@ -386,5 +386,29 @@ class User extends Base
         die(json_encode($data));
     }
 
+    public function my_upload_list(){
+        $data = $this->main;
+        $user_id = $_GET['user_id'];
+        $conditions = "user_id = :user_id:";
+        $parameters = array(
+            "user_id" => $user_id
+        );
+        $user_upload = MeiuiPicCache::find(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        foreach($user_upload as $one_upload){
+            $data['data']['items'][] = array(
+                'pic_url' => $one_upload->pic_url,
+                'pic_tag' => $one_upload->pic_tag,
+                'pic_app' => $one_upload->pic_app,
+                'pic_desc' => $one_upload->pic_desc,
+                'create_time' => $one_upload->create_time,
+                'pic_flag' => $one_upload-> pic_flag
+            );
+        }
+        die(json_encode($data));
+    }
+
 
 }

@@ -93,7 +93,9 @@
 
 
 4. 取消收藏接口 /api/index/?function=User/del_collection&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2&pic_id=111
-5. 我的消息
+5. 我的消息 /api/index/?function=Message/index&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2
+5. 我的上传 /api/index/?function=User/my_upload_list&mac=meiui&token=7b41408d1993764335d57232973934de&user_id=2
+
 
 mysql----------
 查看中文设置编码:set names 'latin1'
