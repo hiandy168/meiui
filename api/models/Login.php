@@ -66,6 +66,8 @@ class Login extends Base
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
+            $this->set_user_tag();
+            $this->set_user_tag_arr();
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];
@@ -131,6 +133,8 @@ class Login extends Base
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
+            $this->set_user_tag();
+            $this->set_user_tag_arr();
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];
@@ -173,6 +177,8 @@ class Login extends Base
                 'user_pic' => $user->user_pic,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
+            $this->set_user_tag();
+            $this->set_user_tag_arr();
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];

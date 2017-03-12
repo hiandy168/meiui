@@ -70,10 +70,13 @@ class Base
         return $pic_item;
     }
 
-    public function set_user_tag(){
+    public function set_user_tag($user_id = 0){
+        if(!$user_id){
+            $user_id = $_GET['user_id'];
+        }
         $conditions = " user_id = :user_id: ";
         $parameters = array(
-            "user_id" => intval($_GET['user_id']),
+            "user_id" => intval($user_id),
         );
         $user_tag = MeiuiUserTag::find(array(
             $conditions,
@@ -99,8 +102,10 @@ class Base
         }
     }
 
-    public function set_user_tag_arr(){
-        $login_user_id = intval($_GET['user_id']);
+    public function set_user_tag_arr($login_user_id = 0){
+        if(!$login_user_id){
+            $login_user_id = intval($_GET['user_id']);
+        }
         if($login_user_id){
             $login_user_collect = MeiuiUserTag::find('user_id = '.$login_user_id);
             if (count($login_user_collect) > 0) {
