@@ -398,14 +398,26 @@ class User extends Base
             "bind" => $parameters
         ));
         foreach($user_upload as $one_upload){
-            $data['data']['items'][] = array(
-                'pic_url' => $one_upload->pic_url,
-                'pic_tag' => $one_upload->pic_tag,
-                'pic_app' => $one_upload->pic_app,
-                'pic_desc' => $one_upload->pic_desc,
-                'create_time' => $one_upload->create_time,
-                'pic_flag' => $one_upload-> pic_flag
-            );
+            if($one_upload-> pic_flag == 2){
+                $data['data']['items']['pass_pic'][] = array(
+                    'pic_url' => $one_upload->pic_url,
+                    'pic_tag' => $one_upload->pic_tag,
+                    'pic_app' => $one_upload->pic_app,
+                    'pic_desc' => $one_upload->pic_desc,
+                    'create_time' => $one_upload->create_time,
+                    'pic_flag' => $one_upload-> pic_flag
+                );
+            } else if($one_upload-> pic_flag == 1){
+                $data['data']['items']['unpass_pic'][] = array(
+                    'pic_url' => $one_upload->pic_url,
+                    'pic_tag' => $one_upload->pic_tag,
+                    'pic_app' => $one_upload->pic_app,
+                    'pic_desc' => $one_upload->pic_desc,
+                    'create_time' => $one_upload->create_time,
+                    'pic_flag' => $one_upload-> pic_flag
+                );
+            }
+
         }
         die(json_encode($data));
     }
