@@ -153,7 +153,7 @@ class Index extends Base
                     'pic_w' => $value->pic_w,
                     'app_id' => $value->app_id,
                     'user_id' => $value->create_user,
-                    'user_name' => $user->username,
+                    'user_name' => $user->nickname,
                     'user_pic' => $user->user_pic,
                     'app_name' => $value->app_name,
                     'brief' => $value->brief,

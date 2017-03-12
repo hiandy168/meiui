@@ -17,7 +17,7 @@
                 <th>序号</th>
                 <th>APP名称</th>
                 <th>所属系统</th>
-                <th>描述</th>
+<!--                <th>描述</th>-->
                 <th>创建用户</th>
                 <th>创建时间</th>
             </tr>
@@ -28,7 +28,7 @@
                 <td>{{ app.id }}</td>
                 <td>{{ app.app_name }}</td>
                 <td>{{ app.getAppSysDetail() }}</td>
-                <td>{{ app.description }}</td>
+<!--                <td>{{ app.description }}</td>-->
                 <td>{{ app.getMeiuiUser().nickname }}</td>
                 <td>{{ date("Y-m-d H:i:s",app.create_time) }}</td>
             </tr>
