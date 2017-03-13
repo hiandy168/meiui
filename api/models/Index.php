@@ -12,7 +12,7 @@ class Index extends Base
         if(isset($_GET['page'])){
             $page = intval($_GET['page']);
         }
-        $app = MeiuiPic::find();
+        $app = MeiuiPic::find(array('order' => ' create_time desc'));
         $app_count = count($app);
         $paginator = new Paginator(array(
             "data"  => $app,
