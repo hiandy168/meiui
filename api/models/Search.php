@@ -77,7 +77,7 @@ class Search extends Base
                     'pic_w' => $pic->pic_w,
                     'app_id' => $pic->app_id,
                     'user_id' => $pic->create_user,
-                    'user_name' => $user->username,
+                    'user_name' => $user->nickname,
                     'user_pic' => $user->user_pic,
                     'app_name' => $pic->app_name,
                     'brief' => $pic->brief,
