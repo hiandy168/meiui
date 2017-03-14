@@ -8,6 +8,7 @@ class Login extends Base
 
     public function weixin(){
         $data = $this->main;
+        $sessionId = session_id();
         if(!empty($_GET['username']) and !empty($_GET['user_pic'])){
             $conditions = " username = :username: ";
             $parameters = array(
@@ -64,6 +65,7 @@ class Login extends Base
                 'nickname' => $user->nickname,
                 'username' => $user->username,
                 'user_pic' => $user->user_pic,
+                'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
             $this->set_user_tag();
@@ -80,6 +82,7 @@ class Login extends Base
 
     public function mobile(){
         $data = $this->main;
+        $sessionId = session_id();
         if(!empty($_GET['username']) and !empty($_GET['password'])){
             $conditions = " username = :username:";
             $parameters = array(
@@ -131,6 +134,7 @@ class Login extends Base
                 'nickname' => $user->nickname,
                 'username' => $user->username,
                 'user_pic' => $user->user_pic,
+                'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
             $this->set_user_tag();
@@ -147,6 +151,7 @@ class Login extends Base
 
     public function login_mobile(){
         $data = $this->main;
+        $sessionId = session_id();
         if(!empty($_GET['username']) and !empty($_GET['password'])){
             $conditions = " username = :username:";
             $parameters = array(
@@ -175,6 +180,7 @@ class Login extends Base
                 'nickname' => $user->nickname,
                 'username' => $user->username,
                 'user_pic' => $user->user_pic,
+                'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
             $this->set_user_tag();
