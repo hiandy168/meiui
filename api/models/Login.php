@@ -8,6 +8,8 @@ class Login extends Base
 
     public function weixin(){
         $data = $this->main;
+        session_destroy();
+        session_start();
         $sessionId = session_id();
         if(!empty($_GET['username']) and !empty($_GET['user_pic'])){
             $conditions = " username = :username: ";

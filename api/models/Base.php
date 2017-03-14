@@ -13,6 +13,7 @@ class Base
             session_destroy();
             session_id($_GET['access_token']);
             @session_start();
+            var_dump($_GET['access_token']);
             var_dump($_SESSION);die();
         }
         $this -> lang = require(APP_PATH . 'api/config/lang.php');
