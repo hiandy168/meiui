@@ -10,8 +10,9 @@ class Base
     public $user_tag_array = array();
     public function __construct(){
         if(isset($_GET['access_token'])){
-            @session_start();
+            session_destroy();
             session_id($_GET['access_token']);
+            @session_start();
         }
         $this -> lang = require(APP_PATH . 'api/config/lang.php');
         $this -> status = require(APP_PATH . 'api/config/status.php');
