@@ -34,8 +34,8 @@ class Index extends Base
             $all_pic-> items = $this->get_rand_pic($app_count);
         }
 
-//        $user_id = intval($_GET['user_id']);
-        $user_id = $_SESSION['app_auth']['app_user_id'];
+        $user_id = intval($_GET['user_id']);
+//        $user_id = $_SESSION['app_auth']['app_user_id'];
         $user_collection_pic_id = [];
         if($user_id){
             $conditions = "user_id = :user_id:  and  pic_flag = :pic_flag:";
@@ -113,8 +113,8 @@ class Index extends Base
     public function get_pic_detail(){
         $pic_id = intval($_GET['pic_id']);
         $pic_item = MeiuiPic::find('id = ' . $pic_id );
-//        $user_id = intval($_GET['user_id']);
-        $user_id = $_SESSION['app_auth']['app_user_id'];
+        $user_id = intval($_GET['user_id']);
+//        $user_id = $_SESSION['app_auth']['app_user_id'];
         $user_collection_pic_id = [];
         if($user_id){
             $conditions = "user_id = :user_id:  and  pic_flag = :pic_flag:";
