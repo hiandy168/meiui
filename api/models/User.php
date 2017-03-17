@@ -403,12 +403,14 @@ class User extends Base
 
         $user = MeiuiUser::findFirst('id='.$user_id);
         foreach($user_upload as $one_upload){
+            $tag = explode(',',$one_upload->pic_tag);
+            $tag = array_filter($tag);
             if($one_upload-> pic_flag == 2){
                 $data['data']['items']['pass_pic'][] = array(
                     'user_id' => $user->id,
                     'user_name' => $user->nickname,
                     'pic_url' => $one_upload->pic_url,
-                    'pic_tag' => $one_upload->pic_tag,
+                    'pic_tag' => $tag,
                     'pic_app' => $one_upload->pic_app,
                     'pic_desc' => $one_upload->pic_desc,
                     'create_time' => $one_upload->create_time,
@@ -421,7 +423,7 @@ class User extends Base
                     'user_id' => $user->id,
                     'user_name' => $user->nickname,
                     'pic_url' => $one_upload->pic_url,
-                    'pic_tag' => $one_upload->pic_tag,
+                    'pic_tag' => $tag,
                     'pic_app' => $one_upload->pic_app,
                     'pic_desc' => $one_upload->pic_desc,
                     'create_time' => $one_upload->create_time,
