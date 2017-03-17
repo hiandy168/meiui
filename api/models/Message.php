@@ -20,7 +20,6 @@ class Message extends Base
         );
         // 用户信息数
         $user_msg_count = MeiuiUserMsg::count(array(
-            'limit' => array('number' => $limit, 'offset' => $num),
             $conditions,
             "bind" => $parameters
         ));
@@ -35,9 +34,9 @@ class Message extends Base
         $data['data']['page'] = $page . '/' . $all_page;
         foreach ($user_msg as $item) {
             $data['data']['items'][] = array(
-                'msg' => $item['msg'],
-                'msg_flag' => $item['msg_flag'],
-                'created_at' => $item['created_at'],
+                'msg' => $item->msg,
+                'msg_flag' => $item->msg_flag,
+                'created_at' => $item->created_at,
             );
         }
         $data['alert']['msg'] = $this->lang['request_success'];
