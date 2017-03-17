@@ -89,6 +89,7 @@ class Base
             $conditions,
             "bind" => $parameters
         ));
+        var_dump($user_tag);
         if($user_tag){
             foreach($user_tag as $one){
                 $conditions = " id = :id: ";
@@ -100,6 +101,7 @@ class Base
                     "bind" => $parameters
                 ));
                 if($history_tag){
+                    var_dump($this -> main['data']['user_tag_history']);
                     if(!in_array($history_tag->tag_name, $this -> main['data']['user_tag_history'])){
                         $this -> main['data']['user_tag_history'][] = $history_tag->tag_name;
                     }
