@@ -89,9 +89,9 @@ class Base
             $conditions,
             "bind" => $parameters
         ));
-        var_dump($user_tag);
         if($user_tag){
             foreach($user_tag as $one){
+                var_dump($one->tag_id);
                 $conditions = " id = :id: ";
                 $parameters = array(
                     "id" => $one->tag_id,
