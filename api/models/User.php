@@ -366,6 +366,7 @@ class User extends Base
         $pic_desc = $_GET['pic_desc'];
         $user_id = $_GET['user_id'];
         if($pic_app and $pic_tag and $user_id and $pic_url){
+            $file_info = getimagesize($pic_url);
             $meiui_pic_cache = new MeiuiPicCache();
             $meiui_pic_cache->pic_url = addslashes($pic_url);
             $meiui_pic_cache->pic_tag = addslashes($pic_tag);
@@ -374,6 +375,8 @@ class User extends Base
             $meiui_pic_cache->user_id = intval($user_id);
             $meiui_pic_cache->create_time = time();
             $meiui_pic_cache->pic_flag = 1;
+            $meiui_pic_cache->pic_w = intval($file_info[0]);
+            $meiui_pic_cache->pic_h = intval($file_info[1]);
             if(!$meiui_pic_cache->save()){
                 $data['status'] = 410200;
                 $data['alert']['msg'] = '保存失败';
@@ -397,24 +400,34 @@ class User extends Base
             $conditions,
             "bind" => $parameters
         ));
+
+        $user = MeiuiUser::findFirst('id='.$user_id);
         foreach($user_upload as $one_upload){
             if($one_upload-> pic_flag == 2){
                 $data['data']['items']['pass_pic'][] = array(
+                    'user_id' => $user->id,
+                    'user_name' => $user->nickname,
                     'pic_url' => $one_upload->pic_url,
                     'pic_tag' => $one_upload->pic_tag,
                     'pic_app' => $one_upload->pic_app,
                     'pic_desc' => $one_upload->pic_desc,
                     'create_time' => $one_upload->create_time,
-                    'pic_flag' => $one_upload-> pic_flag
+                    'pic_flag' => $one_upload-> pic_flag,
+                    'pic_w' => $one_upload-> pic_w,
+                    'pic_h' => $one_upload-> pic_h,
                 );
             } else if($one_upload-> pic_flag == 1){
                 $data['data']['items']['unpass_pic'][] = array(
+                    'user_id' => $user->id,
+                    'user_name' => $user->nickname,
                     'pic_url' => $one_upload->pic_url,
                     'pic_tag' => $one_upload->pic_tag,
                     'pic_app' => $one_upload->pic_app,
                     'pic_desc' => $one_upload->pic_desc,
                     'create_time' => $one_upload->create_time,
-                    'pic_flag' => $one_upload-> pic_flag
+                    'pic_flag' => $one_upload-> pic_flag,
+                    'pic_w' => $one_upload-> pic_w,
+                    'pic_h' => $one_upload-> pic_h,
                 );
             }
 

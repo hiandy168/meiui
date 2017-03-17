@@ -116,12 +116,12 @@ CREATE TABLE `meiui_pic_cache` (
   `create_time` int(11) NOT NULL COMMENT '创建时间',
   `pic_flag` tinyint(2) NOT NULL COMMENT '审核状态(1未通过 2审核通过)',
   `back_msg` varchar(255) DEFAULT NULL,
+  `pic_sys_url` varchar(255) DEFAULT NULL COMMENT '系统使用图片url',
+  `pic_w` int(6) NOT NULL DEFAULT '0' COMMENT '图片宽',
+  `pic_h` int(6) NOT NULL DEFAULT '0' COMMENT '图片高',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-
-alter table meiui_pic_cache add `pic_sys_url` varchar(255)  DEFAULT null COMMENT '系统使用图片url'
-
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 用户消息
 CREATE TABLE `meiui_user_msg` (

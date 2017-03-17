@@ -10,6 +10,8 @@ class MeiuiPicCache extends Model
     public $pic_tag;
     public $pic_app;
     public $pic_desc;
+    public $pic_w;
+    public $pic_h;
     public $user_id;
     public $create_time;
     public $pic_flag;
