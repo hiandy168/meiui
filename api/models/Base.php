@@ -91,7 +91,6 @@ class Base
         ));
         if($user_tag){
             foreach($user_tag as $one){
-                var_dump($one->tag_id);
                 $conditions = " id = :id: ";
                 $parameters = array(
                     "id" => $one->tag_id,
@@ -101,7 +100,6 @@ class Base
                     "bind" => $parameters
                 ));
                 if($history_tag){
-                    var_dump($this -> main['data']['user_tag_history']);
                     if(!in_array($history_tag->tag_name, $this -> main['data']['user_tag_history'])){
                         $this -> main['data']['user_tag_history'][] = $history_tag->tag_name;
                     }
@@ -109,6 +107,7 @@ class Base
             }
             $this -> main['data']['user_tag_history'] = array_reverse($this -> main['data']['user_tag_history']);
         }
+        return $this -> main['data']['user_tag_history'];
     }
 
     public function set_user_tag_arr($login_user_id = 0){

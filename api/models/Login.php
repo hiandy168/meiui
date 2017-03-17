@@ -70,8 +70,7 @@ class Login extends Base
                 'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
-            $this->set_user_tag($user->id);
-            $this->set_user_tag_arr($user->id);
+            $data['data']['user_tag_history'] = $this->set_user_tag($user->id);
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];
@@ -139,8 +138,7 @@ class Login extends Base
                 'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
-            $this->set_user_tag($user->id);
-            $this->set_user_tag_arr($user->id);
+            $data['data']['user_tag_history'] = $this->set_user_tag($user->id);
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];
@@ -185,8 +183,7 @@ class Login extends Base
                 'access_token' => $sessionId,
             );
             $data['alert']['msg'] = $this->lang['request_success'];
-            $this->set_user_tag($user->id);
-            $this->set_user_tag_arr($user->id);
+            $data['data']['user_tag_history'] = $this->set_user_tag($user->id);
             die(json_encode($data));
         } else {
             $data['status'] = $this -> status['lack_user_info'];
