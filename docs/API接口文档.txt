@@ -132,6 +132,7 @@ CREATE TABLE `meiui_user_msg` (
   `msg` varchar(255) NOT NULL COMMENT '反馈内容',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+alter  table meiui_user_msg add `msg_pic` varchar(255) DEFAULT NULL COMMENT '图片url'
 
 mysql----------
 
