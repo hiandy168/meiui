@@ -34,6 +34,7 @@ class Message extends Base
         $data['data']['page'] = $page . '/' . $all_page;
         foreach ($user_msg as $item) {
             $data['data']['items'][] = array(
+                'id' => $item->id,
                 'msg' => $item->msg,
                 'msg_flag' => $item->msg_flag,
                 'msg_pic' => (string)$item->msg_pic,
