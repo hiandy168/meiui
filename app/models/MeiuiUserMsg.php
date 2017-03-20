@@ -14,6 +14,7 @@ class MeiuiUserMsg extends Model
     public $user_id;
     public $created_at;
     public $msg_flag;
+    public $msg_pic;
     public $msg;
 
 }

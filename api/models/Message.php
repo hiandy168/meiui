@@ -36,6 +36,7 @@ class Message extends Base
             $data['data']['items'][] = array(
                 'msg' => $item->msg,
                 'msg_flag' => $item->msg_flag,
+                'msg_pic' => $item->pic,
                 'created_at' => $item->created_at,
             );
         }
