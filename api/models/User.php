@@ -409,6 +409,7 @@ class User extends Base
                 $data['data']['items']['pass_pic'][] = array(
                     'user_id' => $user->id,
                     'user_name' => $user->nickname,
+                    'user_pic' => $user->user_pic,
                     'pic_url' => $one_upload->pic_url,
                     'pic_tag' => $tag,
                     'pic_app' => $one_upload->pic_app,
@@ -422,6 +423,7 @@ class User extends Base
                 $data['data']['items']['unpass_pic'][] = array(
                     'user_id' => $user->id,
                     'user_name' => $user->nickname,
+                    'user_pic' => $user->user_pic,
                     'pic_url' => $one_upload->pic_url,
                     'pic_tag' => $tag,
                     'pic_app' => $one_upload->pic_app,
