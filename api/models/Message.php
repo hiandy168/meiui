@@ -10,7 +10,7 @@ class Message extends Base
         $data = $this->main;
         $data['status'] = '300200';
         $user_id = intval($_GET['user_id']);
-        $page = intval($_GET['page']);
+        $page = $_GET['page']?intval($_GET['page']):1;
         $limit = 8;
         $num = ($page - 1) * $limit;
         // 查询条件
