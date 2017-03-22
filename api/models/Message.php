@@ -14,9 +14,10 @@ class Message extends Base
         $limit = 8;
         $num = ($page - 1) * $limit;
         // 查询条件
-        $conditions = " user_id = :user_id:";
+        $conditions = " user_id = :user_id: and  msg_flag = :msg_flag:";
         $parameters = array(
             "user_id" => $user_id,
+            "msg_flag" => 1,
         );
         // 用户信息数
         $user_msg_count = MeiuiUserMsg::count(array(
@@ -48,6 +49,19 @@ class Message extends Base
         $data = $this->main;
         $data['status'] = '300200';
         $data['data'] = array();
+        $id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+        $conditions = " id = :id:";
+        $parameters = array(
+            "id" => $id,
+        );
+        $user_msg = MeiuiUserMsg::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if($user_msg){
+            $user_msg-> msg_flag = 2;
+            $user_msg->save();
+        }
         $data['alert']['msg'] = $this->lang['delete_success'];
         die(json_encode($data));
     }

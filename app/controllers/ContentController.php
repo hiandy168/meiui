@@ -92,6 +92,7 @@ class ContentController extends ControllerBase
             $db_pic-> create_time = time();
             $db_pic->save();
         }
+        $this-> addUserMessage($user_id, $db_pic-> pic_url);
         // 原本基础数据图片标签分隔符不同
 //        $all_tag = explode('，',$tags[0]);
         $all_tag = explode(',',$tags[0]);
@@ -149,6 +150,28 @@ class ContentController extends ControllerBase
             $db_tag_link_pic->save();
         }
         return $db_tag_link_pic;
+    }
+
+    public function addUserMessage($user_id, $msg_pic){
+        $conditions = " user_id = :user_id: and msg_pic =:msg_pic:";
+        $parameters = array(
+            "user_id" => $user_id,
+            "msg_pic" => $msg_pic,
+        );
+        $user_msg = MeiuiUserMsg::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if(!$user_msg){
+            $user_msg = new MeiuiUserMsg();
+            $user_msg-> user_id = $user_id;
+            $user_msg-> created_at = time();
+            $user_msg-> msg_flag = 1;
+            $user_msg-> msg = '图片审核通过';
+            $user_msg-> msg_pic = $msg_pic;
+            $user_msg->save();
+        }
+        return $user_msg;
     }
 
 }
