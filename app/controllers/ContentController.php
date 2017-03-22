@@ -92,7 +92,7 @@ class ContentController extends ControllerBase
             $db_pic-> create_time = time();
             $db_pic->save();
         }
-        $this-> addUserMessage($user_id, $db_pic-> pic_url);
+//        $this-> addUserMessage($user_id, $db_pic-> pic_url);
         // 原本基础数据图片标签分隔符不同
 //        $all_tag = explode('，',$tags[0]);
         $all_tag = explode(',',$tags[0]);
