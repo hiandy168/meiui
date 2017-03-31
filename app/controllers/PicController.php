@@ -173,6 +173,29 @@ class PicController extends ControllerBase
             $content_ctl = new ContentController();
             $content_ctl->add_sys_pic('http://' . Common::bucket .'.'. Common::endpoint . '/' . $pic_cache->pic_sys_url,$pic_cache->user_id);
         }
+        if($pic_cache->pic_flag == 1){
+            $conditions = " user_id = :user_id: and msg_pic = :msg_pic:";
+            $parameters = array(
+                "user_id" => $pic_cache->user_id,
+                "msg_pic" => $pic_cache->pic_sys_url,
+            );
+            $user_msg = MeiuiUserMsg::findFirst(array(
+                $conditions,
+                "bind" => $parameters
+            ));
+            if($user_msg){
+
+            } else {
+                //给用户发消息
+                $user_msg = new MeiuiUserMsg();
+                $user_msg-> user_id = $pic_cache->user_id;
+                $user_msg-> created_at = time();
+                $user_msg-> msg_flag = 3;
+                $user_msg-> msg = '图片审核拒绝' . $pic_cache->back_msg;
+                $user_msg-> msg_pic = $pic_cache->pic_sys_url;
+                $user_msg->save();
+            }
+        }
     }
 
     /**

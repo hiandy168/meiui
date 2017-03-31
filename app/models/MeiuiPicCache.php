@@ -26,8 +26,8 @@ class MeiuiPicCache extends Model
             return '未审核';
         } else if($this->pic_flag == 2){
             return '审核通过';
-        } else {
-            return '审核未通过';
+        } else if($this->pic_flag == 3){
+            return '审核拒绝';
         }
     }
 

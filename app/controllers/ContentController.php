@@ -105,8 +105,19 @@ class ContentController extends ControllerBase
 
         $all_tag[] = $app;
         foreach($all_tag as $one_tag){
-            $this-> insert_tag_link_pic($one_tag, $db_pic->id,$user_id);
+            if($one_tag){
+                $this-> insert_tag_link_pic($one_tag, $db_pic->id,$user_id);
+            }
         }
+        //给用户发消息
+        $user_msg = new MeiuiUserMsg();
+        $user_msg-> user_id = $user_id;
+        $user_msg-> created_at = time();
+        $user_msg-> msg_flag = 1;
+        $user_msg-> msg = '图片审核通过';
+        $user_msg-> msg_pic = $pic_url;
+        $user_msg->save();
+
         $alert_message = "添加成功 <br/>APP:" . $app . '<br/>标签:' . $tags[0] . '<br/>url:' . $pic_url;
         $this->flash->notice($alert_message);
     }
@@ -130,6 +141,7 @@ class ContentController extends ControllerBase
         return $db_tag;
     }
 
+    // 插入标签关联图片 同时插入用户标签
     public function insert_tag_link_pic($tag_name, $pic_id,$user_id){
         $tag = $this->insert_tag($tag_name,$user_id);
         $conditions = " tag_name = :tag_name: and pic_id =:pic_id:";
@@ -149,6 +161,27 @@ class ContentController extends ControllerBase
             $db_tag_link_pic-> tag_name = $tag->tag_name;
             $db_tag_link_pic->save();
         }
+
+        $conditions = " tag_id = :tag_id: and  user_id = :user_id:  and  pic_id = :pic_id: ";
+        $parameters = array(
+            "tag_id" => $tag->id,
+            "user_id" => $user_id,
+            "pic_id" => $pic_id,
+        );
+        $user_tag = MeiuiUserTag::findFirst(array(
+            $conditions,
+            "bind" => $parameters
+        ));
+        if(!$user_tag){
+            $user_tag = new MeiuiUserTag();
+            $user_tag-> tag_id = $tag->id;
+            $user_tag-> user_id = $user_id;
+            $user_tag-> pic_id = $pic_id;
+            $user_tag-> created_at = time();
+        } else {
+            $user_tag->del_flag = 1;
+        }
+        $user_tag->save();
         return $db_tag_link_pic;
     }
 

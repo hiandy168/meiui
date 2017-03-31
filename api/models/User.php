@@ -328,32 +328,34 @@ class User extends Base
                 $tags = MeiuiPicLinkTag::find('pic_id='.$value->pic_id);
                 $sys_tag = [];
                 $user_tag = [];
-                if (count($tags) > 0) {
-                    foreach($tags as $v){
-                        if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
-                            $user_tag[] = $v-> tag_name ;
-                            if($v->tag_type == 2){
+                if($pic and $user and $tags){
+                    if (count($tags) > 0) {
+                        foreach($tags as $v){
+                            if(in_array($v->pic_id, $this->user_tag_array['del_flag'][$v->tag_id])){
+                                $user_tag[] = $v-> tag_name ;
+                                if($v->tag_type == 2){
+                                    $sys_tag[] = $v-> tag_name ;
+                                }
+                            } else if($v->tag_type == 2){
                                 $sys_tag[] = $v-> tag_name ;
                             }
-                        } else if($v->tag_type == 2){
-                            $sys_tag[] = $v-> tag_name ;
                         }
                     }
+                    $data['data']['items'][] = array(
+                        'pic_id' => $pic->id,
+                        'pic' => $pic->pic_url,
+                        'pic_h' => $pic->pic_h,
+                        'pic_w' => $pic->pic_w,
+                        'app_id' => $pic->app_id,
+                        'user_id' => $pic->create_user,
+                        'user_name' => $user->nickname,
+                        'user_pic' => $user->user_pic,
+                        'app_name' => $pic->app_name,
+                        'brief' => $pic->brief,
+                        'sys_tag' => $sys_tag,
+                        'user_tag' => $user_tag,
+                    );
                 }
-                $data['data']['items'][] = array(
-                    'pic_id' => $pic->id,
-                    'pic' => $pic->pic_url,
-                    'pic_h' => $pic->pic_h,
-                    'pic_w' => $pic->pic_w,
-                    'app_id' => $pic->app_id,
-                    'user_id' => $pic->create_user,
-                    'user_name' => $user->nickname,
-                    'user_pic' => $user->user_pic,
-                    'app_name' => $pic->app_name,
-                    'brief' => $pic->brief,
-                    'sys_tag' => $sys_tag,
-                    'user_tag' => $user_tag,
-                );
             }
         }
         die(json_encode($data));

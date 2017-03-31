@@ -27,9 +27,11 @@
     <div class="page-header">
         审核状态
         <input type="radio" name="pic_flag"  value="1" <?php echo $pic_cache->getFlagCheck(1)?>/>
-        未通过
+        未审核
         <input type="radio" name="pic_flag"  value="2" <?php echo $pic_cache->getFlagCheck(2)?>/>
         审核通过
+        <input type="radio" name="pic_flag"  value="3" <?php echo $pic_cache->getFlagCheck(3)?>/>
+        审核拒绝
     </div>
     <div class="page-header">
         如审核未通过,请填写原因
