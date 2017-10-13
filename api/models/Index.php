@@ -48,7 +48,9 @@ class Index extends Base
                 "bind" => $parameters
             ));
             foreach ($user_collection as $one_collection){
-                $user_collection_pic_id[] = $one_collection->pic_id;
+                if($one_collection){
+                    $user_collection_pic_id[] = $one_collection->pic_id;
+                }
             }
         }
         foreach($all_pic-> items as $value){
